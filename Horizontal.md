@@ -105,7 +105,7 @@ Pipelines also handle versioning, rollbacks, and environment-specific deployment
 I use Prometheus to collect metrics and Grafana to visualize pod, node, and application performance.
 By analyzing CPU, memory, latency, error rates, and pod restarts, I can identify whether bottlenecks are at the application, resource, or infrastructure level.
 
-Cloud (AWS, Azure, GCP) & Infrastructure:
+# Cloud (AWS, Azure, GCP) & Infrastructure:
 
 15. You’ve worked with multiple cloud platforms—how do you decide which cloud service to use for a specific requirement?
 The decision is based on factors like existing ecosystem, cost, compliance needs, scalability, and service maturity.
@@ -127,7 +127,7 @@ This involved configuring secure connectivity like VPNs, handling hybrid CI/CD p
 I follow the principle of least privilege using role-based access control.
 IAM roles, service accounts, and group-based policies are used to ensure secure access for users, applications, and automation tools across cloud platforms.
 
-Automation & Scripting:
+# Automation & Scripting:
 
 20. What kind of automation have you implemented using Bash, PowerShell, or Python?
 I’ve automated repetitive operational tasks such as deployment validation, Kubernetes health checks, log cleanup, and cloud resource monitoring.
@@ -159,7 +159,7 @@ If a task is repetitive, time-consuming, or error-prone, it should be automated.
 One-time or highly dynamic tasks may remain manual, but anything that repeats weekly or daily is a strong candidate for automation.
 I also consider risk—automation should be safe, reversible, and well-logged.
 
-Monitoring, Performance & Stability
+# Monitoring, Performance & Stability
 
 23. What monitoring tools have you worked with, and what key metrics do you track in production?
 I’ve worked with Prometheus, Grafana, CloudWatch, and logging tools like ELK/Loki.
@@ -181,7 +181,7 @@ In one incident, production pods started restarting continuously.
 I analyzed metrics and logs, identified a memory leak, stabilized the system by increasing limits, coordinated with developers for a fix, and monitored post-deployment stability.
 My role was incident diagnosis, mitigation, communication, and post-incident analysis.
 
-Process, SDLC & Collaboration:
+# Process, SDLC & Collaboration:
 
 26. How does DevOps fit into the SDLC in your projects?
 DevOps acts as a bridge across all SDLC phases—from code commit to deployment and monitoring.
