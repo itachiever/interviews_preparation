@@ -17,24 +17,24 @@
 	5. Can you explain how Kubernetes integrates with CI/CD pipelines in your projects?
 	6. How do you monitor Kubernetes workloads and identify performance bottlenecks?
 
-Cloud (AWS, Azure, GCP) & Infrastructure
+# Cloud (AWS, Azure, GCP) & Infrastructure
 	1. You’ve worked with multiple cloud platforms—how do you decide which cloud service to use for a specific requirement?
 	2. Can you explain a real cloud infrastructure issue you handled in AWS or Azure and how you resolved it?
 	3. How do you design cloud infrastructure for high availability and scalability?
 	4. What is your experience with hybrid environments involving cloud and on-prem infrastructure?
 	5. How do you manage IAM, access controls, and permissions across cloud platforms?
 
-Automation & Scripting
+# Automation & Scripting
 	1. What kind of automation have you implemented using Bash, PowerShell, or Python?
 	2. Can you explain a script you wrote that significantly improved operational efficiency?
 	3. How do you decide whether a task should be automated or handled manually?
 
-Monitoring, Performance & Stability
+# Monitoring, Performance & Stability
 	1. What monitoring tools have you worked with, and what key metrics do you track in production?
 	2. How do you troubleshoot server or application performance issues when alerts are triggered?
 	3. Can you describe a critical production incident you handled and your exact role during the incident?
 
-Process, SDLC & Collaboration
+# Process, SDLC & Collaboration
 	1. How does DevOps fit into the SDLC in your current or previous projects?
 	2. How do you collaborate with developers and QA teams to improve deployment success rates?
 	3. What role have you played in application architecture or design discussions?
@@ -42,9 +42,9 @@ Process, SDLC & Collaboration
 	5. Why do you think you are a good fit for this DevOps Engineer role at Horizontal, based on your experience?
 
 
-Questions & Answers:
+# Questions & Answers:
 
-CI/CD – Build & Release Focus:
+# CI/CD – Build & Release Focus:
 
 1. Can you walk me through a complete CI/CD pipeline you’ve built end to end and explain your role in it?
 In my recent project, I was responsible for designing and maintaining an end-to-end CI/CD pipeline for microservices. The pipeline started with code checkout from Git, followed by build and unit testing. After that, we ran static code analysis and security scans, then built Docker images and pushed them to a container registry.
