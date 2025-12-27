@@ -1,5 +1,5 @@
-Questions:
-CI/CD – Build & Release Focus
+# Questions:
+# CI/CD – Build & Release Focus
 	1. Can you walk me through a complete CI/CD pipeline you’ve built end to end and explain your role in it?
 	2. How do you design a build and release pipeline so that it supports multiple environments like DEV, QA, UAT, and PROD?
 	3. What kind of failures have you seen in production deployments, and how did you perform root cause analysis?
@@ -9,7 +9,7 @@ CI/CD – Build & Release Focus
 	7. What best practices do you follow while creating reusable or standardized pipelines across teams?
 	8. How do you manage secrets and credentials securely inside CI/CD pipelines?
 
-Kubernetes & Containerization
+# Kubernetes & Containerization
 	1. Can you explain the Kubernetes architecture and what components you interact with on a daily basis?
 	2. How do you deploy applications to Kubernetes and ensure minimal or zero downtime?
 	3. What are the most common Kubernetes issues you’ve faced in production and how did you troubleshoot them?
