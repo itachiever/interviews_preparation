@@ -206,4 +206,3 @@ I use tools like Jira, alerts, and clear communication to stay organized and foc
 30. Why do you think you are a good fit for this DevOps Engineer role at Horizontal?
 My experience aligns strongly with build and release automation, CI/CD optimization, Kubernetes, and multi-cloud environments.
 I bring a balance of hands-on technical skills, problem-solving mindset, and collaboration ability, which fits well with Horizontal’s DevOps culture.
-![Uploading image.png…]()
