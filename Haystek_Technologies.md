@@ -1,6 +1,6 @@
 # 🎯 AWS DevOps Engineer Interview Preparation — 20 Questions & Answers
 
-1. Explain the architecture and working of AWS Auto Scaling and Elastic Load Balancer.
+* 1. Explain the architecture and working of AWS Auto Scaling and Elastic Load Balancer.
 Answer:
 AWS Auto Scaling monitors metrics like CPU utilization, memory, or request count and automatically adjusts the number of EC2 instances to meet demand. It ensures elasticity and cost efficiency by scaling out during peak loads and scaling in when demand drops. Elastic Load Balancer (ELB) distributes incoming traffic across multiple healthy instances, improving fault tolerance and availability. Together, ELB ensures traffic is balanced, while Auto Scaling ensures enough instances exist to handle that traffic.
 
