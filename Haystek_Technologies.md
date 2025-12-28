@@ -1,10 +1,10 @@
 # 🎯 AWS DevOps Engineer Interview Preparation — 20 Questions & Answers
 
-* 1. Explain the architecture and working of AWS Auto Scaling and Elastic Load Balancer.
+# 1. Explain the architecture and working of AWS Auto Scaling and Elastic Load Balancer.
 Answer:
 AWS Auto Scaling monitors metrics like CPU utilization, memory, or request count and automatically adjusts the number of EC2 instances to meet demand. It ensures elasticity and cost efficiency by scaling out during peak loads and scaling in when demand drops. Elastic Load Balancer (ELB) distributes incoming traffic across multiple healthy instances, improving fault tolerance and availability. Together, ELB ensures traffic is balanced, while Auto Scaling ensures enough instances exist to handle that traffic.
 
-2. Describe the process of implementing Infrastructure as Code (IaC) using AWS CloudFormation or Terraform.
+# 2. Describe the process of implementing Infrastructure as Code (IaC) using AWS CloudFormation or Terraform.
 Answer:
 Infrastructure as Code means defining infrastructure resources in code files. With AWS CloudFormation, you write JSON or YAML templates to provision services like EC2, VPCs, and RDS. Terraform uses HCL language to define resources across multiple cloud providers. IaC enables version control, repeatability, and automation. For example, a Terraform script can provision a complete VPC with subnets, security groups, and EC2 instances in one command, ensuring consistent environments across dev, test, and prod.
 
