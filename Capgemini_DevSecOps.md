@@ -105,7 +105,7 @@
 
 # 1. CI/CD Pipeline Security
 
-* Q1: Walk me through how you would secure a CI/CD pipeline from source code to deployment.
+# Q1: Walk me through how you would secure a CI/CD pipeline from source code to deployment.
 Answer (story + structure):
 “The pipeline security in stages: source control → build → artifacts → deploy → runtime, with strong identity and secrets management across everything.”
 	1. Source control (Git, Bitbucket, Azure Repos)
