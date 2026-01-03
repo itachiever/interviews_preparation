@@ -1,4 +1,4 @@
-# 🎯 AWS DevOps Engineer Interview Preparation — 20 Questions & Answers
+# 🎯 AWS DevOps Engineer Interview Preparation - 20 Questions & Answers
 
 # 1. Explain the architecture and working of AWS Auto Scaling and Elastic Load Balancer.
 Answer:
