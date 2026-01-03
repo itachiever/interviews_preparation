@@ -1,4 +1,5 @@
 # Preparation Questions & Answers:
+#
 # Category 1: DevSecOps Architecture & CI/CD Integration
 # Q1: Can you walk me through how you designed a secure CI/CD pipeline in your previous role? 
 A: In my role at current organization, I architected a Jenkins-based pipeline that acted as the backbone of our DevSecOps process. The pipeline started with code checkout, followed immediately by SAST scanning using Fortify and SonarQube. I configured Quality Gates so that if the code quality score dropped below a threshold or if high-severity vulnerabilities were detected, the build would fail automatically. This ensured that vulnerable code never progressed to the artifact creation stage. Post-build, I scanned Docker images using Snyk before pushing them to Nexus Registry, ensuring security was validated at every stage of the SDLC.
