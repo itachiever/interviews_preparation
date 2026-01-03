@@ -98,7 +98,7 @@
 ✅ Behavioral (3)
 
 
-# ----------------------------------------------------------------------------------------------------------------------------------------------
+# ------------------------------------------
 
 
 # Preparation Questions & Answers:
@@ -142,7 +142,7 @@ Answer (story + structure):
 You can summarize in an interview as:
 “Secure code repo, hardened build agents, gated artifacts, policy‑driven deployments, and strong secrets/identity — all glued with automated SAST/DAST/SCA and vulnerability scanning.”
 
-Q2: How do you implement secrets management in CI/CD pipelines? What tools have you used?
+# Q2: How do you implement secrets management in CI/CD pipelines? What tools have you used?
 Answer:
 “Core rule: no secrets in code, no secrets in pipeline files. I always centralize secrets and fetch them at runtime.”
 Typical approach:
@@ -166,7 +166,6 @@ pipeline {
       steps {
         script {
           // Example: Call Vault API from Jenkins to fetch DB password
-          // You will explain in video: here we are calling Vault via curl/wrapper.
           def dbPass = sh(
             script: "vault kv get -field=password secret/prod/db",
             returnStdout: true
@@ -193,7 +192,7 @@ How to prevent secrets from being logged or exposed:
 	• Restrict who can view pipeline logs and configuration.
 	• Make sure debug logs don’t print environment variables.
 
-Q3: Explain shift-left security. How have you implemented it in your projects?
+# Q3: Explain shift-left security. How have you implemented it in your projects?
 Answer:
 “Shift‑left security means moving security checks as early as possible: in developer tools, pre‑commit, and early CI, instead of waiting for a big security review at the end.”
 How to implement:
@@ -215,7 +214,7 @@ How to implement:
 You can phrase it like:
 “In my projects, the moment code is pushed, it hits SAST and SCA, and Terraform goes through IaC checks. Developers get fast feedback before the code is merged, which is the essence of shift‑left.”
 
-Q4: What security gates would you implement in a CI/CD pipeline and at what stages?
+# Q4: What security gates would you implement in a CI/CD pipeline and at what stages?
 Answer:
 “I like to define security gates at four levels: pre‑commit, PR/CI, pre‑deploy, and post‑deploy.”
 	1. Pre‑commit (optional but ideal)
@@ -239,7 +238,7 @@ Thresholds example:
 	• High: block in prod release, might allow in dev with explicit approval.
 	• Medium/Low: log and schedule in backlog.
 
-Q5: How do you handle pipeline failures due to security issues? What’s your threshold for blocking deployments?
+# Q5: How do you handle pipeline failures due to security issues? What’s your threshold for blocking deployments?
 Answer:
 “First I let automation block by default for high risk, then I have a clear exception process.”
 Handling failures:
@@ -262,9 +261,9 @@ Exception process:
 You can say:
 “My default is to block deployments for critical/high security issues, but there is a documented, time‑bound exception workflow for genuine edge cases.”
 
-2. SAST (Static Application Security Testing)
+# 2. SAST (Static Application Security Testing)
 
-Q6: Explain the difference between SAST and DAST. When would you use each?
+# Q6: Explain the difference between SAST and DAST. When would you use each?
 Answer:
 	• SAST (Static Application Security Testing):
 		○ Runs on source code / bytecode without executing the application.
@@ -286,7 +285,7 @@ When to use:
 	• Use SAST early to catch patterns in code before deployment.
 	• Use DAST once a build is running in an environment, to test it “like an attacker”.
 
-Q7: You’ve integrated SonarQube into your pipeline. How do you handle false positives?
+# Q7: You’ve integrated SonarQube into your pipeline. How do you handle false positives?
 Answer:
 “I treat SonarQube as a helper, not a judge. The process is: triage → mark correctly → tune rules → keep quality gates realistic.”
 Practical handling:
@@ -310,7 +309,7 @@ Practical handling:
 Script line you can use:
 “I always prioritize making SonarQube usable for developers by reducing noise; otherwise they start ignoring all findings.”
 
-Q8: What are the limitations of SAST tools? How do you complement them?
+# Q8: What are the limitations of SAST tools? How do you complement them?
 Answer:
 Some realistic limitations:
 	• High false positives:
@@ -329,7 +328,7 @@ How to complement:
 You can say:
 “SAST is great but not enough; I always combine it with DAST, SCA, IaC scans, and targeted manual review for critical components.”
 
-Q9: How would you configure Checkmarx or Fortify to scan only critical code paths to reduce scan time?
+# Q9: How would you configure Checkmarx or Fortify to scan only critical code paths to reduce scan time?
 Answer:
 Idea: scope down the scan rather than scanning the entire monolith every time.
 Practical techniques:
@@ -348,7 +347,7 @@ Practical techniques:
 Interview line:
 “I usually run fast incremental scans on PRs and a scheduled full scan at night. That keeps developer feedback quick without losing full coverage.”
 
-Q10: Explain CWE and OWASP Top 10. How do SAST tools map findings to these?
+# Q10: Explain CWE and OWASP Top 10. How do SAST tools map findings to these?
 Answer:
 	• CWE (Common Weakness Enumeration):
 		○ A standardized catalog of software weakness types, like “CWE‑79: Cross‑Site Scripting” or “CWE‑89: SQL Injection”.
@@ -365,9 +364,9 @@ Example explanation you can give:
 
 
 
-3. DAST (Dynamic Application Security Testing)
+# 3. DAST (Dynamic Application Security Testing)
 
-Q11: How does OWASP ZAP differ from Burp Suite? Which would you choose for CI/CD integration?
+# Q11: How does OWASP ZAP differ from Burp Suite? Which would you choose for CI/CD integration?
 Answer:
 OWASP ZAP is open‑source and very automation‑friendly, with good CLI, Docker images, and APIs that fit nicely into CI/CD pipelines. Burp Suite is extremely powerful for manual, interactive testing but the full automation capabilities (Burp Enterprise) are commercial and more complex to integrate. For pure CI/CD integration, ZAP is usually the first choice because you can run it headless in Docker, script scans, and parse reports easily; for deep manual testing and complex logic, Burp is still my go‑to tool.
 
@@ -403,7 +402,7 @@ stage('DAST Scan') {
 	• Small script parses JSON and fails the build if high/critical issues are found.
 	2. Optional: Schedule a nightly full scan job (more aggressive than the baseline) against staging.
 
-Q13: How do you handle authentication when performing DAST scans?
+# Q13: How do you handle authentication when performing DAST scans?
 Answer:
 “Authentication is usually the tricky part; my approach depends on whether it’s session‑based or token‑based.”
 Typical patterns:
@@ -422,7 +421,7 @@ Typical patterns:
 		○ Use that script as part of the scan to establish an authenticated session.
 Key point to mention: “I always ensure credentials/tokens are handled via secret management, not hard‑coded in scan configs.”
 
-Q14: What’s the difference between active and passive scanning in DAST tools?
+# Q14: What’s the difference between active and passive scanning in DAST tools?
 Answer:
 	• Passive scanning:
 		○ The tool only observes traffic (requests and responses), for example while you or a crawler browse the site.
@@ -447,9 +446,9 @@ SPAs and APIs need a bit more configuration:
 		○ Let the tool generate requests from the spec and then actively scan those endpoints.
 You can say: “For SPAs I rely on JS‑aware crawling, and for APIs I always try to feed an OpenAPI spec or collection so the scanner doesn’t miss endpoints.”
 
-4. Container Security
+# 4. Container Security
 
-Q16: Explain the container security lifecycle from image build to runtime.
+# Q16: Explain the container security lifecycle from image build to runtime.
 Answer:
 “I think of it as four phases: build → store → deploy → run.”
 	1. Build:
@@ -475,7 +474,7 @@ Answer:
 		○ Continuously scan nodes and running containers for new CVEs and drift.
 Interview phrase: “Secure build, secure registry, policy‑driven deployment, and runtime monitoring together form the full container security lifecycle.”
 
-Q17: How do you secure Docker images? What checks do you perform before pushing to a registry?
+# Q17: How do you secure Docker images? What checks do you perform before pushing to a registry?
 Answer:
 “Most of the security is decided in the Dockerfile and CI pipeline.”
 Key practices:
@@ -495,14 +494,14 @@ Key practices:
 Example snippet:
 
 text
-# Stage 1: build
+#Stage 1: build
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 COPY . .
 RUN npm run build
-# Stage 2: runtime
+#Stage 2: runtime
 FROM node:20-alpine
 RUN addgroup -S app && adduser -S app -G app
 USER app
@@ -510,9 +509,8 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 CMD ["node", "dist/server.js"]
-Use comments in your video to explain each security choice (multi‑stage, non‑root, minimal).
 
-Q18: What is the difference between image scanning and runtime container security?
+# Q18: What is the difference between image scanning and runtime container security?
 Answer:
 	• Image scanning:
 		○ Looks at the container image (packages, OS layers, libraries) before it runs.
@@ -527,7 +525,7 @@ Answer:
 		○ Detects attacks, exploitation, and drift (container behavior different from what image suggests).
 Analogy you can use: “Image scanning checks what you plan to run; runtime security checks what is actually happening.”
 
-Q19: You discover a critical vulnerability in a base image used across 50 containers. Walk through your remediation process.
+# Q19: You discover a critical vulnerability in a base image used across 50 containers. Walk through your remediation process.
 Answer:
 “My priority is to understand impact, patch centrally, and roll out in a controlled but quick way.”
 Steps:
@@ -552,7 +550,7 @@ Steps:
 		○ Ensure base images are regularly updated (e.g., weekly scheduled rebuilds).
 		○ Use policies to avoid very old base images.
 
-Q20: Explain how Red Hat Advanced Cluster Security (or Aqua/Twistlock) works.
+# Q20: Explain how Red Hat Advanced Cluster Security (or Aqua/Twistlock) works.
 Answer (generic commercial container security platform):
 “These platforms provide full lifecycle security: build, deploy, and runtime.”
 Core capabilities:
@@ -571,7 +569,7 @@ Core capabilities:
 		○ Show cluster topology, risky components, and prioritized remediation actions.
 You can summarize: “They connect to the cluster, watch images and running workloads, and enforce security policies at every step from CI to runtime.”
 
-Q21: How do you implement security policies for Kubernetes/OpenShift clusters?
+# Q21: How do you implement security policies for Kubernetes/OpenShift clusters?
 Answer:
 “I use a combination of built‑in mechanisms and policy‑as‑code.”
 Key controls:
@@ -596,7 +594,7 @@ Key controls:
 			§ Enforce TLS, mandatory probes, etc.
 For OpenShift specifically, mention Security Context Constraints (SCCs) as an extra control.
 
-Q22: What are the security differences between Docker and Kubernetes/OpenShift?
+# Q22: What are the security differences between Docker and Kubernetes/OpenShift?
 Answer:
 “At a high level: Docker is about running containers on a single host; Kubernetes/OpenShift is about orchestrating them across a cluster with extra security layers.”
 Key differences:
@@ -618,9 +616,9 @@ Key differences:
 You can phrase it: “Docker gives container‑level isolation; Kubernetes/OpenShift add the security layers needed to safely run many teams and apps on shared clusters (RBAC, policies, network controls, admission).”
 
 
-5. Vulnerability management
+# 5. Vulnerability management
 
-Q23: How do you prioritize vulnerabilities for remediation when you have hundreds of findings?
+# Q23: How do you prioritize vulnerabilities for remediation when you have hundreds of findings?
 Answer:
 “I don’t treat all findings equally; I prioritize by severity, exploitability, and business impact.”
 	• Start with severity (CVSS): focus on Critical and High first, then Medium, then Low.
