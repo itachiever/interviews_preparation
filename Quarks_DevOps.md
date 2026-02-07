@@ -1,6 +1,3 @@
-Devops Engineer
-
-
 <img width="1169" height="1476" alt="image" src="https://github.com/user-attachments/assets/a9c41cc4-ddd0-4528-95d5-23094eed21f5" />
 
 
@@ -100,9 +97,9 @@ Devops Engineer
 
 47. **(Screen Share)** Write a quick script to validate cloud resource health and raise alerts.
 
+---
 
-
-**Below are interview-ready answers**
+## Below are interview-ready answers
 
 ---
 
