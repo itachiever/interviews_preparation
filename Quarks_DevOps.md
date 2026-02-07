@@ -51,6 +51,104 @@ Preferred Qualifications
 <img width="1169" height="1476" alt="image" src="https://github.com/user-attachments/assets/a9c41cc4-ddd0-4528-95d5-23094eed21f5" />
 
 
+**Below Are teh Answers**
+
+1. Walk me through your profile — current role, key responsibilities, major projects, and the tech stack you actively work with.
+
+2. Describe the kind of environments you have supported — production, staging, scale, uptime expectations.
+
+3. Explain Kubernetes architecture from a platform engineer’s perspective.
+
+4. How do control plane components interact with worker nodes internally?
+
+5. What happens end-to-end when you run `kubectl apply` for a deployment?
+
+6. How does the scheduler evaluate nodes before placing a pod?
+
+7. What scheduling constraints have you implemented in real projects and why?
+
+8. How do you ensure specific workloads run on dedicated or special-purpose nodes?
+
+9. How do you isolate workloads across teams or applications inside a cluster?
+
+10. How do Services enable pod communication, and what service patterns have you used in production?
+
+11. Explain external traffic exposure patterns you have implemented for Kubernetes workloads.
+
+12. How does request routing work when using Ingress with cloud load balancers?
+
+13. What common production issues occur at the ingress or load balancer layer?
+
+14. A production application suddenly returns intermittent 5xx errors — how do you approach debugging?
+
+15. How do you identify whether the issue is at pod, service, ingress, or infrastructure level?
+
+16. What memory-related failures have you seen in containers, and how do you troubleshoot them?
+
+17. How do you decide proper CPU and memory limits for applications?
+
+18. When a pod is not scheduled, what cluster-level checks do you perform first?
+
+19. How do you identify resource exhaustion vs scheduling constraints?
+
+20. How do you manage configuration and sensitive data for applications running in Kubernetes?
+
+21. How do you control and restrict access to cluster resources for developers?
+
+22. Explain persistent storage lifecycle for containerized applications.
+
+23. What scaling mechanisms have you implemented for applications and infrastructure?
+
+24. What cluster-wide components must run on every node, and why?
+
+25. Explain your experience with AWS infrastructure supporting containerized workloads.
+
+26. How do you design network isolation and traffic flow inside a VPC?
+
+27. What security controls do you enforce at network and instance levels?
+
+28. How do you design fault tolerance and high availability in cloud environments?
+
+29. Explain how infrastructure provisioning is automated in your projects.
+
+30. How do you structure Infrastructure as Code repositories for team usage?
+
+31. How do multiple engineers safely collaborate on the same infrastructure codebase?
+
+32. How do you detect and manage infrastructure drift in real environments?
+
+33. Explain your CI/CD workflow from developer commit to production release.
+
+34. How do pipelines differ between lower environments and production?
+
+35. What deployment strategies have you implemented to reduce downtime?
+
+36. How do pipelines securely access infrastructure and credentials?
+
+37. A deployment pipeline fails during release — how do you debug and recover?
+
+38. What monitoring signals do you consider critical for platform stability?
+
+39. How do you design dashboards that help during production incidents?
+
+40. How do logs move from application containers to centralized systems?
+
+41. How do you design alerts to reduce noise but catch real failures?
+
+42. Describe a real production incident you handled and your role in resolution.
+
+43. What repetitive operational tasks have you automated and why?
+
+44. Explain one automation script you wrote that saved operational effort.
+
+45. **(Screen Share)** Demonstrate how you investigate a failing application in Kubernetes using CLI.
+
+46. **(Screen Share)** Show how you inspect cluster health and node capacity.
+
+47. **(Screen Share)** Write a quick script to validate cloud resource health and raise alerts.
+
+
+
 **Below are interview-ready answers**
 
 ---
