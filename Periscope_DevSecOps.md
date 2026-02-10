@@ -14,7 +14,7 @@ Infrastructure as Code: Terraform, Bicep, or ARM
 Experience with HIPAA & HITRUST compliance
 Monitoring & observability using Datadog
 AI/ML workload deployment (Azure AI Studio preferred)
-SendGrid configuration for system notifications<img width="880" height="699" alt="image" src="https://github.com/user-attachments/assets/7693eb08-610d-4caf-bfb3-b40395f63da4" />
+SendGrid configuration for system notifications
 
 
 ### **Part 1: Azure Architecture & Core Security Services**
