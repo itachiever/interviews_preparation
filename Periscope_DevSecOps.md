@@ -1,4 +1,20 @@
+Role: Senior DevSecOps Engineer (Azure Specialist)
+Experience: 4 years and above
+Employment Type: Full-time
+Work Model: Work from home: 6:00 PM – 2:00 AM [Evenings]
 
+Role Overview
+You will lead DevSecOps initiatives for our Azure-based infrastructure and AI platforms, ensuring secure, scalable, and compliant deployments. This role focuses strongly on Azure AI Studio, HIPAA/HITRUST compliance, CI/CD automation, and cloud security.
+
+Key Skills Required
+Strong experience in DevSecOps / Cloud / Platform Engineering
+Deep expertise in Microsoft Azure & Azure security services
+CI/CD using GitHub Actions and Azure DevOps
+Infrastructure as Code: Terraform, Bicep, or ARM
+Experience with HIPAA & HITRUST compliance
+Monitoring & observability using Datadog
+AI/ML workload deployment (Azure AI Studio preferred)
+SendGrid configuration for system notifications<img width="880" height="699" alt="image" src="https://github.com/user-attachments/assets/7693eb08-610d-4caf-bfb3-b40395f63da4" />
 
 
 ### **Part 1: Azure Architecture & Core Security Services**
