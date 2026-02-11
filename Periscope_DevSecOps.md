@@ -83,10 +83,6 @@ Questions:
 ### Answers
 ---
 
-This is a great strategy. Reading these answers out loud will not only help your audience but also solidify the concepts in your own mind (the "Feynman Technique").
-
-Here are the detailed, senior-level answers for **Part 1: Azure Architecture & Core Security Services**. I have phrased them to flow naturally when spoken on camera.
-
 ***
 
 ### **Part 1: Azure Architecture & Core Security Services**
@@ -130,3 +126,52 @@ Microsoft Defender for Cloud provides two main capabilities: **Cloud Security Po
 **10. How does Azure Bastion facilitate secure RDP and SSH access without exposing public IPs?**
 **Answer:**
 Traditionally, to RDP into a VM, you needed a public IP, which exposes the server to brute-force attacks from the internet. **Azure Bastion** is a fully managed PaaS service that provides secure and seamless RDP/SSH connectivity directly inside the Azure portal over SSL (port 443). It acts as a hardened gateway. Because it lives within our Virtual Network, our VMs do not need public IP addresses at all, significantly reducing the attack surface while allowing admins to connect securely from anywhere.
+
+Here are the detailed, senior-level answers for **Part 2: CI/CD & Automation**. I have broken down the heavier technical concepts using simple analogies to make it easy for your audience to grasp while recording.
+
+***
+
+### **Part 2: CI/CD & Automation (GitHub & Azure DevOps)**
+
+**11. What is the standard structure of a GitHub Actions workflow for multi-environment deployment?**
+**Answer:**
+Think of a GitHub Actions workflow like a multi-stage assembly line in a factory. The structure is defined in a YAML file and usually starts with a **Trigger** (like a code push), followed by **Jobs**. Each job runs on a **Runner** (the server doing the work). For multi-environment (say, Dev and Prod), we typically have environments with specific protection rules—for example, you can deploy to Dev automatically, but deploying to Prod requires a manual approval button. Inside the jobs, we have **Steps**, which are the individual commands like "Install dependencies," "Run tests," or "Deploy to Azure."
+
+**12. How does the OpenID Connect (OIDC) workflow function to authenticate GitHub Actions with Azure?**
+**Answer:**
+This is a move away from storing long-lived passwords. Let me break it down simply: In the "old way," we would generate a secret key in Azure, copy-paste it into GitHub, and hope it didn't get stolen. With **OIDC**, there are no keys to copy. Instead, we establish a "trust relationship" between GitHub and Azure. When the workflow runs, GitHub asks Azure for a temporary access token. Azure checks its ID card and says, "I trust this specific repository," and issues a short-lived token that expires automatically after an hour. It’s much more secure because there is no permanent password sitting in the settings.
+
+**13. How can SAST, DAST, and SCA tools be integrated into a CI/CD pipeline?**
+**Answer:**
+These are our security checkpoints, and they happen at different times. Here is a simple way to remember them:
+*   **SAST (Static Application Security Testing):** This is like "spellchecking" your code before you run it. We integrate it right after the code is downloaded. It looks for bugs in the source code itself.
+*   **SCA (Software Composition Analysis):** This checks the "ingredients" or libraries you imported (like npm packages). It scans to see if any of those open-source libraries have known vulnerabilities.
+*   **DAST (Dynamic Application Security Testing):** This happens *after* we deploy the app to a test environment. It acts like a hacker, attacking the running website to find security holes like SQL injection. We put this near the end of the pipeline.
+
+**14. What is infrastructure drift, and how is it detected and remediated in an automated pipeline?**
+**Answer:**
+Imagine you have a blueprint for a house (your Terraform code) that says "build 1 kitchen." But then, a developer manually logs in and adds a second kitchen. Now, the actual house doesn't match the blueprint. This difference is called **Drift**.
+We detect it by running a "Plan" command in our pipeline before every deployment. The tool compares the real infrastructure against the code. If it sees that extra kitchen (drift), it flags it. To remediate, we usually re-apply the code, which removes the manual changes, or we update the code to officially include the new changes so they are managed.
+
+**15. What are the differences between Blue-Green and Canary deployment strategies?**
+**Answer:**
+Both are strategies to release code with zero downtime, but they work differently:
+*   **Blue-Green** is like flipping a light switch. You have two identical environments: Blue (current live) and Green (new version). You deploy to Green, test it, and when you're happy, you instantly switch all traffic to Green. It’s fast, but it requires double the server resources.
+*   **Canary** is like dipping your toe in the water. You launch the new version but only send 5% of your user traffic to it. You watch for errors. If everything looks good, you slowly increase the traffic to 50%, then 100%. It’s safer for complex systems because it catches issues with a small audience before affecting everyone.
+
+**16. What are the advantages and disadvantages of self-hosted runners versus Microsoft-hosted runners?**
+**Answer:**
+Think of **Microsoft-hosted runners** like renting a car. It’s clean, ready to go, and you don't have to maintain it. But you can't customize the engine, and it might be expensive if you drive it all day.
+**Self-hosted runners** are like using your own car. You have to maintain it (update the OS, patch security), but you can customize it heavily (install specific software, keep it on a private network). We choose self-hosted when we need to save money on high-volume builds or when the runner needs access to on-premise servers that the public internet can't reach.
+
+**17. How is the hierarchy and structure defined in YAML pipelines within Azure DevOps?**
+**Answer:**
+The structure follows a "Russian Doll" model: **Stages** contain **Jobs**, and **Jobs** contain **Steps**.
+*   A **Stage** represents a major phase of your lifecycle, like "Build," "Test," or "Deploy to Prod."
+*   Inside a Stage, you have **Jobs**. A Job is a unit of work that runs on a specific agent (server).
+*   Inside a Job, you have **Steps**. A Step is a linear script or task (like "Run a PowerShell script" or "Publish Artifacts").
+This hierarchy helps us organize complex pipelines—for example, we can say "Run the Deploy Job only if the Test Job succeeds."
+
+**18. What mechanisms are used to prevent secrets from leaking into CI/CD logs?**
+**Answer:**
+This is critical for security. The primary mechanism is called **Secret Masking**. If you define a variable as a "secret" in the pipeline settings, the CI/CD system (like GitHub or Azure DevOps) automatically scans the logs. If it sees that exact value printed out, it replaces it with `***`. However, this isn't foolproof. We also enforce **best practices**, such as never printing whole environment variables to the screen and using tools like **TruffleHog** that scan the logs for patterns that *look* like secrets (like a string starting with `sk-` for an API key) to catch anything the masking missed.
