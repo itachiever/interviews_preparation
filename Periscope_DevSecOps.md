@@ -88,7 +88,7 @@ Questions:
 ### **Part 1: Azure Architecture & Core Security Services**
 
 **1. What are the key architectural principles of an Azure Landing Zone?**
-**Answer:**
+# **Answer:**
 An Azure Landing Zone is essentially the "blueprint" for setting up your cloud environment correctly from day one. The key principles are **Identity** as the primary security perimeter, **Network Topology** that connects on-premises to the cloud securely using Hubs and Spokes, **Resource Consistency** using standard naming and tagging, and **Governance** via Azure Policy and RBAC. It ensures that before we even deploy a single application, the foundation is scalable, secure, and compliant with enterprise standards.
 
 **2. What is the difference between Azure Role-Based Access Control (RBAC) and Azure Attribute-Based Access Control (ABAC)?**
