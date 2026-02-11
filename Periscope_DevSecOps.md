@@ -267,3 +267,92 @@ For PHI, we need the strictest model: **Least Privilege**.
 2.  **Role-Based Access Control (RBAC):** We don't give users generic "Admin" rights. We create specific roles, like "EMR Data Reader," which only allows reading records but not deleting them.
 3.  **Multi-Factor Authentication (MFA):** Mandatory for everyone. A password alone is not enough to access patient data.
 4.  **Just-In-Time (JIT) Access:** For high-privilege admins, they should only have access when they are actively working on an issue, not 24/7.
+
+***
+
+### **Part 5: AI/ML Workloads & Azure AI Studio**
+
+**33. What are the core components and architectural elements of Azure AI Studio?**
+**Answer:**
+Think of Azure AI Studio as a "one-stop-shop" or an IDE (Integrated Development Environment) specifically for AI. Instead of jumping between different tools, everything is in one place. The core components include:
+*   **Projects:** A folder to organize your work.
+*   **Data:** A place to register and version your training data.
+*   **Computes:** The virtual machines (GPU clusters) that do the heavy lifting of training the model.
+*   **Models:** A registry where you store different versions of your AI files.
+*   **Endpoints:** These are the "doors" that other applications knock on to get an answer from your AI. It brings the whole lifecycle together.
+
+**34. What are the stages of the MLOps lifecycle for model training, registration, and deployment?**
+**Answer:**
+MLOps is just DevOps applied to AI models. It follows this flow:
+1.  **Data Preparation:** Cleaning and organizing data.
+2.  **Training:** Feeding data to the algorithm to "teach" it.
+3.  **Evaluation:** Testing the model to see if it's accurate enough.
+4.  **Registration:** Saving the model file (like a `.pkl` file) into a secure registry with a version number (v1, v2).
+5.  **Deployment:** Taking that model and wrapping it in a web service (like a Docker container) so it can respond to user requests.
+6.  **Monitoring:** Watching the model to ensure it doesn't get "dumb" over time.
+
+**35. What mechanisms are used to secure endpoints created within Azure AI Studio?**
+**Answer:**
+Since AI endpoints are essentially web APIs (URLs), we secure them the same way we secure a web application.
+*   **Authentication:** We use **Azure Key-based authentication** (where you need a secret key to talk to the endpoint) or **Azure AD (Entra ID)** (where a user needs to log in).
+*   **Network Isolation:** We can deploy the endpoint inside a **Virtual Network (VNet)**, making it inaccessible from the public internet. Only our internal applications can reach it.
+*   **Traffic Control:** We use **Azure API Management** in front to rate-limit users, ensuring no one spams our AI with requests.
+
+**36. What techniques are used to de-identify data in AI training datasets to ensure privacy?**
+**Answer:**
+This is crucial for healthcare. We cannot feed raw patient names or IDs into an AI.
+*   **Anonymization:** Simply removing names and IDs.
+*   **Masking:** Replacing sensitive data with symbols (e.g., "John Doe" becomes "J*** D**").
+*   **Pseudonymization:** Replacing the identity with a fake identifier (e.g., Patient #12345) so the data can't be traced back to a person without a separate key.
+*   **Differential Privacy:** Adding a little bit of statistical "noise" to the data. This ensures the AI learns the *patterns* (e.g., "smokers get cancer more often") without memorizing *specific individuals*.
+
+**37. How is model drift (concept drift and data drift) monitored in production AI systems?**
+**Answer:**
+Think of a model like a self-driving car trained in summer. If you drive it in winter without retraining, it might crash because the road looks different. This is **Drift**.
+*   **Data Drift:** The input data changed (e.g., patients are suddenly sicker on average than before).
+*   **Concept Drift:** The relationship changed (e.g., a definition of a "risky" loan changed based on the economy).
+We monitor this by tracking the **Accuracy** and **Prediction Distribution** over time. If the graph suddenly drops or looks weird, we trigger an alert to retrain the model with new data.
+
+**38. What are the key principles of Responsible AI (Fairness, Reliability, Privacy) in Azure?**
+**Answer:**
+Responsible AI is about ensuring the AI does good without harm.
+*   **Fairness:** Making sure the AI doesn't discriminate. For example, ensuring a medical AI doesn't misdiagnose one gender more than another.
+*   **Reliability:** The AI should work consistently. It shouldn't crash or give wrong answers just because it's confused.
+*   **Privacy & Security:** Protecting the data the AI learns and processes.
+*   **Transparency:** Being able to explain *why* the AI made a decision. Azure provides tools like "Explainable AI" that highlight which factors (e.g., blood pressure vs. age) influenced the decision.
+
+***
+
+### **Part 6: Observability & Tooling (Datadog & SendGrid)**
+
+**39. What is the architecture for integrating Datadog with an Azure Kubernetes Service (AKS) cluster?**
+**Answer:**
+To make Datadog "see" inside our Kubernetes cluster, we install a small software agent called the **Datadog Agent**.
+We deploy this agent as a **DaemonSet** in Kubernetes. This is just a fancy way of saying "put one copy of this agent on every single computer node in the cluster." This agent sits on the node, listens to everything happening (CPU usage, network traffic), collects logs from the containers, and sends all that telemetry back to the Datadog cloud dashboard. It acts like a security camera inside the cluster.
+
+**40. What is the technical distinction between Metrics, Logs, and Traces in observability?**
+**Answer:**
+These are the three pillars of monitoring, best explained with a car analogy:
+*   **Metrics:** These are the numbers on your dashboard—speed, fuel level, RPM. They are great for spotting trends (e.g., "CPU is getting hotter over time"). They are numbers.
+*   **Logs:** These are the text recordings—the "black box" recorder. If the car breaks down, you read the log to see the error message "Engine failure." They are text.
+*   **Traces:** This is the GPS route of a single trip. It shows exactly where the user went (Frontend -> API -> Database). They help you find bottlenecks (e.g., "We spent 90% of the time waiting at the Database traffic light").
+
+**41. What strategies are used to configure alerts for security anomalies and performance thresholds in Datadog?**
+**Answer:**
+We don't want to get an email for every little blip. We configure **Smart Alerts**.
+*   **Threshold Alerts:** Only alert me if CPU goes above 90% for 5 minutes.
+*   **Anomaly Detection:** This uses AI. Instead of a fixed number, Datadog learns what is "normal" for your app. If traffic usually spikes at 9 AM but suddenly spikes at 3 AM, it flags it as an anomaly.
+*   **Security Alerts:** We monitor specific logs for keywords like "Unauthorized" or "Permission Denied" and trigger a critical alert (maybe a Slack message or PagerDuty) immediately, as that could be a hacker.
+
+**42. How does Datadog APM (Application Performance Monitoring) facilitate distributed tracing?**
+**Answer:**
+Modern apps are like a spiderweb; one request hits many different microservices.
+**Distributed Tracing** assigns a unique ID to a request at the very start. As that request passes from the Web Server to the Auth Service to the Database, it passes that ID along. Datadog stitches all these steps together into a visual timeline called a **Trace**. This allows us to pinpoint exactly *where* the request slowed down. We can say, "The whole request took 2 seconds, but 1.9 seconds were spent waiting for the database." That’s where we fix the code.
+
+**43. What is the process for securely configuring SendGrid API keys using Azure Key Vault references?**
+**Answer:**
+We never paste the SendGrid key in our code. Here is the secure flow:
+1.  **Store:** We generate the API key in SendGrid and copy it into **Azure Key Vault** as a Secret.
+2.  **Reference:** In our application's configuration (like an Azure Function or App Service), we don't put the key value. Instead, we use a special syntax called a **Key Vault Reference** (it looks like `@Microsoft.KeyVault(...)`).
+3.  **Resolution:** When our app starts up, Azure sees that reference, automatically reaches into the Key Vault, grabs the secret, and loads it into the app's memory.
+This way, the developers writing the code never see the actual key, and if we need to rotate the key, we just update it in the Vault without touching the code.
