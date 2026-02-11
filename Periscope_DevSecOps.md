@@ -81,4 +81,52 @@ Questions:
 
 ---
 ### Answers
-----
+---
+
+This is a great strategy. Reading these answers out loud will not only help your audience but also solidify the concepts in your own mind (the "Feynman Technique").
+
+Here are the detailed, senior-level answers for **Part 1: Azure Architecture & Core Security Services**. I have phrased them to flow naturally when spoken on camera.
+
+***
+
+### **Part 1: Azure Architecture & Core Security Services**
+
+**1. What are the key architectural principles of an Azure Landing Zone?**
+**Answer:**
+An Azure Landing Zone is essentially the "blueprint" for setting up your cloud environment correctly from day one. The key principles are **Identity** as the primary security perimeter, **Network Topology** that connects on-premises to the cloud securely using Hubs and Spokes, **Resource Consistency** using standard naming and tagging, and **Governance** via Azure Policy and RBAC. It ensures that before we even deploy a single application, the foundation is scalable, secure, and compliant with enterprise standards.
+
+**2. What is the difference between Azure Role-Based Access Control (RBAC) and Azure Attribute-Based Access Control (ABAC)?**
+**Answer:**
+While RBAC assigns permissions based on a user's *role* or group membership (like giving the "DevOps Team" full access to a subscription), ABAC is more granular and conditional. ABAC allows you to restrict access based on specific *attributes* of the user, the resource, or the environment. For example, with ABAC, you could say a user can only read data if their department attribute is "Finance" and the data classification tag is "Non-Sensitive." It adds a layer of dynamic "if-then" logic on top of static RBAC roles.
+
+**3. How is network security implemented in Azure using VNets, NSGs, and Firewalls?**
+**Answer:**
+We use a **defense-in-depth** approach. First, **Virtual Networks (VNets)** isolate resources in private IP spaces. Within that, **Network Security Groups (NSGs)** act as virtual firewalls at the subnet or NIC level, filtering traffic based on IP and port (Layer 4). Finally, we place **Azure Firewalls** at the VNet hub to filter traffic at the application level (Layer 7), inspecting URLs and preventing threats like SQL injection. This creates a secure perimeter where only necessary traffic flows between tiers.
+
+**4. What role does Azure Policy play in enforcing governance and compliance across subscriptions?**
+**Answer:**
+Azure Policy acts as the "compliance police" for our cloud environment. Unlike RBAC, which focuses on *who* can do something, Azure Policy focuses on *what* they can do. It allows us to create rules—like "all storage accounts must be encrypted" or "no resources can be deployed in the East US region." When a policy is applied, it can either **audit** non-compliant resources or actively **deny** their creation, ensuring our infrastructure remains compliant with standards like HIPAA automatically.
+
+**5. How do Azure Key Vault and Managed Identities differ in terms of managing secrets?**
+**Answer:**
+Think of **Azure Key Vault** as a secure safe where we store secrets, keys, and certificates. **Managed Identity** is the "identity card" assigned to an Azure resource (like a VM or Function App) that allows it to access that safe without hardcoded credentials. The magic is in how they work together: the app uses its Managed Identity to authenticate with Azure Active Directory, which then grants it access to pull secrets from Key Vault. This eliminates the need to store connection strings in code or config files entirely.
+
+**6. What are the best practices for securing an Azure Container Registry (ACR)?**
+**Answer:**
+Security for ACR starts with **network isolation**; we should disable public access and use Private Endpoints so the registry isn't exposed to the internet. Second, we must enforce **authentication** using Azure AD integration rather than admin keys. Third, we need to implement **content trust** by signing images to ensure only verified images are deployed. Finally, we integrate vulnerability scanning tools directly into the registry to scan images for malware or CVEs before they are pulled for deployment.
+
+**7. What distinguishes Azure Firewall from Application Gateway (WAF) in terms of functionality?**
+**Answer:**
+They serve different layers of the stack. **Azure Firewall** is a centralized, stateful network firewall focused on protecting the entire Virtual Network. It controls traffic flow between subnets (East-West) and out to the internet (North-South). **Application Gateway**, on the other hand, is a web traffic load balancer that operates at Layer 7. When you enable the **WAF (Web Application Firewall)** feature on it, it specifically protects web apps from HTTP attacks like XSS and SQL injection. In short, Firewall protects the network; App Gateway WAF protects the web application.
+
+**8. What is the purpose of Azure Privileged Identity Management (PIM) in a security context?**
+**Answer:**
+PIM is all about enforcing the principle of **Just-In-Time (JIT)** access and **Least Privilege**. Instead of giving a user permanent "Global Admin" rights—which is a huge security risk—PIM allows them to be "Eligible" for that role. When they need to perform a task, they request activation, require multi-factor authentication (MFA), and get access for a limited time (e.g., 4 hours). This dramatically reduces the attack surface by ensuring high-privilege accounts are only active when absolutely necessary.
+
+**9. What are the key capabilities of Microsoft Defender for Cloud?**
+**Answer:**
+Microsoft Defender for Cloud provides two main capabilities: **Cloud Security Posture Management (CSPM)** and **Cloud Workload Protection (CWP)**. CSPM automatically scans our environment for misconfigurations—like an open storage bucket or missing encryption—and suggests fixes. CWP goes deeper by protecting the actual workloads (like VMs, Containers, and SQL databases) by real-time detecting threats like malware or anomalous login attempts. It gives us a unified view of our security health across hybrid and multi-cloud environments.
+
+**10. How does Azure Bastion facilitate secure RDP and SSH access without exposing public IPs?**
+**Answer:**
+Traditionally, to RDP into a VM, you needed a public IP, which exposes the server to brute-force attacks from the internet. **Azure Bastion** is a fully managed PaaS service that provides secure and seamless RDP/SSH connectivity directly inside the Azure portal over SSL (port 443). It acts as a hardened gateway. Because it lives within our Virtual Network, our VMs do not need public IP addresses at all, significantly reducing the attack surface while allowing admins to connect securely from anywhere.
