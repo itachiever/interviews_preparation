@@ -1,22 +1,15 @@
 # Role: Azure Devops Engineer
 
-Azure Devops Engineer
-
 Job highlights
 • Repos,Pipelines,Boards,Artifacts . Strong experience with YAML-based CI / CD pipelines .
 • Experience creating pipeline templates and reusable components . End-to-end automation of build,test,and deployment workflows .
 • Strong experience with Git and version control workflows .
 
-Job match score
-Early Applicant
-
-Keyskills
-Location
-Work Experience
 
 Job description
 
 Azure DevOps:
+
 • Hands-on experience with Azure DevOps Services:
 Repos, Pipelines, Boards, Artifacts
 • Strong experience with YAML-based CI/CD pipelines
@@ -25,12 +18,12 @@ Repos, Pipelines, Boards, Artifacts
 • End-to-end automation of build, test, and deployment workflows
 
 Version Control & Automation:
+
 • Strong experience with Git and version control workflows
 • Build and release automation
 • Repository management and access control
 • Scripting and automation using Bash, Python, and PowerShell
 
-Role: DevOps Engineer
 Key Skills: Azile, CI/CD, Azure DevOps, SQL
 
 
