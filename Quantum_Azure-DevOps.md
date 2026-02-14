@@ -54,7 +54,7 @@
 
 ### **Part 1: Azure DevOps Services (Repos, Boards, Artifacts)**
 
-**1. What is the purpose of Azure Artifacts, and how does it integrate with CI/CD pipelines for package management?**
+### **1. What is the purpose of Azure Artifacts, and how does it integrate with CI/CD pipelines for package management?**
 **Answer:**
 Think of **Azure Artifacts** as your private, secure "storehouse" for packages. It allows teams to host NuGet, npm, Maven, Python, and Universal packages in one place.
 **Integration:** In a CI/CD pipeline, when the "Build" stage finishes, we push the compiled code (like a `.zip` or `.nupkg` file) to Azure Artifacts. Later, in the "Deploy" stage, the pipeline pulls that specific package version from Artifacts to deploy it. This ensures that what we test is exactly what we deploy, and it prevents us from using broken or unapproved public libraries.
