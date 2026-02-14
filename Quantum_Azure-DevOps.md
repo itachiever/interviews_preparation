@@ -24,7 +24,6 @@ Version Control & Automation:
 • Repository management and access control
 • Scripting and automation using Bash, Python, and PowerShell
 
-Role: DevOps Engineer
 Key Skills: Azile, CI/CD, Azure DevOps, SQL
 
 
