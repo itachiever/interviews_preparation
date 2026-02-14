@@ -1,5 +1,61 @@
 # Job Description:
 
+Role: Application Security Analyst
+
+Application Security / SSDLC
+
+
+Job Summary:
+
+As an Application Security Analyst with a focus on application security, you will assess projects for security risks and recommend mitigations that enable informed business decisions. You will support the development and enforcement of security controls designed to safeguard Deloitte and our clients’ data across traditional applications and emerging AI/LLM-driven architectures. Your work will support secure design, implementation, and continuous improvement of cloud-native, distributed, and AI-enabled systems.
+
+
+About the Team:
+
+Deloitte Canada Cybersecurity – Application Security and Engineering team is a group of passionate professionals dedicated to building secure, resilient, and scalable solutions. We thrive on solving complex challenges that safeguard applications across the enterprise. With diverse backgrounds and deep expertise in cybersecurity, secure software development, and risk management, we bring a wealth of knowledge to every project.
+
+As part of this team, you’ll collaborate with engineers and security specialists to embed security into the software development lifecycle, innovate on cutting-edge security practices, and strengthen the firm’s defenses. We are the trusted advisors at the intersection of security and technology—placing you at the forefront of protecting critical systems and enabling secure innovation.
+
+
+You will have the following responsibilities:
+
+- Conduct application SSDLC reviews, including network security, IAM controls, and application security assessments in a hybrid multi-vendor cloud environment.
+- Evaluate application architectures for design flaws—e.g., network segmentation gaps, IAM misconfigurations, overly permissive roles, encryption control deficiencies—against organizational and industry security standards.
+- Identify vulnerabilities and weaknesses in the application architecture through application security assessments, code reviews, threat modeling, vulnerability scanning, and penetration testing.
+- Collaborate with development teams to integrate automated security scanning tools into the CI/CD pipeline.
+- Perform Dynamic Application Security Testing (DAST), Static Application Security Testing (SAST), and Software Composition Analysis (SCA), along with conducting Infrastructure as Code (IaC) reviews.
+- Review security scan results and work closely with the development team to prioritize security vulnerabilities identified using a risk-based approach.
+- Provide recommendations and guidance to stakeholders to continually improve the security posture of application architectures.
+- Work with stakeholders to develop and enhance policies, procedures, and risk management strategies to safeguard clients and enhance overall security.
+
+
+To succeed in this role, the ideal candidate should possess the following qualifications and skills:
+
+- A Bachelor’s degree in Computer Science, Software Engineering, or Information Security with at least 3 years of industry experience.
+- Demonstrated experience in application security concepts such as secure coding, system architecture design, development, industry application security standards, and best practices.
+- Proficiency in identifying and remediating common web application vulnerabilities, including OWASP Top 10.
+- Understanding of security code issues for JEE/.NET/JS/JSP/ASP/Python applications.
+- Competency in understanding complex application environments comprising applications developed on modern technologies such as:
+  - Containerization (Docker, Kubernetes, etc.)
+  - Serverless compute (Lambda functions, Azure Functions, etc.)
+  - Infrastructure as Code (Terraform, CloudFormation, etc.)
+  - Automation and CI/CD technologies (Jenkins, Chef, Ansible, Puppet, Azure DevOps, etc.)
+- Experience securing AI/LLM systems end-to-end, covering RAG pipelines, vector databases, embeddings, model serving, and access layers; mitigating prompt injection, jailbreaks, unsafe outputs, data poisoning, model inversion/extraction, and sensitive data leakage, while enforcing guardrails, moderation, training data governance, and CI/CD-integrated AI testing.
+- Understanding of hardening Agentic AI architectures, including agent/tool frameworks, orchestration, and multi-agent workflows, ensuring secure tool invocation, strict permissions, context isolation, misuse prevention, and safe cloud deployment.
+- Demonstrated experience using application security testing tools to perform static and dynamic code analysis, as well as penetration testing.
+- Strong hands-on experience assessing multi-vendor cloud environments (AWS, Azure, and GCP), awareness of vendor service offerings, and security evaluation and hardening requirements.
+- Experience in software development with solid knowledge of all phases of the SDLC is an asset.
+- Ability to effectively articulate application security issues to a broad spectrum of audiences—from developers to project managers to senior leadership—and develop strong relationships across various levels of an organization.
+- Strong analytical and problem-solving abilities.
+- Strong desire to learn and a career vision of becoming a security architect.
+
+
+Certifications:
+
+- Desired: Associate or Architect-level certification from a leading cloud vendor (AWS, Azure, or GCP) or working towards OSCP+ Security Engineer.
+- Good-to-have / Aspiring: GWAPT or GCPN.
+
+
 # Questions:
 
 ### **Part 1: SSDLC, Architecture & Risk Assessment**
