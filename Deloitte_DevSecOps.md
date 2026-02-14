@@ -224,3 +224,100 @@ Essentially, we go through a checklist (like the CIS Benchmarks) to ensure every
 This is managed using protocols like **SAML** or **OIDC**.
 The security risk is **"Single Point of Failure."** If a hacker steals the "Federation Keys" or compromises the main admin account in your corporate directory, they suddenly have access to *all* your clouds at once.
 To manage this securely, we enforce **Multi-Factor Authentication (MFA)** on the main directory, and we strictly limit who can set up these federation links. We also monitor the logs for any "impossible travel" logins (e.g., logging in from New York and London in the same minute).
+
+Here are the detailed, senior-level answers for **Questions 14 to 24**. These cover Vulnerability Management and Modern Tech Stack (Containers/K8s/Supply Chain).
+
+I have continued to use simple analogies to make the technical concepts easy to grasp while you present them.
+
+***
+
+### **Part 3: Vulnerability Management & Testing (SAST/DAST/SCA)**
+
+**14. What are the technical differences between SAST, DAST, and SCA?**
+**Answer:**
+Think of these as three different types of doctors checking your health.
+*   **SAST (Static Application Security Testing):** This is like a **Blood Test**. We look at the source code *before* it runs to find "bugs" or coding errors (like SQL injection). It's "White Box" testing because we see the code.
+*   **DAST (Dynamic Application Security Testing):** This is like a **Physical Stress Test**. We attack the application while it is running (in a staging environment) to see if it breaks. We don't look at the code; we look at how the app reacts to hacks. It's "Black Box" testing.
+*   **SCA (Software Composition Analysis):** This is like checking the **Ingredients Label** on your food. It scans the third-party libraries and packages (like npm, NuGet, Maven) you use to see if any of them have known vulnerabilities (like Log4j).
+
+**15. How are vulnerabilities prioritized using a risk-based approach (CVSS, exploitability)?**
+**Answer:**
+We can't fix every single bug immediately; there are too many. We have to be smart about it.
+We use **CVSS (Common Vulnerability Scoring System)** scores (1 to 10), but we don't follow them blindly.
+**Risk-based approach** means we ask three questions:
+1.  **Severity:** How bad is the technical flaw? (Is it a CVSS 9.8?)
+2.  **Exploitability:** Is it easy for a hacker to use? (Is there a "script kiddie" tool available online?)
+3.  **Asset Criticality:** What is this app protecting? (Is it a public marketing site or a database full of credit cards?)
+We fix the "High Risk" items (Critical severity + High value asset) immediately. We might schedule the "Low Risk" items for later.
+
+**16. What are the limitations of automated scanning tools versus manual penetration testing?**
+**Answer:**
+**Automated tools** are like **spell checkers**. They are very fast and can scan millions of lines of code, but they are "dumb." They often miss things that require human logic.
+**Manual Penetration Testing** is like a **Proofreader**. A human hacker tries to find "Business Logic Flaws."
+For example, a tool might see a "Shopping Cart" button and say it's fine. But a human tester might notice that you can change the price from $100 to $1 in the URL before clicking buy. That is a logic error that tools usually miss. We need both: tools for speed, humans for logic.
+
+**17. How are false positives identified and managed in security scan results?**
+**Answer:**
+A **False Positive** is when the tool screams "This is a hack!" but it's actually safe code. If we send these to developers every day, they will stop listening to us.
+**Management:**
+1.  **Investigation:** The security analyst reviews the code to confirm it's safe.
+2.  **Marking:** We mark it as "False Positive" or "Ignored" in the scanning tool.
+3.  **Suppression:** We usually add a comment in the code or the tool explaining *why* it's safe.
+This ensures that in the next scan, that specific line won't trigger an alert again, keeping the noise down.
+
+**18. What security checks are performed during Infrastructure as Code (IaC) reviews?**
+**Answer:**
+We review the "Blueprints" (Terraform, CloudFormation) before the house is built.
+We look for misconfigurations like:
+*   Is the **S3 Bucket** set to "Public"?
+*   Is the **Database** open to the "Whole World" (0.0.0.0/0)?
+*   Are the **Encryption Keys** being managed securely?
+We use automated scanners like **Checkov** or **TFSec** that read the IaC files and flag these errors. If the scan fails, we don't deploy the infrastructure.
+
+**19. How are security scanning tools integrated into CI/CD pipelines (Jenkins, Azure DevOps)?**
+**Answer:**
+This is called **"Shifting Left."** We move security testing to the start of the assembly line.
+In the pipeline file (YAML), we add a "Step" or "Stage" that runs the SAST or SCA tool.
+**The Logic:**
+1.  Code is uploaded.
+2.  The SAST tool runs.
+3.  **The Gate:** If the tool finds a "High Severity" bug, the pipeline **fails** (turns red). The code stops moving.
+4.  The developer *must* fix the bug to make the pipeline green. This enforces security automatically.
+
+***
+
+### **Part 4: Modern Tech (Containers, K8s, Supply Chain)**
+
+**20. What are the specific security risks associated with containerization (Docker, Kubernetes)?**
+**Answer:**
+Containers are great, but they have unique risks.
+*   **Shared Kernel:** All containers on a host share the same Operating System kernel. If the kernel has a vulnerability, it can escape the container and infect the host.
+*   **Image Supply Chain:** Developers often download "Base Images" (like Ubuntu or Alpine) from the public internet. If that downloaded image is already poisoned with malware, every app built on top of it is infected.
+*   **Privileged Containers:** If a container is run with "Root" or "Privileged" mode, it can do anything on the server, effectively breaking out of its box.
+
+**21. What are Kubernetes Pod Security Standards and how do they restrict container capabilities?**
+**Answer:**
+Kubernetes used to use "Pod Security Policies," but now it uses **Pod Security Standards (PSS)**. These are three levels of rules to keep containers in check:
+1.  **Privileged:** Unrestricted (Dangerous, for system admins only).
+2.  **Baseline:** Minimal restrictions (No "Root" user, but mostly open).
+3.  **Restricted:** Highly secure (No privileges, read-only file system, no access to the host).
+As a security analyst, we enforce the "Restricted" standard for production applications. This ensures that even if a hacker compromises the app, they can't escape the container because the container isn't allowed to do dangerous things.
+
+**22. How is secrets management handled in containerized and serverless environments?**
+**Answer:**
+**The Golden Rule:** Never put passwords or API keys in the code or the Dockerfile (Environment variables). If you do, anyone who downloads the image can steal them.
+**The Solution:** We use a **Vault** (like Azure Key Vault, HashiCorp Vault, or AWS Secrets Manager).
+**How it works:** When the container or serverless function starts up, it uses its **Identity** (Managed Identity) to call the Vault and ask for the secret. The Vault gives it the secret in memory. The secret is never written to a file, and when the container stops, the secret is gone.
+
+**23. What is the role of Software Bill of Materials (SBOM) in software supply chain security?**
+**Answer:**
+Think of an **SBOM** as the **"Ingredients List"** on the back of a cereal box. It lists every single library and component in your software.
+Why is this critical? When a huge vulnerability hits (like Log4j or SolarWinds), companies *without* an SBOM have to scramble to guess if they are infected. Companies *with* an SBOM just open the file, hit "Ctrl+F," and know in 5 minutes if they use that library. It makes incident response 100x faster.
+
+**24. How are artifacts signed to ensure integrity in the deployment pipeline?**
+**Answer:**
+This is like putting a **wax seal** on a letter.
+When the CI/CD pipeline builds the software (the artifact), it creates a digital signature using a private cryptographic key.
+**Verification:** When the software is being deployed (to Production), the system checks the signature using a public key.
+If a hacker managed to modify the artifact while it was sitting in storage or during transit, the signature won't match, and the deployment will be rejected. This guarantees that the code running in production is *exactly* the code that we built and approved.
+
