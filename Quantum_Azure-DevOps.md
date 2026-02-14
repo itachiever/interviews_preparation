@@ -13,18 +13,24 @@ Job description
 
 Azure DevOps:
 
-• Hands-on experience with Azure DevOps Services:
-Repos, Pipelines, Boards, Artifacts
+• Hands-on experience with Azure DevOps Services:Repos, Pipelines, Boards, Artifacts
+
 • Strong experience with YAML-based CI/CD pipelines
+
 • Knowledge of Git branching strategies (Git Flow, Trunk-based development)
+
 • Experience creating pipeline templates and reusable components
+
 • End-to-end automation of build, test, and deployment workflows
 
 Version Control & Automation:
 
 • Strong experience with Git and version control workflows
+
 • Build and release automation
+
 • Repository management and access control
+
 • Scripting and automation using Bash, Python, and PowerShell
 
 Key Skills: Azile, CI/CD, Azure DevOps, SQL
