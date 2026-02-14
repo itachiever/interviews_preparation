@@ -166,3 +166,125 @@ This will automatically create **two jobs** in parallel: one running on Linux an
 *   **Microsoft-hosted agents** are "Rental Cars." Microsoft provides them, they are fresh every time, and you don't need to maintain them. You specify them with `vmImage: 'ubuntu-latest'`.
 *   **Self-hosted agents** are "Your Own Car." You install the agent software on your own server (on-prem or in a custom cloud VM). You specify them with `pool: 'MyPrivatePool'`.
 We use **self-hosted agents** when we need access to private corporate networks (behind a firewall), need specific software pre-installed (like a huge SDK), or want to save money for high-volume builds. We use **Microsoft-hosted** for speed and simplicity for open-source or standard projects.
+
+
+Here are the detailed, senior-level answers for **Questions 16 to 30**. These are designed to be read clearly on camera and used as a high-quality reference guide.
+
+---
+
+### **Part 3: Build, Release & Deployment Strategies**
+
+**16. What is the difference between a Classic Release Pipeline and a YAML Multi-stage Pipeline?**
+**Answer:**
+The main difference is **"Configuration as Code"** versus **"GUI Configuration."**
+*   **Classic Release Pipelines** are designed using a graphical user interface with drag-and-drop tasks. The configuration is stored in the database, not in your Git repo.
+*   **YAML Multi-stage Pipelines** define the entire process (Build, Test, and Deploy) in a text file (YAML) that lives in your Git repository.
+**Why YAML wins:** Because the pipeline definition is code, you can version it, review it via Pull Requests, and roll it back just like application code. It is the modern standard for DevOps.
+
+**17. How does the "Build Once, Deploy Anywhere" principle apply to Azure DevOps artifacts and deployments?**
+**Answer:**
+This principle treats the build artifact as an immutable "golden master."
+Once the code is compiled and packaged into an artifact (like a `.zip` or `.dll`), we **never rebuild it** for different environments. We take that exact same artifact and deploy it to Dev, then Test, then Prod.
+**Why?** If you rebuild for Production, you risk introducing a new bug or a slightly different binary. By building once and promoting the same package, you guarantee that what you tested in Dev is *identical* to what runs in Production.
+
+**18. What are the key phases in an end-to-end automation workflow for a typical application?**
+**Answer:**
+Think of this as an assembly line with four main phases:
+1.  **Build:** We fetch the code, install dependencies, and compile it into an executable or package.
+2.  **Test:** We run automated tests (Unit, Integration, and UI tests) to ensure the code works.
+3.  **Package:** We publish the successful build as an Artifact in Azure Artifacts.
+4.  **Deploy:** We take that artifact and push it to an environment (App Service, VM, or Kubernetes).
+
+**19. How do you implement approval gates (e.g., manual intervention) before deploying to a Production environment?**
+**Answer:**
+In a YAML pipeline, we use **Environments** with specific **Checks**.
+We define a stage that targets a "Production" environment. In the Azure DevOps UI, we go to that environment and add a "Pre-deployment approval" check. We assign it to a specific person or group (like the Release Managers).
+Now, when the pipeline reaches the Production stage, it automatically **pauses**. It sends an email to the approver. The pipeline will not proceed until that person clicks the "Approve" button in the portal.
+
+**20. What are deployment jobs, and how do they support strategies like Blue-Green or Canary deployments in YAML?**
+**Answer:**
+A **Deployment Job** is a special type of job in YAML (`deployment: jobName`) designed specifically for deploying apps. It includes lifecycle hooks like `preDeploy`, `deploy`, `routeTraffic`, and `postDeploy`.
+**Strategies:**
+*   **RunOnce:** Standard deployment (stop old, start new).
+*   **Rolling:** Replaces instances incrementally (e.g., one by one).
+*   **Canary:** Deploys the change to a small subset of servers first. The `routeTraffic` hook allows you to shift a small percentage of traffic to that new version to test it before a full rollout.
+
+**21. How do you configure rollback strategies in a release pipeline if a deployment fails?**
+**Answer:**
+A rollback is essentially "undoing" the change.
+In Azure DevOps, there are two main ways:
+1.  **Redeploy Previous Release:** If you are using Classic Releases, you can simply click "Redeploy" on the previous successful release.
+2.  **Code Rollback:** If you are using YAML, the safest way is to revert the code commit that caused the issue. The pipeline will trigger a new build that restores the previous state.
+**Advanced:** We can also use **Feature Flags** (like Azure App Configuration). If a release fails, we simply turn off the new feature in the configuration without rolling back the actual code.
+
+**22. What is the role of Infrastructure as Code (IaC) tasks (like Azure CLI or PowerShell) within a deployment pipeline?**
+**Answer:**
+Modern DevOps isn't just about deploying code; it's also about deploying the *infrastructure* (databases, VMs, networking).
+We add tasks in our pipeline—such as **Azure PowerShell** or **Azure CLI**—to run scripts that create or update these resources. For example, before deploying our app, a script might run to ensure a SQL Database exists or to create a Storage Account. This automates the entire environment setup, ensuring that the infrastructure matches the application's needs every time.
+
+---
+
+### **Part 4: Git & Version Control Strategies**
+
+**23. What is the Git Flow branching strategy, and what are the roles of `master`, `develop`, and `feature` branches?**
+**Answer:**
+**Git Flow** is a strict branching model designed for project management around releases.
+*   **Master:** This branch always contains production-ready code. It only gets updated when we release a version.
+*   **Develop:** This is the integration branch where all features come together. It represents "the next release."
+*   **Feature:** Developers create a branch off `develop` to work on a specific task. When done, they merge it back into `develop`.
+There are also `release` and `hotfix` branches to handle final production preparations and emergency fixes.
+
+**24. How does Trunk-Based Development differ from Git Flow, and why is it often preferred for CI/CD?**
+**Answer:**
+**Trunk-Based Development** is much simpler. There is essentially one main branch (often called `main` or `master`).
+Developers commit small changes frequently to this branch, often using short-lived branches that live for less than a day.
+**Why it's preferred:** It encourages **Continuous Integration**. Because there are no long-lived "develop" branches, code is integrated and tested daily. It avoids "merge hell" where features conflict after being isolated for weeks. It is perfect for teams practicing true CI/CD.
+
+**25. What is the purpose of Pull Request (PR) workflows, and what policies can be enforced?**
+**Answer:**
+A **Pull Request** is a request to merge code from one branch into another. It is the primary mechanism for **Code Review**.
+**Policies we can enforce:**
+*   **Minimum Reviewers:** Require at least 1 or 2 people to approve the code.
+*   **Build Validation:** A new build must pass before the PR can be completed.
+*   **Comment Resolution:** All comments from reviewers must be resolved.
+*   **Work Item Linking:** A bug or task ID must be linked to the PR.
+
+**26. How do you resolve merge conflicts in Git using Visual Studio or the web portal?**
+**Answer:**
+A merge conflict happens when two people change the same line of code differently.
+**In the Web Portal:** Azure DevOps shows you a "Resolve Conflicts" screen. It highlights the conflicting lines side-by-side. You can click "Accept Yours," "Accept Theirs," or manually edit the code to pick the best parts of both.
+**In Visual Studio:** It provides a similar visual merge tool. Once you manually fix the code to look correct, you mark the conflict as "resolved" and commit the merge.
+
+**27. What are Git Tags, and how are they utilized in the build process for versioning releases?**
+**Answer:**
+A **Tag** is a marker (like a bookmark) that points to a specific commit in history. It is usually used for **Version Numbers** (e.g., `v1.0.2`).
+**In the Build Process:** We configure the CI pipeline to read the Git Tag. If the build is triggered by a tag, we use that tag name as the version number for our artifact (e.g., naming the file `myapp-v1.0.2.zip`). This creates a permanent link between a specific version of the code and the binary artifact.
+
+**28. How do you manage branch permissions and access control within an Azure Repos Git repository?**
+**Answer:**
+We use **Branch Policies** and **Security settings** in Azure DevOps.
+We can lock down specific branches (like `main`) so that only certain people can push directly to them (often no one). We can also define who can "Contribute," "Create Branches," or "Force Push."
+For example, we might set a rule that only "Project Administrators" can delete branches, or that "Testers" can only read the code but not push changes.
+
+---
+
+### **Part 5: Scripting & SQL Integration**
+
+**29. How do you invoke a PowerShell or Bash script from a YAML pipeline, and how do you handle script failures?**
+**Answer:**
+We use the **`PowerShell`** or **`Bash`** task in the YAML file.
+```yaml
+- task: PowerShell@2
+  inputs:
+    filePath: 'scripts/deploy.ps1'
+```
+**Handling Failures:** By default, if the script returns a non-zero exit code (an error), the pipeline fails immediately.
+To control this, we can use properties like `failOnStdErr: true` (fail if text is written to the error stream) or `continueOnError: true` (to let the pipeline continue even if the script fails, which is useful for "best effort" cleanup scripts).
+
+**30. How can you integrate SQL script execution (e.g., schema updates or stored procedures) into an automated CI/CD pipeline?**
+**Answer:**
+We treat the database as part of the application code.
+**Method 1: DACPAC (Recommended)**
+We use the **SqlAzureDacpacDeployment** task. We compile our database project into a `.dacpac` file during the build. The deployment task then compares the `.dacpac` to the target database and automatically generates and executes the SQL script to update the schema (update/add columns) without losing data.
+**Method 2: Raw SQL Scripts**
+We use the **Azure CLI** or **SQLCMD** task to run `.sql` files stored in our repo against the database. This is often used for static data updates or simple stored procedure changes.
