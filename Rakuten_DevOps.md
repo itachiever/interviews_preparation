@@ -22,4 +22,7 @@ functional teamwork.
 Good to have
 1. GCP certification
 2. CKA or CKAD certification.
-<img width="870" height="646" alt="image" src="https://github.com/user-attachments/assets/cf111473-851e-483e-acc0-e24206644fec" />
+
+# Questions:
+
+# Answers:
