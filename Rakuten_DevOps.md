@@ -88,12 +88,14 @@ Good to have
 ### **Part 1: CI/CD & Automation (Jenkins & GitLab)**
 
 **1. What are the key differences between Jenkins and GitLab CI in terms of architecture and pipeline definition?**
+
 **Answer:**
 The main difference is their architecture.
 **Jenkins** is a standalone, self-hosted tool that you install on a server. It is like a "Lego set"—it is incredibly flexible and powerful because it has thousands of plugins, but you have to assemble and maintain it yourself. It uses **Groovy** for pipeline definition (the `Jenkinsfile`).
 **GitLab CI** is an integrated part of the GitLab platform (which includes the code repository and issue tracker). It is like a "Swiss Army Knife"—everything is in one place. It uses **YAML** (`.gitlab-ci.yml`) for definition, which is generally easier to read and learn than Groovy, but it is more rigid compared to Jenkins.
 
 **2. What is the concept of Pipeline as Code, and how is it implemented in Jenkins (using Jenkinsfiles) and GitLab (using .gitlab-ci.yml)?**
+
 **Answer:**
 **Pipeline as Code** means we treat our build and deployment instructions just like our software code. We store them in a text file inside our Git repository instead of clicking buttons in a graphical user interface.
 *   **In Jenkins:** We create a file named `Jenkinsfile` at the root of our repo. This file contains the Groovy script defining stages and steps.
@@ -101,6 +103,7 @@ The main difference is their architecture.
 **Why do we do this?** It allows us to version control our pipelines. If someone breaks the build, we can just "revert" the file to the previous version, just like we would with code.
 
 **3. How are Shared Libraries utilized in Jenkins to promote code reuse across multiple pipelines?**
+
 **Answer:**
 Imagine you have 50 different Java projects in your company. They all need the exact same build steps: "Compile," "Run Unit Tests," and "SonarQube Scan." Instead of writing these steps 50 times, we write them **once** in a **Shared Library**.
 This library is essentially a collection of reusable Groovy functions. In every project's `Jenkinsfile`, we simply import this library and call the function `buildJavaApp()`. This promotes consistency and ensures that if we need to update a security scan step, we only have to update it in one place (the library), and all 50 projects get the fix automatically.
