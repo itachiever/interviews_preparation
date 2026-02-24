@@ -1,6 +1,6 @@
 # Job Description: Cloud & DevOps Engineer
 
-## Position Overview
+## Position Overview 
 
 We are seeking a highly skilled **Cloud & DevOps Engineer** with 4+ years of experience in designing, automating, and managing scalable cloud infrastructure and CI/CD pipelines using GitHub. The ideal candidate will have hands-on expertise in AWS and/or GCP, container orchestration (Kubernetes), Infrastructure as Code (Terraform/Ansible), and DevSecOps practices.
 
