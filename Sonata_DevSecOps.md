@@ -443,3 +443,108 @@ The `values.yaml` file contains configuration data. To secure sensitive data:
 *   Reference Kubernetes Secrets directly in the templates (e.g., `valueFrom: secretKeyRef`). This ensures sensitive data is stored in the encrypted Kubernetes Secret store, not in the Helm chart files.
 
   
+
+---
+
+### **Part 6: Monitoring, Logging & Incident Response**
+
+**39. What is the difference between Metrics, Logs, and Traces in the context of observability?**
+
+**Answer:**
+*   **Metrics:** Numerical data points measured over time. Examples include CPU usage, request latency, or error rates. They are aggregatable and used to spot trends or trigger alerts (e.g., "CPU > 80%").
+*   **Logs:** Discrete records of events or text messages. They provide context and specific details about what happened (e.g., "Error connecting to DB at 10:05 AM"). Logs are essential for root cause analysis.
+*   **Traces:** Records of the path a request takes through a distributed system. They track a request as it moves from Service A to Service B to Service C. Traces help identify bottlenecks or failures in a specific transaction flow.
+
+**40. How are CloudWatch Logs Insights or ELK Stack used to troubleshoot security incidents?**
+
+**Answer:**
+**CloudWatch Logs Insights / ELK Stack** act as the search engine for log data.
+**Process:**
+1.  **Ingestion:** Security logs (like AWS CloudTrail for API calls or VPC Flow Logs for network traffic) are sent to CloudWatch or Elasticsearch.
+2.  **Querying:** During an incident, analysts run queries to filter specific events. For example, searching CloudTrail logs for the `ConsoleLogin` event where `errorMessage` is "Failed authentication".
+3.  **Analysis:** Identifying patterns, such as a spike in "Access Denied" errors from a single IP address, which indicates a brute-force attack or unauthorized access attempt.
+
+**41. What is the standard workflow for Incident Response in a DevSecOps context (Detection, Containment, Eradication)?**
+
+**Answer:**
+1.  **Detection:** Monitoring tools (like GuardDuty or Prometheus) trigger an alert based on an anomaly (e.g., crypto-mining traffic).
+2.  **Containment:** Immediate action to stop the spread. This involves isolating the affected instance (changing Security Groups to block traffic), rotating exposed credentials (API keys), or pausing the CI/CD pipeline.
+3.  **Eradication:** Removing the root cause. This involves patching the vulnerability, removing malware, or terminating the compromised instance.
+4.  **Recovery:** Restoring services from clean backups and verifying the system is secure.
+
+**42. How are Alerts configured for critical security events (e.g., Crypto-mining detected, IAM policy change)?**
+
+**Answer:**
+Alerts are configured using event rules and metric thresholds.
+*   **Crypto-mining (Metric):** Configure an alarm on the **CPU Utilization** metric of an EC2 instance. If CPU exceeds 90% for 15 minutes, trigger an alert to SNS (Simple Notification Service) or PagerDuty.
+*   **IAM Policy Change (Event):** Use **AWS CloudTrail** with **EventBridge**. Create a rule that listens for specific API calls like `AttachRolePolicy` or `PutUserPolicy`. If such an event occurs, EventBridge triggers a Lambda function or sends an SNS notification to the security team immediately.
+
+**43. What is the purpose of a Post-Incident Review (PIR), and how does it improve the security posture?**
+
+**Answer:**
+A **Post-Incident Review** is a meeting held after the incident is resolved to analyze what happened.
+**Purpose:** It is not about blaming individuals, but about identifying gaps.
+**Improvement:** The PIR produces a "Lessons Learned" document. It identifies failures in people (training), process (runbooks), or technology (monitoring gaps). Action items are created to fix these gaps (e.g., "Update the runbook" or "Add a firewall rule"), ensuring the same incident does not happen again.
+
+---
+
+### **Part 7: Advanced DevSecOps Strategies & Automation**
+
+**44. How is Shifting Left implemented in a software development lifecycle to detect vulnerabilities earlier?**
+
+**Answer:**
+Shifting Left means moving security testing to the beginning of the development cycle, rather than just before production.
+**Implementation:**
+1.  **IDE Plugins:** Integrating security scanners into the developer's code editor (VS Code) to flag vulnerabilities while the code is being written.
+2.  **Pre-Commit Hooks:** Running SAST (Static Application Security Testing) locally on the developer's machine before they can push code to Git.
+3.  **Merge Request Scans:** Configuring GitLab/GitHub to automatically run Dependency Scanning and SAST when a Pull Request is opened, blocking the merge if critical vulnerabilities are found.
+
+**45. What are the strategies for implementing Guardrails in CI/CD pipelines to prevent insecure deployments?**
+
+**Answer:**
+**Guardrails** are automated checks that prevent bad code from advancing in the pipeline.
+**Strategies:**
+*   **Quality Gates:** The pipeline is divided into stages. A stage cannot start unless the previous stage passes all checks (tests, scans).
+*   **Policy-as-Code:** Using tools like OPA (Open Policy Agent) to validate the Kubernetes manifest or Terraform state against security rules (e.g., "Does this deployment require root access?").
+*   **Block on Failure:** Configuring the pipeline to fail the build if vulnerability scanners (SAST/SCA) return a certain severity level (e.g., High or Critical).
+
+**46. How does Dependency Proxying in GitLab improve security and speed for package downloads?**
+
+**Answer:**
+A **Dependency Proxy** sits between the GitLab CI runner and the public package registry (like Docker Hub, PyPI, or npm).
+**Benefits:**
+*   **Speed:** The proxy caches (stores) the packages locally. Subsequent pipeline runs download the package from the local cache (internal network) instead of the public internet, making builds faster.
+*   **Security:** The proxy acts as a firewall. It can block connections to compromised or malicious upstream packages. It ensures that developers only pull from approved package versions.
+
+**47. What are the challenges of Automated Compliance (SOC 2, ISO 27001) in a rapid deployment environment?**
+
+**Answer:**
+The main challenge is the **friction** between speed (DevOps) and control (Compliance).
+*   **Drift:** In a rapid deployment environment, infrastructure changes constantly. Keeping the compliance audit trail (evidence) up to date in real-time is difficult.
+*   **Volume:** Hundreds of deployments per day generate massive amounts of log and configuration data.
+*   **Solution:** Automating the evidence collection (using tools like AWS Audit Manager) and embedding compliance checks into the CI/CD pipeline so that every deployment is automatically compliant.
+
+**48. How do Infrastructure Guardrails prevent developers from creating non-compliant resources (e.g., public S3 buckets)?**
+
+**Answer:**
+Guardrails enforce policies proactively, usually via **AWS SCPs** (Service Control Policies) or **Kubernetes Admission Controllers**.
+**Mechanism:**
+1.  **Definition:** A policy is defined stating "S3 buckets cannot be public."
+2.  **Enforcement:** When a developer tries to run a script to create a public S3 bucket, the AWS API (or the Kubernetes API) intercepts the request.
+3.  **Block:** The API checks the request against the guardrail policy. If it violates the policy, the API rejects the request immediately with an "Access Denied" or "Policy Violation" error, preventing the non-compliant resource from ever existing.
+
+**49. What is the role of Service Mesh (like Istio) in securing microservices communication (mTLS)?**
+
+**Answer:**
+A **Service Mesh** is a dedicated infrastructure layer for managing service-to-service communication.
+**Security Role (mTLS):**
+*   **Mutual TLS (mTLS):** The mesh automatically encrypts all traffic between services using TLS. It also handles mutual authentication—Service A validates the identity of Service B using certificates before talking to it.
+*   **Zero Trust:** This prevents an attacker on the network from intercepting traffic or impersonating a service, as they would need the valid TLS certificates issued by the mesh.
+
+**50. How do Chaos Engineering practices contribute to improving system reliability and security?**
+
+**Answer:**
+**Chaos Engineering** is the practice of intentionally injecting failures (like killing a pod or cutting network connectivity) to test system resilience.
+**Contribution:**
+*   **Reliability:** It verifies that the system automatically recovers from failures (e.g., the Health Check works, the ReplicaSet creates a new pod).
+*   **Security:** Security controls often fail under stress. Chaos Engineering reveals if encryption keys rotate correctly during a restart, or if "fail-open" mechanisms (which are insecure) are triggered during a crash. It validates that the security posture holds up during an actual incident.
