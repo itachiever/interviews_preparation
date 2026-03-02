@@ -286,3 +286,160 @@ Templates are reusable YAML snippets stored in the `.gitlab-ci.yml` file (using 
 *   For self-hosted runners, run them in a private network and use **tags** to ensure sensitive deployment jobs only run on trusted, secure runners, not public shared ones.
 
   
+
+---
+
+### **Part 3: Infrastructure as Code (CloudFormation & OpenTofu)**
+
+**20. What are the architectural and syntax differences between AWS CloudFormation and OpenTofu (the open-source fork of Terraform)?**
+
+**Answer:**
+**Syntax:**
+*   **CloudFormation** uses **JSON** or **YAML** templates.
+*   **OpenTofu** (and Terraform) uses **HCL** (HashiCorp Configuration Language), which is designed specifically for infrastructure and is often considered more readable and modular.
+**Architecture:**
+*   **CloudFormation** is **AWS-specific**. It is a managed AWS service where AWS manages the state and provisioning engine.
+*   **OpenTofu** is **cloud-agnostic**. It uses providers to interact with AWS, Azure, or GCP. You must manage the backend state yourself (e.g., in S3) and install the OpenTofu binary to run it.
+
+**21. How is State Management handled in OpenTofu, and why is Remote State with Locking essential for teams?**
+
+**Answer:**
+**State Management:** OpenTofu records the mapping between your code and the real-world resources in a **State File** (`.tfstate`).
+**Remote State & Locking:**
+*   In a team, storing this file locally is impossible. **Remote State** stores the file in a shared backend (like AWS S3 or Consul).
+*   **Locking:** When a user runs `tofu apply`, a lock is placed on the state file. This prevents other users from running `tofu apply` at the same time, which could corrupt the file or cause race conditions. It ensures the state remains consistent and valid.
+
+**22. What are CloudFormation Stacks, and how does StackSets enable deployment across multiple accounts/regions?**
+
+**Answer:**
+**Stacks:** A Stack is a collection of AWS resources that are managed as a single unit. All resources in a stack are created, updated, and deleted together.
+**StackSets:** A StackSet extends the concept of a stack to enable deployments across multiple AWS accounts and regions with a single operation. You define the stack template once, and the StackSet pushes it to target accounts/regions automatically. It handles the orchestration of creating stacks in those different targets.
+
+**23. How are Modules used in OpenTofu to organize and reuse infrastructure code?**
+
+**Answer:**
+**Modules** are containers for multiple resources that are used together. Instead of writing the same VPC configuration (subnets, route tables, IGW) for every project, you write it once in a module directory.
+The module accepts **Input Variables** (like CIDR blocks) and outputs **Output Values** (like VPC ID). In your root configuration, you simply call the module with specific variables. This promotes standardization and reduces code duplication across projects.
+
+**24. What is Drift Detection, and how is it handled in both CloudFormation and OpenTofu?**
+
+**Answer:**
+**Drift Detection** is the process of detecting changes made to infrastructure outside of the IaC tool (e.g., a manual change in the Console).
+*   **CloudFormation:** You can enable "Drift Detection" on a stack. CloudFormation compares the actual configuration of the resources against the template and reports any drift.
+*   **OpenTofu:** You run the command `tofu plan -refresh-only`. This updates the state file with the real-world values without making changes, highlighting in the plan what has drifted. To fix drift, you re-apply the configuration to bring resources back to the desired state.
+
+**25. How can Security Scanning (e.g., Checkov, TFSec) be integrated into the IaC development lifecycle?**
+
+**Answer:**
+Scanning is integrated into the **CI/CD Pipeline** and the **Pre-commit Hook**.
+*   **Pre-commit:** Developers run a local scan (e.g., `checkov -d .`) before pushing code.
+*   **CI/CD:** The pipeline runs the scanner against the CloudFormation template or OpenTofu files. If the scanner finds security issues (e.g., an open security group or unencrypted S3 bucket), the pipeline fails immediately. This enforces security *before* the infrastructure is ever deployed.
+
+**26. What are Change Sets in CloudFormation, and how do they assist in safe infrastructure updates?**
+
+**Answer:**
+A **Change Set** is a summary of the changes that CloudFormation will make to a stack if you execute it.
+Instead of executing a template directly, you create a Change Set first. CloudFormation compares the new template with the current stack and lists exactly what will be added, modified, or deleted. You can review this list to ensure the changes are expected and safe. Once approved, you execute the Change Set to apply the updates.
+
+---
+
+### **Part 4: Policy-as-Code & Compliance (Nice to Have)**
+
+**27. What is the concept of Policy-as-Code, and how does it differ from traditional compliance auditing?**
+
+**Answer:**
+**Policy-as-Code** involves defining security and compliance policies as machine-readable code (like Rego or Sentinel) and automatically enforcing them via automation tools.
+**Difference:**
+*   **Traditional Auditing:** Usually manual and periodic (e.g., a quarterly review). It finds violations after they have occurred.
+*   **Policy-as-Code:** Is continuous and preventative. The automation checks the infrastructure configuration *before* it is provisioned or *during* the deployment, automatically blocking non-compliant resources.
+
+**28. How does OPA (Open Policy Agent) work, and what is the purpose of the Rego language?**
+
+**Answer:**
+**OPA** is a general-purpose policy engine. It decouples policy from the service.
+**Workflow:**
+1.  A system (like Kubernetes or Terraform) sends a JSON input to OPA (e.g., "User X wants to create a Pod").
+2.  OPA evaluates the input against policies written in **Rego**.
+3.  OPA returns a decision: "Allow" or "Deny".
+**Rego:** The declarative query language used to write the policy logic in OPA.
+
+**29. What is the role of Sentinel (specifically in the Terraform/Enterprise context) compared to OPA?**
+
+**Answer:**
+**Sentinel** is HashiCorp's Policy-as-Code framework, primarily used within **Terraform Cloud/Enterprise**.
+**Comparison:**
+*   **OPA:** Open source, language-agnostic, widely used in Kubernetes and cloud-native environments.
+*   **Sentinel:** Proprietary to HashiCorp, integrated deeply into Terraform workflows. It uses a similar logic (Sentinel language) but is designed specifically to govern Terraform plans and state.
+
+**30. How do AWS Config Rules evaluate resource configurations for compliance (e.g., SOC 2, NIST controls)?**
+**Answer:**
+
+**AWS Config** continuously monitors and records the configuration of AWS resources.
+**Config Rules:** You define a rule (or use a managed rule) based on compliance standards like SOC 2 or NIST.
+**Process:** When a resource configuration changes, AWS Config triggers the associated rule. The rule evaluates the resource properties against the defined logic (e.g., "Is encryption enabled?"). The resource is tagged as **Compliant** or **Non-Compliant**, and remediation actions can be triggered automatically.
+
+**31. How are CIS Benchmarks automated and enforced using cloud-native tools or open-source scanners?**
+
+**Answer:**
+**CIS Benchmarks** are prescriptive security configuration guidelines.
+**Automation:**
+*   **AWS Security Hub:** Integrates with AWS Config to check resources against CIS AWS Foundations Benchmarks and generates compliance scores.
+*   **Open Source Scanners:** Tools like **Scout Suite** or **Inspec** can be run periodically. They query the cloud API, check the configuration against the CIS checklist, and generate a report of failed controls.
+
+---
+
+### **Part 5: Containerization & Orchestration (Docker, Kubernetes, EKS)**
+
+**32. What are the security benefits of using Multi-stage Builds in Docker?**
+
+**Answer:**
+**Multi-stage Builds** use multiple `FROM` instructions in a single Dockerfile.
+**Security Benefit:**
+*   The **Build Stage** can use a heavy image containing compilers (GCC, Maven) and build tools.
+*   The **Final Stage** copies only the compiled binary/artifact into a minimal, stripped-down base image (like Alpine or Distroless).
+This removes the compilers, debug tools, and unnecessary system libraries from the final image, significantly reducing the attack surface and potential vulnerabilities in the production container.
+
+**33. How does EKS (Elastic Kubernetes Service) differ from self-managed Kubernetes in terms of control plane responsibility?**
+
+**Answer:**
+**Self-Managed:** You are responsible for provisioning the Master Nodes (API Server, etcd, Scheduler) and managing upgrades, patching, and high availability.
+**EKS:** AWS manages the **Control Plane** across multiple Availability Zones. AWS handles the upgrades, patching, and high availability of the master nodes. The user is only responsible for the **Worker Nodes** and the applications running on them.
+
+**34. What are Kubernetes Network Policies, and how do they enforce micro-segmentation between pods?**
+
+**Answer:**
+**Network Policies** are rules that control how pods communicate with each other and other network endpoints.
+**Enforcement:** By default, pods can communicate with all other pods. A Network Policy allows you to define **Whitelist** rules. For example, you can specify that "Pod A (Database)" can only accept traffic from "Pod B (Application)" and reject everything else. This creates micro-segmentation, limiting the lateral movement of attackers if a pod is compromised.
+
+**35. How does Kubernetes RBAC (Role-Based Access Control) work, and what is the difference between a Role and a ClusterRole?**
+
+**Answer:**
+**RBAC** regulates who can do what on the cluster using Roles and RoleBindings.
+*   **Role:** Defines permissions (like list pods) within a **specific Namespace**. It is namespaced.
+*   **ClusterRole:** Defines permissions at the **cluster level** (across all namespaces), often used for cluster-wide resources like Nodes or Persistent Volumes.
+
+**36. What is an Admission Controller in Kubernetes (e.g., OPA Gatekeeper), and how does it enforce security policies?**
+
+**Answer:**
+**Admission Controllers** are plugins that intercept requests to the Kubernetes API Server before the object is persisted (created/updated).
+**OPA Gatekeeper:** It uses OPA policies as Admission Controllers. When a developer tries to create a Pod (e.g., with `privileged: true`), Gatekeeper intercepts the request. It evaluates the Pod definition against the loaded OPA policies. If the Pod violates the policy, Gatekeeper rejects the request immediately.
+
+**37. How are Docker Image Scans integrated into the CI/CD pipeline before deployment to EKS?**
+
+**Answer:**
+Integration typically happens after the Docker build step in the pipeline.
+1.  **Scan:** A scanner (like Trivy or Aqua) scans the newly built image for OS-level vulnerabilities (CVEs).
+2.  **Fail-Gate:** The pipeline script checks the exit code of the scanner. If vulnerabilities above a certain severity (e.g., Critical/High) are found, the script exits with an error.
+3.  **Block:** The pipeline stops, preventing the vulnerable image from being pushed to ECR or deployed to the cluster.
+
+**38. What is the purpose of Helm charts in managing Kubernetes deployments, and how are Helm values secured?**
+
+**Answer:**
+**Purpose:** Helm is a package manager for Kubernetes. A **Chart** is a collection of pre-configured Kubernetes resource templates (Deployments, Services, ConfigMaps). It simplifies complex deployments.
+**Securing Values:**
+The `values.yaml` file contains configuration data. To secure sensitive data:
+*   **Do not** hardcode secrets in `values.yaml`.
+*   Use **Helm Secrets** plugins or **External Secrets Operator**.
+*   Reference Kubernetes Secrets directly in the templates (e.g., `valueFrom: secretKeyRef`). This ensures sensitive data is stored in the encrypted Kubernetes Secret store, not in the Helm chart files.
+
+  
