@@ -1,16 +1,13 @@
----
-
 # Job Description: DevOps Engineer
 
-## Overview
+### Overview
 
 We are seeking a skilled **DevOps Engineer** to join our dynamic team. The ideal candidate will have extensive experience with AWS and Azure cloud services, along with solid experience in CI/CD pipelines and Infrastructure as Code using Terraform.
 
 If you are passionate about automating processes and enhancing our DevSecOps practices, we would love to hear from you!
 
----
 
-## Key Responsibilities
+### Key Responsibilities
 
 * Design, implement, and manage CI/CD pipelines using Azure DevOps and GitHub.
 * Deploy and manage applications on:
@@ -29,9 +26,8 @@ If you are passionate about automating processes and enhancing our DevSecOps pra
 * Troubleshoot and resolve issues in development, test, and production environments.
 * Collaborate with cross-functional teams to define and refine DevOps processes.
 
----
 
-## Required Skills & Qualifications
+### Required Skills & Qualifications
 
 * Minimum **4 years** of DevOps Engineer experience.
 * Minimum **4 years** of experience in AWS and Azure.
@@ -62,4 +58,3 @@ If you are passionate about automating processes and enhancing our DevSecOps pra
 
 ---
 
-If you'd like, I can also provide a **more modern GitHub-style version with badges and tech stack highlights**.
