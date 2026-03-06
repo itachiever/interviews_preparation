@@ -1,7 +1,5 @@
 # Role : Jenkins Engineer 
 
--
-
 ## Job Description
 
 ### Role & Responsibilities
