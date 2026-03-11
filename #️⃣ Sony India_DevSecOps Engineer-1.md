@@ -3,7 +3,6 @@ Experience: 4-6 Years
 
 1.Design, implement, and maintain secure CI/CD pipelines for cloud‑native workloads
 2.Embed security controls into Infrastructure as Code (IaC) and deployment workflows
-
 3. Integrate security scanning, testing, and policy enforcement into build pipelines
 4. Implement and manage cloud security controls across cloud environments
 
