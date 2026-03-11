@@ -29,7 +29,6 @@
 - Advanced problem-solving and analytical skills  
 - Demonstrated ability to collaborate across development, security, and infrastructure teams  
 - Demonstrated willingness to take accountability and ownership to solve problems  
-- Authorized to work in the United States  
 
 ### Nice to Have
 - AWS Certified Solutions Architect, Security – Specialty, or Cloud Practitioner  
