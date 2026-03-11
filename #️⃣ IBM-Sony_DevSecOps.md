@@ -106,7 +106,6 @@
 
 # Answers:
 
-Here are the detailed, concept-centric answers for **Questions 1 to 15**. These are designed to be read clearly and are suitable for a senior DevSecOps engineer audience.
 
 ---
 
