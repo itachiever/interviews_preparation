@@ -107,8 +107,6 @@
 # Answers:
 
 
----
-
 ### **Part 1: AWS IAM & Advanced Networking**
 
 **1. How does AWS Identity Center (Successor to SSO) change the approach to workforce identity management compared to traditional IAM Users in an enterprise environment?**
