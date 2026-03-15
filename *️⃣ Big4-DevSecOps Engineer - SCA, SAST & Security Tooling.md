@@ -307,3 +307,119 @@ It acts as a middleman between your application and the public internet (like NP
 **How it helps Security:**
 *   **Speed:** It stores a copy of the libraries on the proxy server. Instead of downloading from the internet every time (which is slow), the developer downloads from the proxy (which is fast).
 *   **Safety:** When a new version of a library is requested, the proxy can check for malware or license issues **before** it lets your team download it. If the check fails, it blocks the download. This prevents a malicious file from ever entering your environment.
+
+
+### **Part 3: CI/CD Integration Strategies (Jenkins, GitHub, Bitbucket)**
+
+**21. What are the key differences in migrating security scanning from monolithic Jenkins to GitHub Actions matrix strategies?**
+
+**Answer:**
+**Monolithic Jenkins:** In Jenkins, we typically have one big server running all jobs. It is a "One-Stop Shop." Security scanning happens sequentially (one after the other), which takes time.
+**GitHub Actions Matrix:** This breaks the big job into smaller jobs that run in parallel.
+**Key Differences:**
+*   **Parallelism:** We can run the SAST, SCA, and Container Scan simultaneously on different runners. This reduces the build time significantly.
+*   **Self-Hosted Runners:** We can run the security scans on a specific, secure runner inside a private network (e.g., a runner that has access to the code), whereas GitHub hosted runners are public.
+*   **Pay-Per-Use:** We don't have to pay for a server running 24/7; we only pay when the security scan runs.
+
+---
+
+**22. What is the failure workflow if a SAST scan passes but an SCA scan fails in a Bitbucket pipeline?**
+
+**Answer:**
+**The Situation:**
+The code is clean (SAST = Pass), but the libraries it uses have a bug (SCA = Fail).
+
+**Workflow:**
+1.  **Fail Stage:** The pipeline will stop at the SCA stage.
+2.  **Block Merge:** The system will block the Pull Request or merge.
+3.  **Notify:** The pipeline automatically adds a comment to the pull request (e.g., "SCA scan failed for `package.json`").
+4. **Developer Action:** The developer sees the comment, updates the library to a safe version, and pushes a new commit to fix it.
+
+---
+
+**23. What are the strategies for Bypassing Security Gates during emergency hotfixes (e.g., production outages)?**
+
+**Answer:**
+Sometimes security gates block a fix, but the production server is down. We need to bypass the gate.
+**Strategy:**
+1.  **Manual Approval:** We don't disable the gate permanently. We set a configuration for "Manual Approval."
+2.  **Justification:** The pipeline pauses. The Security Lead or DevOps Lead receives an alert. They review the issue.
+3. **Approve:** If the risk is low (e.g., a logging library issue) and the operational risk is high (production down), they manually approve the specific run. This allows the code to deploy while documenting the security debt for later.
+
+---
+
+**24. How is the integrity of deployed artifacts verified to ensure they are the exact versions that passed security scans?**
+**Answer:**
+We use **Artifact Hashing**.
+**The Process:**
+1.  **Scan & Hash:** When the security scan passes, the build tool calculates a digital fingerprint (Hash) of the artifact (e.g., a ZIP file).
+2.  **Upload:** We upload the artifact to storage (like S3 or Artifactory) along with this hash.
+3. **Verification:** When we deploy to production, the deployment script checks the hash of the file on the storage against the hash of the downloaded file.
+4. **Result:** If the hashes match, we know it is the exact file that passed security scans. If they don't match, it means someone tampered with it, and we abort the deployment.
+
+---
+
+**25. How is a Risk Score calculated and used as a deployment gate in pipelines using Veracode?**
+**Answer:**
+**Calculation:** Veracode analyzes the code and finds vulnerabilities. It gives each bug a score (like 1-10) based on severity. It sums these up to create a total **Risk Score** for the project.
+**As a Gate:**
+*   **Setting:** We define a threshold, say "Criticality 9".
+*   **Gate Logic:** If the Risk Score is high (meaning there are critical bugs), the pipeline **Fails**.
+*   **Logic:** We create a script that queries the Veracode API. `if RiskScore > Threshold: fail else pass`. This ensures no code with high-risk vulnerabilities reaches production.
+
+---
+
+**26. How is security scan documentation (Vulnerability Reports) integrated into the Pull Request conversation for transparency?**
+**Answer:**
+We use **"The Comment Bot."**
+*   **Automated Comment:** When the pipeline finishes scanning, a script automatically posts a comment in the Pull Request. It says: "Scan Completed. Critical Vulnerability Found: 0, High: 1."
+*   **File Upload:** It also uploads the detailed PDF report to the PR comments.
+*   **Transparency:** Before a developer can merge the code, they must look at the report. This makes the security status public to the team, ensuring no security issues are hidden in the conversation.
+
+---
+
+**27. What are the key security considerations when migrating security scanning secrets (e.g., SonarQube tokens) from on-prem Jenkins to GitHub Actions?**
+
+**Answer:**
+The main risk is that running pipelines on the public GitHub Actions exposes the environment.
+**Considerations:**
+*   **OIDC vs. Keys:** We should not store the SonarQube token as a GitHub Secret (which is static). We should use **OIDC (OpenID Connect)**. This is like a temporary ticket; it expires automatically, which is much safer.
+*   **Self-Hosted Runners:** If the on-prem Jenkins was secure because it was inside the office network, we might need **Self-Hosted Runners** in GitHub Actions to keep the secrets inside our private network.
+*   **Environment Protection:** We must ensure the token only has "Read-only" access to the server, so if it leaks, no one can modify the data.
+
+---
+
+### **Part 4: Secure Migration & Developer Enablement**
+
+**28. What are the strategies for enabling local developer scanning without distributing expensive SAST licenses?**
+**Answer:**
+It is too expensive to buy a license for every developer's laptop.
+**Strategies:**
+*   **The "Gatekeeper" Approach:** We install a scanner locally (like SonarLint, which is free). It checks the code locally before the developer even pushes it. It finds simple bugs for free.
+*   **Dockerized Scanner:** We put the full SAST tool (Veracode) inside a Docker container. The developer runs the container to do a deep scan.
+*   **Check-in:** The container connects to a central license server to "check out" the license while it runs. This way, we don't give the license file to the developer, they just use it while it is running.
+
+---
+
+**29. What is the transition process from a "Security Cop" model to a "Security as Code" enforcement model?**
+
+**Answer:**
+*   **Security Cop:** This is the "Manual" model. Security team members manually check code, or a tool scans and manually approves deployments.
+*   **Security as Code:** This is the "Automated" model. We write policies (in code) that define what is allowed.
+**Transition:**
+1.  **Define Rules:** We define the rules in a "Security Policy" document.
+2. **Automate:** We write scripts or pipeline code that enforce these rules.
+3. **Enforcement:** The pipeline automatically rejects any code that breaks the rules.
+**Outcome:** The transition means the Security Team moves from "Doing" the work to "Writing the rules," making the system faster and more consistent.
+
+---
+
+**30. What are the key components of a Security Policy document designed to guide developers on remediation?**
+
+**Answer:**
+This document is a "Playbook" for developers. It explains **How to Fix** things clearly, without using complex jargon.
+**Key Components:**
+*   **The Issue:** What is the vulnerability (e.g., "SQL Injection")?
+*   **The Solution:** A step-by-step guide on how to fix the code (e.g., "Use parameterized queries").
+*   **Code Snippet:** A code example of what the fixed code should look like.
+*   **Support Contact:** Who to ask if they don't understand the fix. This document bridges the gap between the security tool and the developer.
