@@ -79,33 +79,77 @@
 
 # Answers:
 
-1. **How would you design a highly available web application on AWS or Azure, starting from VPC/VNet, subnets, and load balancers?**  
-High availability starts with isolating the application in at least two availability zones inside a single VPC/VNet. Public subnets host only entry points like load balancers or API gateways, while application servers and databases stay in private subnets. The load balancer distributes traffic across instances or containers in multiple AZs and performs health checks to route away from unhealthy nodes. Databases use managed multi‑AZ or replica configurations, and stateless app nodes are placed behind autoscaling groups or scale sets so they can be replaced automatically on failure.
 
-2. **What is the difference between high availability and disaster recovery, and how do RPO and RTO influence design choices?**  
-High availability focuses on staying up during localized failures (like a single node or AZ going down) by adding redundancy and automatic failover within the primary region. Disaster recovery assumes the primary region or major components are lost and defines how to bring the system back in another location. RPO (how much data loss is acceptable) drives the frequency of backups or replication, while RTO (how fast the system must be restored) influences whether to use warm/active‑active environments or cold standby; tighter RPO/RTO means more automation, more replication, and higher cost.
+1. **Question:** How would you design a highly available web application on AWS or Azure, starting from VPC/VNet, subnets, and load balancers?  
+   **Answer:**  
+   - Start with a VPC/VNet split into public and private subnets across at least two AZs/regions for redundancy.  
+   - Place load balancers in public subnets, and app servers/containers in private subnets so they are not directly exposed to the internet.  
+   - Use auto scaling groups or VM scale sets for app nodes so instances can scale and recover automatically.  
+   - Keep databases in private subnets with multi‑AZ or replica setups, and connect everything with security groups/NSGs instead of open ports.  
 
-3. **How would you securely connect an on‑prem CI/CD system to a cloud environment for deployments (for example, via VPN and DMZ)?**  
-A secure setup keeps the CI/CD system inside the internal network and exposes only minimal endpoints through a DMZ. A site‑to‑site VPN or private connectivity (like Direct Connect/ExpressRoute) is established between the on‑prem network and cloud VPC/VNet, with routing restricted to only required subnets and ports. Security groups/NSGs and firewall rules allow traffic only from CI/CD IP ranges to specific deployment endpoints such as Kubernetes API servers or bastion hosts. All sensitive traffic uses encrypted channels, and no inbound access from the cloud back into CI/CD is allowed other than what is strictly necessary.
+2. **Question:** What is the difference between high availability and disaster recovery, and how do RPO and RTO influence design choices?  
+   **Answer:**  
+   - High availability focuses on keeping the system running during normal failures (node crash, AZ failure) using redundancy and failover in the same region.  
+   - Disaster recovery deals with rare, big failures (region down, data center loss) using backups, replicas, and a secondary site/region.  
+   - RPO (Recovery Point Objective) defines how much data loss is acceptable; smaller RPO means more frequent backups/replication.  
+   - RTO (Recovery Time Objective) defines how fast the system must be back; smaller RTO means more automation, pre‑provisioned standby resources, and tested runbooks.  
 
-4. **In a multi‑environment setup (DEV/SIT/UAT/PROD), how do you isolate environments at the cloud networking level?**  
-Each environment typically has its own VPC/VNet or at least dedicated subnets and security boundaries. Network ACLs, security groups/NSGs, and routing rules are configured so that lower environments cannot directly reach production components. Shared services, such as centralized logging or artifact repositories, are accessed via tightly controlled endpoints or peering, not open flat networks. This separation ensures configuration mistakes or testing in non‑prod cannot accidentally impact production workloads.
+3. **Question:** How would a secure connection be built between an on‑prem CI/CD system and a cloud environment for deployments (for example, via VPN and DMZ)?  
+   **Answer:**  
+   - Set up a site‑to‑site VPN or private connectivity (like ExpressRoute/Direct Connect) between on‑prem and cloud VPC/VNet so traffic flows over encrypted tunnels.  
+   - Place a DMZ or gateway layer that exposes only the minimal endpoints needed (for example, an ingress/API or a limited Jenkins agent endpoint).  
+   - Restrict traffic with firewall rules and security groups/NSGs so only specific ports and IPs are allowed between CI/CD and target subnets.  
+   - Use strong identity and secrets management for deployment credentials, avoiding hard‑coded keys in jobs.  
 
-5. **What considerations go into choosing between managed DB services (like RDS/Azure SQL) versus self‑hosted databases on VMs?**  
-Managed databases handle backups, patching, failover, and some scaling automatically, reducing operational burden and lowering the chance of misconfiguration for critical features like encryption and replication. Self‑hosted databases offer more control over configuration, extensions, and custom clustering models but increase responsibility for monitoring, patching, HA, and DR. The decision depends on compliance requirements, need for advanced features, existing team expertise, and whether the team prefers to invest effort in infra management or focus on application features.
+4. **Question:** In a multi‑environment setup (DEV/SIT/UAT/PROD), how can environments be isolated at the cloud networking level?  
+   **Answer:**  
+   - Use separate VPCs/VNets or separate subnets and route tables per environment so traffic is logically segmented.  
+   - Apply different security groups/NSGs per environment so only allowed paths exist (for example, UAT can access shared services, DEV cannot reach PROD).  
+   - Use separate peering or VPN connections if needed, and avoid sharing databases between environments.  
+   - Tag and manage resources by environment for easier policy enforcement and cost tracking.  
 
-6. **Walk through how you would troubleshoot a Linux server where “application is slow” but there’s no obvious error in the logs.**  
-Troubleshooting starts with checking system resource usage: CPU, memory, load average, disk I/O, and network using tools like top/htop, vmstat, iostat, and ss. If resources are constrained, the next step is identifying which processes are consuming them and whether there is contention such as high I/O wait or frequent context switches. If system resources look healthy, attention shifts to external dependencies like database latency, upstream/downstream services, or DNS, often visible through connection counts and response times. Finally, application‑level metrics and profiling help find issues such as thread exhaustion, connection pool limits, or inefficient queries.
+5. **Question:** What considerations go into choosing between managed database services (like RDS/Azure SQL) versus self‑hosted databases on VMs?  
+   **Answer:**  
+   - Managed services handle backups, patching, failover, and monitoring, which reduces operational effort and improves reliability.  
+   - Self‑hosted databases give more control over configuration and versioning but require full responsibility for HA, backups, and tuning.  
+   - Compliance, licensing, and cost models might push toward one or the other.  
+   - For most SaaS use cases, managed DBs are preferred unless there are very specific customization or regulatory needs.  
 
-7. **How do you investigate high CPU or memory usage on a Linux host, and what tools/commands would you use?**  
-High CPU is first checked with tools like top or htop to see which processes and threads are consuming CPU and whether it is user, system, or I/O wait time. For deeper insight, utilities like pidstat, perf, or stack traces can reveal hot paths or tight loops. Memory issues are examined using free, vmstat, and tools such as smem or pmap to identify processes with large RSS or memory leaks. Swap usage, cached memory, and OOM events in system logs indicate whether the system is under real pressure or just aggressively caching.
+6. **Question:** How can a slow Linux server be troubleshooted when the application shows no clear errors in logs?  
+   **Answer:**  
+   - First check system health: CPU, memory, load average, disk I/O, and network usage using tools like `top`, `htop`, `vmstat`, `iostat`, and `ss`.  
+   - Look for resource bottlenecks such as high CPU on a specific process, memory pressure causing swapping, or high disk wait times.  
+   - Check OS logs (`/var/log/*`) and specific service logs for warnings like OOM kills, restarts, or file system errors.  
+   - Confirm external dependencies (DB, cache, network) are reachable and performing well, since slowness can come from downstream systems.  
 
-8. **What are typical hardening steps applied on Linux servers that host production workloads?**  
-Typical hardening includes disabling password‑based SSH logins in favor of key‑based access, restricting SSH to specific users or bastion hosts, and turning off unused services. File permissions are tightened, sudo access is minimized, and logs are forwarded to centralized logging for audit. Kernel parameters and firewall rules (iptables/nftables/security groups) are configured to restrict inbound and outbound traffic, while automatic security updates or patching processes are put in place to reduce known vulnerabilities.
+7. **Question:** How can high CPU or memory usage on a Linux host be investigated, and which tools are useful?  
+   **Answer:**  
+   - Use `top` or `htop` to identify which processes consume the most CPU or memory.  
+   - Use `ps` with filters to inspect suspicious processes and check how long they have been running and with what arguments.  
+   - For memory issues, look at swap usage, cache, and potential memory leaks; for CPU, check if it is user CPU, system CPU, or wait time.  
+   - Combine this with logs and application metrics to see whether the load is legitimate (traffic spike) or due to a bug (infinite loops, leaks).  
 
-9. **How would you design a CI/CD pipeline in Jenkins for a SaaS product that has multiple environments and frequent releases?**  
-A typical design includes a single reusable pipeline template that runs build, unit tests, static analysis, security scans, and packaging once, producing versioned artifacts stored in an artifact repository or registry. Promotion to environments (DEV, SIT, UAT, PROD) is done by reusing the same artifact with environment‑specific configuration and approvals, not rebuilding code. Each stage includes automated checks and optionally manual gates for higher environments, with deployment steps automated through scripts, IaC, or Kubernetes manifests. The pipeline is parameterized to support different services and environments while keeping governance and visibility centralized.
+8. **Question:** What common hardening steps are applied on Linux servers that host production workloads?  
+   **Answer:**  
+   - Disable password logins and use key‑based SSH with limited allowed users and IPs.  
+   - Close unused ports and services, and use a firewall and security groups/NSGs to restrict network access.  
+   - Keep packages updated, remove unnecessary software, and enforce least‑privilege for system and application users.  
+   - Enable logging and auditing, and protect sensitive files with proper permissions and, where needed, disk or directory encryption.  
 
-10. **What are the key stages you would include in a robust pipeline (build, test, quality, security, deploy), and why?**  
-The build stage compiles code and packages artifacts to ensure the codebase is in a deployable state. Test stages (unit, integration, and possibly smoke tests) validate functionality early to catch regressions before they reach higher environments. Quality and coverage checks enforce coding standards, complexity limits, and minimum test coverage, improving long‑term maintainability. Security stages such as SAST, SCA, and container scanning catch vulnerabilities and misconfigurations before deployment. Finally, deployment and post‑deployment verification stages roll out the change, run health checks or smoke tests in the target environment, and provide automatic rollback paths if something fails.
+9. **Question:** How can a CI/CD pipeline in Jenkins be designed for a SaaS product that has multiple environments and frequent releases?  
+   **Answer:**  
+   - Use a single pipeline per service that moves artifacts through DEV → SIT → UAT → PROD using stages and environment‑specific configurations.  
+   - Trigger builds on commit or merge, run tests and quality checks, then publish versioned artifacts to a registry or repository.  
+   - Use manual approvals or checks before higher environments (UAT/PROD) while keeping lower env deployments fully automated.  
+   - Store environment settings and secrets outside the code (credentials store, parameterized jobs, config files) so the same artifact is promoted across environments.  
+
+10. **Question:** What key stages should exist in a robust Jenkins pipeline (build, test, quality, security, deploy), and why are they important?  
+    **Answer:**  
+    - Build: compile/package and produce a consistent artifact or image so the same build is used everywhere.  
+    - Test: run unit/integration tests to catch functional issues early.  
+    - Quality: run code quality and style checks to keep the codebase maintainable and reduce long‑term technical debt.  
+    - Security: run SAST/SCA/container/secret scans to catch vulnerabilities before production.  
+    - Deploy: perform automated, repeatable deployments with proper checks and rollback options, reducing human error and downtime.  
+
+
 
