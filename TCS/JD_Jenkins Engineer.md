@@ -26,7 +26,6 @@
 - Coordinate with **Infrastructure teams** for agent management, node configurations, and access provisioning.
 - Maintain **security and compliance standards** in pipeline execution.
 
----
 
 ### Required Skills
 - Strong knowledge of **Jenkins**, including declarative and scripted pipelines.
