@@ -62,7 +62,7 @@
 
 22. What is "Pipeline-as-Code"? What security measures must be taken to prevent pipeline poisoning or malicious pull request attacks?
 
----
+
 
 ### Domain 6: Internal Developer Platforms (IDP) & Self-Service
 
