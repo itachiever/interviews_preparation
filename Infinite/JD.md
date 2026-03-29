@@ -1,9 +1,9 @@
-We have a requirement on the client project Carelon  
+Client project Carelon  
 
 Employment Type: Permanent with Infinite Computer Solutions (a US-based MNC and a CMMI Level 5 product + service-based organization)  
 www.infinite.com  
 
-### Skill Set: AWS Developer – Associate
+### Skill Set: AWS Developer - Associate
 
 • AWS Certified Security – Specialty  
 • HashiCorp Terraform Associate  
@@ -12,7 +12,7 @@ www.infinite.com
 
 ### EXPERIENCE
 
-• 4–6 years of experience in cloud infrastructure, with a focus on networking  
+• 4-6 years of experience in cloud infrastructure, with a focus on networking  
 
 ### SKILLS AND COMPETENCIES
 
