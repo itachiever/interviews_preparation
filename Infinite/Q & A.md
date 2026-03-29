@@ -1,48 +1,88 @@
 # Questions:
 
-### **Domain 1: AWS Networking & Core Infrastructure (4-6 Years Focus)**
-*1. How do you design a secure and highly available VPC architecture spanning multiple Availability Zones? Walk through the subnet tiers and routing.*
-*2. Explain the exact difference between Security Groups and Network ACLs at the packet level. In what scenario would you strictly prefer NACLs over SGs?*
-*3. How does AWS Transit Gateway differ from traditional VPC Peering when connecting hundreds of VPCs? What are the routing implications?*
-*4. Walk through the exact path a packet takes when an EC2 instance in a private subnet needs to communicate with an external API endpoint using a NAT Gateway.*
+### Domain 1: AWS Networking & Core Infrastructure (4-6 Years Focus)
 
-### **Domain 2: AWS Security Specialty Concepts**
-*5. Explain the principle of Least Privilege in AWS. How do you programmatically enforce and audit this using AWS IAM Access Analyzer?*
-*6. What is the exact difference between AWS KMS Customer Managed Keys (CMKs) and AWS Managed Keys regarding key rotation policies and cross-account usage?*
-*7. How does AWS GuardDuty correlate VPC Flow Logs and DNS logs to detect threats like cryptomining or data exfiltration?*
-*8. Walk through the architecture of AWS Secrets Manager rotation. How does it securely update a secret (like a DB password) in an RDS instance without application downtime?*
-*9. How do you implement defense-in-depth for data in transit using AWS Certificate Manager (ACM) and TLS termination at an Application Load Balancer vs. at the EC2 instance level?*
+1. How do you design a secure and highly available VPC architecture spanning multiple Availability Zones? Walk through the subnet tiers and routing.
 
-### **Domain 3: Infrastructure as Code (Terraform Associate & Beyond)**
-*10. Explain the Terraform execution lifecycle. What exactly happens during the `terraform plan` and `terraform apply` phases regarding the state file?*
-*11. How do you manage state file locking and consistency in a team environment using DynamoDB and S3? What happens if a apply is forcefully interrupted?*
-*12. Compare `count`, `for_each`, and `for` expressions in Terraform. When would you use a dynamic block with `for_each` over a resource `for_each`?*
-*13. What is the purpose of Terraform Sentinel policies? How do they differ from Open Policy Agent (OPA) when enforcing guardrails in a CI/CD pipeline?*
-*14. How do you handle state file drift detection? What are the limitations of `terraform plan` in detecting out-of-band changes made in the AWS Console?*
+2. Explain the exact difference between Security Groups and Network ACLs at the packet level. In what scenario would you strictly prefer NACLs over SGs?
 
-### **Domain 4: Configuration Management (Ansible)**
-*15. Explain Ansible’s push architecture vs. a pull-based tool like Puppet. Why is Ansible often preferred for cloud auto-scaling groups?*
-*16. What are Ansible Roles and Collections? How would you structure a role to be highly reusable across different environments (Dev/Prod)?*
-*17. How does Ansible Vault work at a conceptual level? How do you securely pass decrypted vault passwords to an Ansible playbook running inside a CI/CD pipeline?*
-*18. Explain Ansible Idempotency. How do you write a task that checks if a service is running and only restarts it if the configuration file has changed?*
+3. How does AWS Transit Gateway differ from traditional VPC Peering when connecting hundreds of VPCs? What are the routing implications?
 
-### **Domain 5: CI/CD & Python Automation**
-*19. How do you design a secure CI/CD pipeline using AWS CodePipeline or GitHub Actions? At which stages do you inject SAST, DAST, and SCA scanning?*
-*20. Explain how you would use Python with the `boto3` library to automate the creation of an AWS IAM role with an inline policy. How do you handle API rate limiting (throttling) in your Python script?*
-*21. What are the best practices for managing Python dependencies and virtual environments when building AWS Lambda deployment packages?*
-*22. What is "Pipeline-as-Code"? What security measures must be taken to prevent pipeline poisoning or malicious pull request attacks?*
+4. Walk through the exact path a packet takes when an EC2 instance in a private subnet needs to communicate with an external API endpoint using a NAT Gateway.
 
-### **Domain 6: Internal Developer Platforms (IDP) & Self-Service**
-*23. What is the core difference between an Internal Developer Platform (IDP) and traditional DevOps handoffs? How does it abstract infrastructure complexity?*
-*24. Explain the concept of a "Self-Service Catalog." How would you architect a portal that allows a developer to spin up a compliant AWS environment without touching the AWS Console?*
-*25. How do tools like Backstage (by Spotify) or Crossplane fit into the IDP ecosystem? How do they interact with Terraform under the hood?*
-*26. As a DevSecOps engineer, how do you ensure that the infrastructure provisioned through a self-service catalog adheres to corporate compliance (e.g., SOC2) automatically?*
+---
 
-### **Domain 7: FinOps & Cost Optimization (Guardrails)**
-*27. Explain a comprehensive AWS Tagging Strategy. How do you enforce mandatory tags (like `CostCenter`, `Environment`) at the Infrastructure-as-Code level to prevent untagged resource sprawl?*
-*28. What is "Rightsizing" in AWS? Conceptually, how would you use AWS Compute Optimizer or custom Python scripts to identify over-provisioned EC2 instances or idle EBS volumes?*
-*29. How do you implement automated cost guardrails? Walk through an architecture where an AWS Lambda function automatically shuts down non-production resources if the AWS Budget threshold is breached.*
+### Domain 2: AWS Security Specialty Concepts
 
+5. Explain the principle of Least Privilege in AWS. How do you programmatically enforce and audit this using AWS IAM Access Analyzer?
+
+6. What is the exact difference between AWS KMS Customer Managed Keys (CMKs) and AWS Managed Keys regarding key rotation policies and cross-account usage?
+
+7. How does AWS GuardDuty correlate VPC Flow Logs and DNS logs to detect threats like cryptomining or data exfiltration?
+
+8. Walk through the architecture of AWS Secrets Manager rotation. How does it securely update a secret (like a DB password) in an RDS instance without application downtime?
+
+9. How do you implement defense-in-depth for data in transit using AWS Certificate Manager (ACM) and TLS termination at an Application Load Balancer vs. at the EC2 instance level?
+
+---
+
+### Domain 3: Infrastructure as Code (Terraform Associate & Beyond)
+
+10. Explain the Terraform execution lifecycle. What exactly happens during the `terraform plan` and `terraform apply` phases regarding the state file?
+
+11. How do you manage state file locking and consistency in a team environment using DynamoDB and S3? What happens if an apply is forcefully interrupted?
+
+12. Compare `count`, `for_each`, and `for` expressions in Terraform. When would you use a dynamic block with `for_each` over a resource `for_each`?
+
+13. What is the purpose of Terraform Sentinel policies? How do they differ from Open Policy Agent (OPA) when enforcing guardrails in a CI/CD pipeline?
+
+14. How do you handle state file drift detection? What are the limitations of `terraform plan` in detecting out-of-band changes made in the AWS Console?
+
+---
+
+### Domain 4: Configuration Management (Ansible)
+
+15. Explain Ansible’s push architecture vs. a pull-based tool like Puppet. Why is Ansible often preferred for cloud auto-scaling groups?
+
+16. What are Ansible Roles and Collections? How would you structure a role to be highly reusable across different environments (Dev/Prod)?
+
+17. How does Ansible Vault work at a conceptual level? How do you securely pass decrypted vault passwords to an Ansible playbook running inside a CI/CD pipeline?
+
+18. Explain Ansible Idempotency. How do you write a task that checks if a service is running and only restarts it if the configuration file has changed?
+
+---
+
+### Domain 5: CI/CD & Python Automation
+
+19. How do you design a secure CI/CD pipeline using AWS CodePipeline or GitHub Actions? At which stages do you inject SAST, DAST, and SCA scanning?
+
+20. Explain how you would use Python with the `boto3` library to automate the creation of an AWS IAM role with an inline policy. How do you handle API rate limiting (throttling) in your Python script?
+
+21. What are the best practices for managing Python dependencies and virtual environments when building AWS Lambda deployment packages?
+
+22. What is "Pipeline-as-Code"? What security measures must be taken to prevent pipeline poisoning or malicious pull request attacks?
+
+---
+
+### Domain 6: Internal Developer Platforms (IDP) & Self-Service
+
+23. What is the core difference between an Internal Developer Platform (IDP) and traditional DevOps handoffs? How does it abstract infrastructure complexity?
+
+24. Explain the concept of a "Self-Service Catalog." How would you architect a portal that allows a developer to spin up a compliant AWS environment without touching the AWS Console?
+
+25. How do tools like Backstage (by Spotify) or Crossplane fit into the IDP ecosystem? How do they interact with Terraform under the hood?
+
+26. As a DevSecOps engineer, how do you ensure that the infrastructure provisioned through a self-service catalog adheres to corporate compliance (e.g., SOC2) automatically?
+
+---
+
+### Domain 7: FinOps & Cost Optimization (Guardrails)
+
+27. Explain a comprehensive AWS Tagging Strategy. How do you enforce mandatory tags (like CostCenter, Environment) at the Infrastructure-as-Code level to prevent untagged resource sprawl?
+
+28. What is "Rightsizing" in AWS? Conceptually, how would you use AWS Compute Optimizer or custom Python scripts to identify over-provisioned EC2 instances or idle EBS volumes?
+
+29. How do you implement automated cost guardrails? Walk through an architecture where an AWS Lambda function automatically shuts down non-production resources if the AWS Budget threshold is breached.
 ---
 # Answers:
 
