@@ -10,7 +10,7 @@
 
 4. Walk through the exact path a packet takes when an EC2 instance in a private subnet needs to communicate with an external API endpoint using a NAT Gateway.
 
----
+
 
 ### Domain 2: AWS Security Specialty Concepts
 
@@ -24,7 +24,7 @@
 
 9. How do you implement defense-in-depth for data in transit using AWS Certificate Manager (ACM) and TLS termination at an Application Load Balancer vs. at the EC2 instance level?
 
----
+
 
 ### Domain 3: Infrastructure as Code (Terraform Associate & Beyond)
 
@@ -38,7 +38,7 @@
 
 14. How do you handle state file drift detection? What are the limitations of `terraform plan` in detecting out-of-band changes made in the AWS Console?
 
----
+
 
 ### Domain 4: Configuration Management (Ansible)
 
@@ -50,7 +50,7 @@
 
 18. Explain Ansible Idempotency. How do you write a task that checks if a service is running and only restarts it if the configuration file has changed?
 
----
+
 
 ### Domain 5: CI/CD & Python Automation
 
@@ -74,7 +74,7 @@
 
 26. As a DevSecOps engineer, how do you ensure that the infrastructure provisioned through a self-service catalog adheres to corporate compliance (e.g., SOC2) automatically?
 
----
+
 
 ### Domain 7: FinOps & Cost Optimization (Guardrails)
 
