@@ -46,10 +46,6 @@
 ---
 # Answers:
 
-Here are the detailed, concept-centric answers for the first 9 questions. These are structured perfectly for a YouTube script or a deep-dive study guide, focusing on the "Why" and "How" rather than just memorizing definitions.
-
----
-
 ### **Domain 1: AWS Networking & Core Infrastructure**
 
 **1. How do you design a secure and highly available VPC architecture spanning multiple Availability Zones? Walk through the subnet tiers and routing.**
