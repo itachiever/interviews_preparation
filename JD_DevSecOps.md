@@ -1,16 +1,7 @@
-link: https://www.naukri.com/job-listings-senior-sre-devsecops-bangalore-insolutionsglobal-in-solutions-global-isg-bengaluru-5-to-10-years-240326036329?utmcampaign=androidjd&utmsource=share&src=sharedjd
-
 # Senior SRE – DevSecOps | JD Fulfillment
-## In-Solutions Global (ISG) | Bengaluru
+### In-Solutions Global (ISG) | Bengaluru
 
----
-
-# Job Description:
-
-
-
-## Technical
-
+### Technical
 - Hands-on experience in DevSecOps pipeline frameworks and tools  
 - IDEs: VS Code, Eclipse, IntelliJ IDEA  
 - Productivity plugins: Copilot, SonarLint  
@@ -33,20 +24,16 @@ link: https://www.naukri.com/job-listings-senior-sre-devsecops-bangalore-insolut
 - IAM administration and access control management  
 - Strong experience with Agile methodologies (Scrum or others)  
 
----
 
-## Functional
+### Functional
 
 - Fintech domain experience  
 - Effective collaboration & communication  
 - Lean thinker and Agile practitioner  
 - Ability to build trust and be a go-to person  
-- Ability to adapt quickly in fast-changing environments  
+- Ability to adapt quickly in fast-changing environments
 
----
-
-## Technical / Functional Skills (Theoretical Knowledge)
-
+### Technical / Functional Skills (Theoretical Knowledge)
 - Jenkins  
 - GitLab  
 - Ansible  
@@ -55,20 +42,14 @@ link: https://www.naukri.com/job-listings-senior-sre-devsecops-bangalore-insolut
 - Prometheus  
 - Grafana  
 
----
-
-## Job Responsibilities
-
+### Job Responsibilities
 As a skilled Site Reliability Engineer (SRE), you will manage, maintain, and streamline deployment pipelines while ensuring high availability of applications.
 
 - Perform deployments using orchestration tools like Jenkins, GitLab CI, or similar  
 - Troubleshoot deployment issues and provide Level 1 application support  
 - Ensure smooth operations across multiple environments  
 
----
-
-## Key Responsibilities
-
+### Key Responsibilities
 - Perform deployments using CI/CD pipelines (Jenkins, GitLab, Nexus, SonarQube, Ansible, shell scripting)  
 - Operate and maintain orchestration tools (Jenkins or equivalent)  
 - Monitor system and application health using Prometheus, Grafana, or similar tools  
