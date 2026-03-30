@@ -222,54 +222,83 @@ This profile demonstrates strong alignment with ISG’s Senior SRE – DevSecOps
 
 # Job Description:
 
-Technical:
-
-Hands-on experience in DevSecOps Pipeline frameworks and tools
-IDE like VS Code, Eclipse, IntelliJ Idea & Productivity plugins like copilot, Sonarlint plugins
-Git based SCM like Gitlab, Github, Bitbucket
-SAST tools like SoqarQube, semgrep, Coverity
-Image repository like Nexus, InsightVM, cloud based repo llike ECR, ACR
-Jenkins for pipeline orchestration
-Hands-on experience in Containerization & CI/CD tools
-Docker
-Kubernetes(K8S) cluster and cloud based K8S like EKS, AKS
-Helm Charts
-Maven, Gradle, Jenkins, ArgoCD & similar CI tools, Artifactory, Nexus,
-Preferred Candidate should have strong understanding of Pipeline Coding experience using Groovy Hook Scripts and Infrastructure Automation tools like Ansible
-Knowledge on cloud technologies with hands-on experience on deploying applications using Azure cloud (Primary) , AWS (Secondary), Nice to have GCP and/or Oracle cloud experience.
-Working experience with private clouds and private datacenters is a plus point.
-Must have practiced IAM administration and managed access control
-Strong experience with Agile software development including Scrum and/or other methodologies
-Functional:
-
-Fintech domain experience
-Effective collaboration & communication
-Lean thinker, Agile practitioner, Build trust relationships, A go to personality
-Ability to quickly adapt with faster changing environment
 
 
+## Technical
 
-Technical or Functional Skills requirement Theoretical knowledge
+- Hands-on experience in DevSecOps pipeline frameworks and tools  
+- IDEs: VS Code, Eclipse, IntelliJ IDEA  
+- Productivity plugins: Copilot, SonarLint  
+- Git-based SCM: GitLab, GitHub, Bitbucket  
+- SAST tools: SonarQube, Semgrep, Coverity  
+- Image repositories: Nexus, InsightVM, cloud-based repositories like ECR, ACR  
+- Jenkins for pipeline orchestration  
+- Hands-on experience in containerization & CI/CD tools  
+- Docker  
+- Kubernetes (K8s) clusters and cloud-based K8s like EKS, AKS  
+- Helm Charts  
+- Build & CI tools: Maven, Gradle, Jenkins, ArgoCD, Artifactory, Nexus  
+- Strong understanding of pipeline coding using Groovy hook scripts  
+- Infrastructure automation tools: Ansible  
+- Cloud technologies with hands-on deployment experience:  
+  - Azure (Primary)  
+  - AWS (Secondary)  
+  - Nice to have: GCP and/or Oracle Cloud  
+- Experience with private clouds and private datacenters (plus)  
+- IAM administration and access control management  
+- Strong experience with Agile methodologies (Scrum or others)  
 
-Jenkins, Gitlab, Ansible, Nexus, Shell, Prometheus, Grafana
+---
 
- 
+## Functional
 
-Job Responsibilities
+- Fintech domain experience  
+- Effective collaboration & communication  
+- Lean thinker and Agile practitioner  
+- Ability to build trust and be a go-to person  
+- Ability to adapt quickly in fast-changing environments  
 
-As a skilled Site Reliability Engineer (SRE) , need to manage, maintain, and streamline our deployment pipelines and ensure high availability of our applications.
-Perform deployments using orchestration tools like Jenkins, GitLab CI, or similar.
-Troubleshoot deployment issues, performing Level 1application support, and ensuring smooth operations across multiple environments.
-Key Responsibilities
+---
 
-Perform deployments of applications and services using CI/CD pipelines created in Jenkins, GitLab, Nexus, SonarQube, Ansible, and shell scripting.
-Operate and maintain orchestration tools (Jenkins or equivalent) to ensure seamless deployment workflows.
-Monitor application and system health using tools like Prometheus, Grafana, or equivalent, and respond to alerts in a timely manner.
-Troubleshoot deployment failures, application startup issues, and other operational problems as part of Level 1 support.
-Collaborate with development, QA, and operations teams to automate processes, improve deployment reliability, and enhance observability.
-Support containerized environments using Docker and, ideally, Kubernetes. Knowledge of ArgoCD or GitOps practices is a plus.
-Participate in 24/7 rotational shifts and on-call schedules to ensure continuous availability of services.
-Travel to client sites for performing on site deployment using CD.
-Work with multiple teams including Change Management Board, IT, Network, DBA, Business and Product Development teams to plan for release schedule and get approvals in place before deployment.
-Be comfortable working with tools like JIRA, OpenProject,etc. for raising and managing appropriate Change requests for deployment.
-Document deployment processes, troubleshooting steps, and standard operating procedures (SOPs).
+## Technical / Functional Skills (Theoretical Knowledge)
+
+- Jenkins  
+- GitLab  
+- Ansible  
+- Nexus  
+- Shell scripting  
+- Prometheus  
+- Grafana  
+
+---
+
+## Job Responsibilities
+
+As a skilled Site Reliability Engineer (SRE), you will manage, maintain, and streamline deployment pipelines while ensuring high availability of applications.
+
+- Perform deployments using orchestration tools like Jenkins, GitLab CI, or similar  
+- Troubleshoot deployment issues and provide Level 1 application support  
+- Ensure smooth operations across multiple environments  
+
+---
+
+## Key Responsibilities
+
+- Perform deployments using CI/CD pipelines (Jenkins, GitLab, Nexus, SonarQube, Ansible, shell scripting)  
+- Operate and maintain orchestration tools (Jenkins or equivalent)  
+- Monitor system and application health using Prometheus, Grafana, or similar tools  
+- Respond to alerts and ensure system reliability  
+- Troubleshoot deployment failures and application issues (Level 1 support)  
+- Collaborate with development, QA, and operations teams to improve automation and observability  
+- Support containerized environments using Docker and Kubernetes (preferred)  
+- Work with ArgoCD or GitOps practices (nice to have)  
+- Participate in 24/7 rotational shifts and on-call schedules  
+- Travel to client sites for on-site deployments  
+- Coordinate with Change Management Board, IT, Network, DBA, Business, and Product teams for release planning  
+- Use tools like JIRA, OpenProject for managing change requests  
+- Document deployment processes, troubleshooting steps, and SOPs
+-
+-
+-
+-
+  perating procedures (SOPs).
