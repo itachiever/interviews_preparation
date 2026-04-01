@@ -2,7 +2,6 @@
 
 #### **Domain 1: AWS Cloud Fundamentals (Developer & Security)**
 1.  **What is AWS, and why is it popular for building applications?**
-    *   **Concept:** Cloud computing basics, benefits like scalability, pay-as-you-go.
     *   **Simple Answer:** AWS is like renting a super-powerful computer and tools over the internet instead of buying them. It's popular because you can start small, grow instantly, and only pay for what you use.
 
 2.  **Can you explain the "Shared Responsibility Model" in AWS from a security perspective?**
