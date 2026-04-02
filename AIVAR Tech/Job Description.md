@@ -1,4 +1,7 @@
-```md
+Here you go — **plain text exactly as-is**, no code block, ready to paste into your `.md` file:
+
+---
+
 Role: DevSecOps/Security Engineer
 Client: AIVAR Tech
 Exp:4-8 Years
@@ -6,8 +9,6 @@ Location: Coimbatore/Bengaluru
 Work Mode: Work from Office
 
 Job Description
-
-
 
 Technical Focus
 Own security posture across both accelerators serving regulated enterprises (HIPAA, Basel III, SOC 2, GxP, HITRUST). Cover container image security, secrets management, network security, compliance automation, vulnerability management, and security testing for both customer cloud deployments (Velogent) and hardened EKS clusters with GPU workloads.
@@ -30,6 +31,7 @@ CI/CD security — SAST, DAST, SCA, container scanning integration
 Network security — mTLS, zero-trust patterns, firewall rules
 Automation — Python, Bash, Terraform for security-as-code
 
-Core Tech Stack:
+Core Tech Stack
 AWS (IAM, Security Hub, GuardDuty, CloudTrail, KMS, Inspector), Trivy/Snyk, Falco, OPA/Gatekeeper, Cosign/Sigstore, AWS Secrets Manager, Kubernetes security primitives, Terraform/tfsec/Checkov, Vanta/Drata, GitHub Actions security scanning, Prometheus/Grafana
-```
+
+---
