@@ -1,4 +1,3 @@
-```md
 Role: DevSecOps/Security Engineer
 Client: AIVAR Tech
 Exp:4-8 Years
@@ -30,6 +29,5 @@ CI/CD security — SAST, DAST, SCA, container scanning integration
 Network security — mTLS, zero-trust patterns, firewall rules
 Automation — Python, Bash, Terraform for security-as-code
 
-Core Tech Stack
+Core Tech Stack:
 AWS (IAM, Security Hub, GuardDuty, CloudTrail, KMS, Inspector), Trivy/Snyk, Falco, OPA/Gatekeeper, Cosign/Sigstore, AWS Secrets Manager, Kubernetes security primitives, Terraform/tfsec/Checkov, Vanta/Drata, GitHub Actions security scanning, Prometheus/Grafana
-```
