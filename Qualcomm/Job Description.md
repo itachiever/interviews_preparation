@@ -1,6 +1,5 @@
 ### Role: FOSS Compliance Engineer
 
----
 
 ### General Summary:
 
@@ -8,7 +7,6 @@ Qualcomm Open Source Engineering team is looking for a FOSS Compliance Engineer 
 
 The primary responsibilities include ensuring license compliance, enhancing software license reporting, and maintaining a software bill of materials (SBOM) and FOSS reports for all product lines. Additionally, the role involves automating compliance processes, educating the development community, and collaborating with various teams to ensure adherence to licensing obligations.
 
----
 
 ### What You’ll Do
 
@@ -23,7 +21,6 @@ The primary responsibilities include ensuring license compliance, enhancing soft
 * Stay current on licensing trends, regulatory developments, and community practices; contribute to continuous improvement of policies and processes.
 * Support reviews, audits, and governance activities, including prerelease compliance gates, customer/partner disclosures, and internal/external audits.
 
----
 
 ### Required Skills & Experience
 
@@ -37,7 +34,6 @@ The primary responsibilities include ensuring license compliance, enhancing soft
 * Ability to work independently, drive improvements, meet schedules, and exhibit strong writing skills.
 * Experience with Linux OS is preferred.
 
----
 
 ### Education Requirements
 
