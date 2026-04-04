@@ -1,3 +1,4 @@
+Link: https://careers.qualcomm.com/careers/job/446717101939?hl=en-US&domain=qualcomm.com&source=APPLICANT_SOURCE-6-2
 ### Role: FOSS Compliance Engineer
 
 
