@@ -158,3 +158,43 @@ A Web Application Firewall (WAF) blocks anything that looks like an attack, such
 
 **Answer:**
 Zero Trust means "never trust, always verify." AWS Security Groups act like gates around the property. K8s Network Policies act like locked doors between rooms inside the property. A Service Mesh acts like a guard that checks ID cards between people inside the rooms. Stacking these three ensures nothing moves anywhere without proving it is safe.
+
+**23. Drata/Vanta Integration:** Vanta flags an EKS cluster as "Non-Compliant" because it can't verify that Container Insights logs are being sent to CloudWatch. How do you automate the evidence collection for this specific control?
+
+**Answer:**
+Tools like Vanta need automatic proof that logging is turned on. Instead of a human taking screenshots, connect Vanta directly to AWS using read-only access. Set up an AWS Config rule that constantly checks if Container Insights is active. When Vanta asks for proof, the AWS Config rule automatically hands over a "yes, it is on" report, closing the compliance task.
+
+**24. Automated Evidence for GxP:** GxP requires immutable records. How do you prove to an auditor that no one SSH'd into an EKS node or executed a shell inside a production pod in the last 6 months?
+
+**Answer:**
+GxP means records cannot be deleted or changed. To prove no one got a command-line shell inside a pod, set up Kubernetes audit logs to permanently record all "exec" requests. Send these logs to a secure storage bucket (like Amazon S3 with Object Lock turned on). Because this storage simply does not allow deletions, the auditor trusts the empty log as absolute proof.
+
+**25. HIPAA PHI Access:** How do you set up an automated alert via Prometheus/Grafana or CloudWatch that triggers when an IAM role not belonging to the `healthcare-group` queries the RDS database containing PHI?
+
+**Answer:**
+Set up a monitor directly on the database login system. Write a simple rule: "Look at every login attempt. If the user's identity tag does not say 'healthcare-group', trigger an immediate alarm." Monitoring tools like CloudWatch can read this login stream in real-time and send an alert to the security team the second an unauthorized user tries to look at patient data.
+
+**26. Continuous Control Validation:** HITRUST requires quarterly vulnerability scans. How do you integrate Inspector/Trivy scans with a CMDB to ensure 100% of the asset inventory is scanned, including transient EKS nodes?
+
+**Answer:**
+Cloud computers (nodes) appear and disappear constantly, making a manual list useless. To ensure 100% are scanned, do not scan on a schedule. Instead, put the scanning tool directly into the startup sequence of the node itself. The exact second a new node turns on, it must scan itself and report to the asset inventory (CMDB) before it is allowed to do any actual work.
+
+**27. Risk Prioritization:** You have 500 Trivy vulnerabilities across Velogent. One is CVSS 9.8 but in an internal library not exposed to the network; another is CVSS 7.5 in the public-facing NGINX ingress. How do you automate this risk prioritization using EPSS or context-aware tools?
+
+**Answer:**
+A high score does not always mean high danger. Automate prioritization by looking at context, not just the score. If a bug is hidden inside the application where the internet cannot reach it, lower its priority. If a lower-scoring bug is on the front door (public NGINX), raise its priority. Use tools that map bugs to actual network exposure to automatically sort the repair list.
+
+**28. Correlating Alerts:** GuardDuty alerts on an IAM anomaly, Falco alerts on a reverse shell in a container, and Prometheus shows a CPU spike—all within 2 minutes. How do you correlate these three distinct data sources in your SIEM to confirm a breach?
+
+**Answer:**
+A SIEM acts like a giant detective board. When three different tools send warnings, the SIEM looks for a shared link—like the exact same time and the exact same computer name. By tying the IAM alert, the reverse shell, and the CPU spike together using this shared link, the SIEM automatically proves it is one coordinated attack, not three random glitches.
+
+**29. Patch SLA Automation:** A critical zero-day drops affecting the Nvidia GPU driver in your EKS nodes. Your SLA is 24 hours. Walk me through the automated Terraform/node-drain workflow to patch this without human intervention.
+
+**Answer:**
+Fixing a zero-day in 24 hours manually is almost impossible. Automate it by connecting the security alert directly to a script. The script automatically builds a new, safe computer image with the patched driver. It then gently tells the old computers to finish their current tasks, moves the workloads to the new computers, and destroys the old, vulnerable ones—all without human clicks.
+
+**30. Shift-Left vs. Runtime:** If you had to choose between investing budget in shift-left CI/CD scanning (SAST/DAST) or runtime security (Falco/SIEM) for a brand new accelerator, how would you justify your choice to the CTO based on the regulated nature of AIVAR's clients?
+
+**Answer:**
+For highly regulated clients, catching mistakes *before* the code runs (Shift-Left) is the safest investment. Fixing a bug while writing code costs pennies and keeps bad software out of the system entirely. Runtime security is just a safety net for when things slip through. Shift-Left prevents the fire from ever starting; runtime security just helps put it out after the damage is done.
