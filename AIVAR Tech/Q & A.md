@@ -99,3 +99,62 @@ Audit logs record every single action, which costs a lot of money to store. To s
 Sharing a cluster is like sharing an apartment building. To keep tenants safe, use Network Policies. This acts like an invisible wall between apartments (namespaces), so Customer A absolutely cannot send data to Customer B. For compute limits, use "Resource Quotas" to ensure Customer A cannot use up all the memory and crash Customer B's apps.
 
 
+**11. Pipeline Sequencing:** In a GitHub Actions workflow, at exactly which stages do you inject SAST (e.g., Semgrep), SCA (Snyk), and Container Scanning (Trivy)? More importantly, how do you prevent a developer from bypassing the SCA step using a PR label?
+
+**Answer:**
+Run SAST (code scanning) first when the developer submits the code. Run SCA (library checking) next, and Container Scanning last when building the final package. To prevent developers from skipping steps using a PR label, the main branch protection rules must be configured to strictly reject any pull request where the security scanning job was skipped, regardless of labels.
+
+**12. SCA False Positives:** Snyk flags a critical transitive dependency CVE in your Python app, but the vulnerable function isn't called. SOC2 auditors want it fixed. How do you use automation (like Reachability analysis) to formally document and dismiss this risk?
+
+**Answer:**
+A false positive happens when a scanner finds a flaw in a borrowed piece of code, but the main app never actually uses that broken part. "Reachability analysis" is a feature that traces the code path to prove the broken part is unreachable. This creates an automated, mathematically proven report that auditors accept to officially dismiss the fake warning.
+
+**13. Security-as-Code:** A developer writes a Terraform module that creates an EKS cluster with public endpoint access enabled. How do you use `tfsec` or `Checkov` in pre-commit hooks to block this commit and generate a Jira ticket?
+
+**Answer:**
+`tfsec` and `Checkov` act like spell-checkers for infrastructure code. Placed in a "pre-commit hook," they run automatically the second a developer tries to save their work. If the tool spots a public cluster setting, it throws an error, blocks the code from saving, and uses a web integration to automatically create a repair ticket in Jira.
+
+**14. GitHub Actions Poisoning:** A supply chain attack occurs because a third-party GitHub Action was compromised. How do you mitigate this using Action Pinning (SHA vs. Tag) and OIDC trust policies?
+
+**Answer:**
+Hackers can sneak bad code into a tool if it is referenced by a simple name (Tag) that can be moved. Pinning locks the tool using a "SHA," which is a unique, unchangeable fingerprint of that exact code version. Additionally, using OIDC (short-lived identity tokens) instead of saved passwords ensures that even if a tool is compromised, the hacker gets no permanent access.
+
+**15. ESO Architecture:** Why use the External Secrets Operator (ESO) instead of native K8s secrets? Explain the synchronization loop and how you prevent a K8s admin from decrypting an AWS Secrets Manager secret just because they have K8s cluster admin rights.
+
+**Answer:**
+Native Kubernetes secrets are easily read by anyone with admin access. ESO acts like a secure delivery truck: it pulls the secret from AWS and puts it in the cluster, but it never hands over the master key. The K8s admin can see the locked box, but without separate AWS permissions, they cannot open it to read the actual password.
+
+**16. Zero-Downtime Rotation:** A database credential used by a Velogent microservice needs rotating per HITRUST requirements. Walk me through how AWS Secrets Manager triggers a rotation without dropping active HIPAA transactions.
+
+**Answer:**
+Instead of changing a password instantly and breaking active users, AWS Secrets Manager uses a two-step method. It creates a *second* password and updates the app to use it. Once the app safely switches to the new password, the system waits a few minutes for old transactions to finish, and only then deletes the *old* password. 
+
+**17. etcd Encryption:** You enable encryption at rest for K8s secrets using the KMS plugin. A developer accidentally deletes the KMS key. What exactly happens to the running cluster and the workloads?
+
+**Answer:**
+The `etcd` database is the vault where Kubernetes stores all its passwords. If the master key to this vault is deleted, apps that are already running will not crash immediately. However, if those apps restart, or if anyone tries to update or read a password, the system will fail completely because the database is permanently locked and unreadable.
+
+**18. CI/CD Secret Leakage:** A developer hardcodes an AWS key in a GitHub Action script. GitHub scans and deletes it, but it was live for 5 minutes. Walk me through your automated incident response (revoke key, scan code, block merge).
+
+**Answer:**
+An automated response system links GitHub and AWS together. When GitHub detects the leak, it immediately sends an alert to AWS to permanently delete that specific key. Simultaneously, it blocks the developer's code from merging and automatically runs a scanner across the entire codebase to ensure the key wasn't copied anywhere else.
+
+**19. mTLS Implementation:** How do you implement mTLS between microservices in EKS? If a service's certificate expires, how does the mutual authentication failover work without taking down the payment pipeline?
+
+**Answer:**
+mTLS means services show ID cards to each other before talking. To prevent an expired ID card from crashing the system, a tool like "Cert-Manager" is used. It automatically generates new ID cards days before the old ones expire and swaps them out behind the scenes, ensuring the payment pipeline never notices a change.
+
+**20. Egress Control:** HIPAA requires preventing data exfiltration. How do you restrict a specific pod in EKS from initiating outbound connections to the internet while still allowing it to pull images from a private ECR?
+
+**Answer:**
+By default, pods can talk to the internet. To stop this, a "default deny" rule is applied to block all outgoing traffic. Then, a specific exception rule is written: "Block all internet traffic, *except* if the destination is the specific private AWS storage address (ECR)." This acts like a firewall letting only approved traffic leave the building.
+
+**21. WAF Tuning:** AWS WAF blocks a legitimate JSON payload from a customer hitting the Velogent API (False Positive). How do you tune the rule without opening up a SQL injection vulnerability?
+
+**Answer:**
+A Web Application Firewall (WAF) blocks anything that looks like an attack, such as specific symbols. If it accidentally blocks good customer data, the rule needs narrowing. Instead of turning the security rule off entirely, an exception is added that says "Ignore this specific rule, but only for this exact website page," keeping the rest of the site protected.
+
+**22. Zero Trust Networking:** Explain how you combine AWS Security Groups, K8s Network Policies, and Service Mesh to achieve a true Zero Trust architecture for an EKS GPU workload.
+
+**Answer:**
+Zero Trust means "never trust, always verify." AWS Security Groups act like gates around the property. K8s Network Policies act like locked doors between rooms inside the property. A Service Mesh acts like a guard that checks ID cards between people inside the rooms. Stacking these three ensures nothing moves anywhere without proving it is safe.
