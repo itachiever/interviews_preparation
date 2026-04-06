@@ -1,5 +1,5 @@
 ### JOB DESCRIPTION :
-Role: DevSecOps 
+Role: DevSecOps | 
 Client: KPMG
 
 #### Required Qualifications
