@@ -1,10 +1,13 @@
 1. How does the concept of **data integrity** at rest protect an ML pipeline from **data poisoning** before the training phase even begins?
+
 **Answer:** Data integrity uses **digital fingerprints** to check if data changed. If a hacker alters the training data, the fingerprint breaks, stopping the bad data from entering the system.
 
 2. Why does the concept of **deserializing** untrusted binary files pose an inherent **arbitrary code execution** risk in machine learning environments?
+
 **Answer:** When loading a model file, the system unpacks it. A dangerous file can trick the system into **unpacking hidden malware** instead of just data, running it instantly.
 
 3. Why does the traditional concept of **dynamic application security testing** fundamentally fail to detect **adversarial ML attacks** against inference endpoints?
+
 **Answer:** Traditional tools send broken inputs to **crash the app**. Adversarial ML attacks send perfectly valid inputs designed to **trick the AI's brain**, which traditional tools do not understand.
 
 4. In an ML architecture, how does defining a strict **trust boundary** between the feature store and the model registry prevent **supply chain tampering**?
