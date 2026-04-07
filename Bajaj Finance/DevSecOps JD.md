@@ -1,16 +1,16 @@
 # Domain Manager - Information Security
 
-## Company
+### Company
 **Bajaj Finance Limited**
 
-## Department
+### Department
 Information Security
 
-## Reports To
+### Reports To
 Associate Delivery Manager - Information Security
 
 
-## Job Purpose
+### Job Purpose
 
 Information Security team member (with skip-level reporting to CISO) responsible for managing Source Code Security and Software Bill of Materials (SBOM). The role involves security tool governance, regulatory compliance, driving security initiatives, and monitoring Key Risk Indicators (KRIs).
 
@@ -40,7 +40,7 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Stay updated on emerging risks and coordinate mitigation efforts.
 
 
-## Additional Responsibilities
+#### Additional Responsibilities
 
 - Define and enforce secure coding standards and policies.
 - Conduct VAPT (Vulnerability Assessment & Penetration Testing).
@@ -53,23 +53,23 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Communicate effectively with stakeholders across functions.
 
 
-## Major Challenges
+#### Major Challenges
 
 - Managing multiple stakeholders simultaneously.
 - Validating vulnerabilities identified through SAST tools.
 - Coordinating with third-party auditors and compliance teams.
 
 
-## Key Decisions
+#### Key Decisions
 
 - Identify appropriate stakeholders for issue resolution.
 - Classify alerts as true positives or false positives.
 - Improve security controls based on findings.
 - Update policies and procedures based on regulatory or audit changes.
 
-## Stakeholder Interaction
+#### Stakeholder Interaction
 
-### Internal
+##### Internal
 - IT Team
 - Business Teams
 - Legal Team
@@ -77,17 +77,17 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Compliance Team
 - CISO Office
 
-### External
+##### External
 - Regulatory Authorities
 - Third-party auditors and security consultants
 
-## Skills & Qualifications
+#### Skills & Qualifications
 
-### Education
+##### Education
 - Engineering graduate
 - 4–5 years of experience in DevSecOps or Application Security
 
-### Technical Skills
+##### Technical Skills
 - Strong experience in secure code reviews and SBOM management
 - Knowledge of OWASP Top 10 and secure coding practices
 - Experience with tools:
@@ -101,18 +101,18 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Experience with CI/CD pipelines and security integration
 - Understanding of IT infrastructure and regulatory requirements (NBFC context)
 
-### Soft Skills
+##### Soft Skills
 - Strong analytical and troubleshooting abilities
 - Effective communication skills
 - Team player with mentoring capability
 
-### Preferred Certifications
+##### Preferred Certifications
 - CEH (Certified Ethical Hacker)
 - Cloud Security (AWS/Azure)
 - Application Penetration Testing
 
 
-## Other Details
+#### Other Details
 
 - Team Size: 5
 - Location: Pune (Mantri HO)
