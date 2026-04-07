@@ -1,7 +1,6 @@
 # Domain Manager - Information Security
 
-### Company
-**Bajaj Finance Limited**
+### Company: Bajaj Finance Limited
 
 ### Department
 Information Security
