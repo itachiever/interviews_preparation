@@ -9,13 +9,10 @@ Information Security
 ## Reports To
 Associate Delivery Manager - Information Security
 
----
 
 ## Job Purpose
 
 Information Security team member (with skip-level reporting to CISO) responsible for managing Source Code Security and Software Bill of Materials (SBOM). The role involves security tool governance, regulatory compliance, driving security initiatives, and monitoring Key Risk Indicators (KRIs).
-
----
 
 ## Key Responsibilities
 
@@ -42,7 +39,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Continuously monitor and prioritize security threats.
 - Stay updated on emerging risks and coordinate mitigation efforts.
 
----
 
 ## Additional Responsibilities
 
@@ -56,7 +52,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Provide guidance and mentorship to team members.
 - Communicate effectively with stakeholders across functions.
 
----
 
 ## Major Challenges
 
@@ -64,7 +59,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Validating vulnerabilities identified through SAST tools.
 - Coordinating with third-party auditors and compliance teams.
 
----
 
 ## Key Decisions
 
@@ -72,8 +66,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Classify alerts as true positives or false positives.
 - Improve security controls based on findings.
 - Update policies and procedures based on regulatory or audit changes.
-
----
 
 ## Stakeholder Interaction
 
@@ -88,8 +80,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 ### External
 - Regulatory Authorities
 - Third-party auditors and security consultants
-
----
 
 ## Skills & Qualifications
 
@@ -121,7 +111,6 @@ Information Security team member (with skip-level reporting to CISO) responsible
 - Cloud Security (AWS/Azure)
 - Application Penetration Testing
 
----
 
 ## Other Details
 
