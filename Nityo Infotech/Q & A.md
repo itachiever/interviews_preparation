@@ -136,4 +136,59 @@
 **Answer:** **Immediate:** Coordinate with the team to patch the code or, if that takes time, put a Web Application Firewall (WAF) rule in place to virtually block the attack pattern in production immediately. **Root-Cause:** Investigate *why* SAST missed it. Was the SAST tool misconfigured? Was the vulnerability caused by a server setting SAST can't see (like a missing HTTP header)? Once I find the gap, I configure a new automated check in the pipeline to ensure that specific type of vulnerability is caught next time.
 
 
+**23. What are the top 3 security misconfigurations you look for when reviewing a developer's Dockerfile?**
+**Answer:** 
+1. Running the application as the `root` user (I look for a missing `USER` instruction).
+2. Using the `latest` tag for base images, which is unpredictable and makes vulnerability tracking impossible.
+3. Installing unnecessary software packages (like `curl`, `vim`, or `wget`) that increase the attack surface and should be removed in the final production image using multi-stage builds.
 
+**24. How do you ensure that the container image running in production is the *exact same* image that was scanned and approved in the CI/CD pipeline?**
+**Answer:** By strictly using image "Digests" instead of "Tags" in my Kubernetes or ECS deployment manifests. A tag like `app:v1.2` is mutable—someone could overwrite it with a new, unscanned image. A digest (e.g., `app@sha256:abc123...`) is an immutable fingerprint. The CI/CD pipeline scans the image, gets the digest, and injects that exact digest string into the deployment file. Production will only accept that exact cryptographic match.
+
+**25. A base image (e.g., `node:14`) has a newly announced Critical CVE, but there is no patched version available yet. What is your mitigation strategy?**
+**Answer:** If the CVE is in a tool inside the image that my application doesn't actually use (like `curl` or `bash`), I rewrite the Dockerfile to remove that tool entirely. If it's in a core library, I look for an alternative base OS (like switching from Ubuntu to Alpine Linux, which has a smaller attack surface). If neither works, I implement a "virtual patch" by putting a Web Application Firewall (WAF) rule in front of the application to block the attack pattern until the vendor releases a fix.
+
+**26. How do you implement runtime security for containers (e.g., preventing a container from spawning a shell or accessing the host filesystem)?**
+**Answer:** I use Kubernetes Pod Security Standards (PSS) or Open Policy Agent (OPA). In the deployment YAML, I set `allowPrivilegeEscalation` to `false` and `runAsNonRoot` to `true`. I also set `readOnlyRootFilesystem: true` so the application can't write to unexpected places. This ensures that even if a hacker breaks into the container, they are trapped in a read-only environment and cannot escalate their attack to the underlying AWS server.
+
+**27. What are the inherent risks of using native CI/CD secret variables (like GitHub Actions Secrets or Jenkins Credentials) compared to a dedicated vault?**
+**Answer:** Native secrets are often "static" (they don't expire unless manually rotated), lack detailed audit logs (you can't easily see exactly which pipeline accessed a secret), and can sometimes be leaked into pipeline logs if a script fails and dumps environment variables. A dedicated vault (like HashiCorp Vault) provides dynamic secrets (temporary passwords that auto-destroy), strict audit trails of every access, and centralized enterprise management.
+
+**28. Walk me through the workflow of a pipeline securely retrieving a dynamic database credential from HashiCorp Vault or AWS Secrets Manager.**
+**Answer:** The CI/CD runner authenticates to Vault using its own identity (like an AWS IAM role or a JWT token). Vault verifies the identity and checks if that specific pipeline is allowed to request a database password. Vault then generates a brand-new, temporary database password (valid for only 1 hour). The pipeline injects this temporary password into the application at runtime. When the hour is up, Vault automatically revokes the password, ensuring no stale credentials exist.
+
+**29. How do you prevent developers from accidentally committing secrets (API keys) to Git, and how do you react if a secret is pushed?**
+**Answer:** **Prevention:** I install pre-commit hooks (like GitGuardian or TruffleHog) locally on developer machines that scan code the moment they type `git commit`. **Reaction:** If a secret still gets pushed, the immediate response is not just deleting the code. Because Git retains history, the secret is still compromised. I immediately revoke/rotate that API key in the external system, rewrite the Git history using tools like `git-filter-repo` to remove the secret completely, and enforce branch protection rules to prevent direct pushes to the main branch.
+
+**30. How do you securely pass secrets to an application running inside a Kubernetes Pod without writing them to disk?**
+**Answer:** Instead of mounting K8s Secrets as files inside the container (which writes them to the virtual disk), I use the concept of "Inline Secrets" or integrate a Vault Agent sidecar. The Vault sidecar container runs alongside the application, fetches the secret into memory, and exposes it to the application as a temporary environment variable. The secret lives only in the container's RAM and never touches the underlying server's disk storage.
+
+**31. What are the security risks of writing IaC (Terraform/Bicep), and how do you scan IaC templates *before* they provision infrastructure?**
+**Answer:** The biggest risk is "Infrastructure Misconfiguration"—a developer might write a Terraform script that accidentally opens an AWS S3 bucket to the entire internet, or creates a database without encryption. I prevent this by integrating tools like Checkov or tfsec into the CI/CD pipeline. These tools read the Terraform code *before* the `terraform apply` command runs, look for violations against CIS benchmarks, and fail the pipeline if a misconfiguration is found.
+
+**32. How do you securely manage and protect the Terraform State file in an AWS environment?**
+**Answer:** The Terraform state file contains all the plain-text details of your infrastructure, including passwords and private IPs. I secure it by storing it in an AWS S3 bucket that has Server-Side Encryption (SSE) enabled. I enable S3 Versioning so if someone accidentally deletes the state, we can restore it. Finally, I enable DynamoDB State Locking so that if two developers run Terraform at the same time, the second one is blocked, preventing corrupted state files.
+
+**33. Explain how you would use Terraform to enforce the principle of least privilege for an AWS IAM role used by a microservice.**
+**Answer:** Instead of using an overly permissive AWS managed policy (like `AmazonS3FullAccess`), I write a custom Terraform IAM policy document. I explicitly list only the exact actions the app needs (e.g., `s3:GetObject` and `s3:PutObject`) and restrict the `resources` array to only the ARN (Amazon Resource Name) of the specific S3 bucket that microservice owns. If the microservice tries to access any other bucket, AWS will block it.
+
+**34. How do you automate the rotation of infrastructure secrets (like database passwords) using IaC without causing downtime?**
+**Answer:** IaC shouldn't directly rotate passwords; it manages the *permissions* to get them. I use AWS Secrets Manager (or Vault) to handle the actual rotation via a Lambda function that updates the DB password on a schedule. In my Terraform code, I simply ensure the application's IAM role has permission to read that secret. When the password rotates in the background, the application fetches the new password from Secrets Manager on its next startup or request, requiring zero infrastructure changes and zero downtime.
+
+**35. Explain Policy-as-Code in simple terms. Why is it considered a mature step up from traditional security gates?**
+**Answer:** Traditional security gates rely on a human checking a manual checklist before approving a deployment. Policy-as-Code replaces the human with a software rule (like OPA or Sentinel). If a developer writes code to create a public database, the policy code automatically rejects it before it ever reaches AWS. It is mature because software doesn't get tired, doesn't have biases, scales instantly across 100 teams, and provides 100% consistent enforcement.
+
+**36. Give me a practical example of a policy you would write in OPA (Rego) or Terraform Sentinel for an AWS environment.**
+**Answer:** *"Deny any AWS EC2 instance creation if the `associate_public_ip_address` is set to true, UNLESS the instance has a specific tag indicating it is a public load balancer."* This single piece of code ensures that no developer can accidentally spin up a server with a public IP address, completely eliminating a massive attack vector across the entire organization.
+
+**37. How does Policy-as-Code integrate with a GitOps workflow?**
+
+**Answer:** In GitOps, the Git repository is the single source of truth. When a developer submits a Pull Request to modify infrastructure, a pre-submit webhook triggers the Policy-as-Code engine (like OPA). The engine evaluates the proposed changes. If the policy fails, the PR is blocked and a comment is posted explaining the violation. The infrastructure is never deployed, and the Git repository remains in a secure, compliant state.
+
+**38. Scenario: A SAST tool flags a critical SQL injection in a legacy monolith. Devs say it’s a false positive but can't fix it before the end-of-quarter release. As an L2 DevSecOps engineer, how do you handle this without compromising security or halting the business?**
+
+**Answer:** This requires a risk-based, compensating control approach. 
+1. **Verify:** I quickly review the code with the security team to confirm if it is truly a false positive.
+2. **Mitigate:** If it's a real risk but can't be coded out, I implement a Web Application Firewall (WAF) rule specifically designed to block SQL injection patterns targeting that specific endpoint. 
+3. **Monitor:** I ensure enhanced logging is turned on for that endpoint to detect any active exploitation attempts.
+4. **Approve with SLA:** I approve an official security exception for this release *only* because the WAF neutralizes the threat, but I create a mandatory, high-priority Jira ticket that must be fixed in the very first sprint of the next quarter.
