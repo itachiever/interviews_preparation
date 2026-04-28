@@ -1,11 +1,12 @@
-We have opportunity for the position of Devsecops for our Client (NTT Data) on the payroll of Nityo Infotech.
+## DevSecOps (L2) Opportunity
 
-JD
+We have an opportunity for the position of **DevSecOps Engineer (L2)** for our client (**NTT Data**) on the payroll of **Nityo Infotech**.
 
-DevSecOps (L2) – Key Responsibilities
+### Job Description (JD)
 
-Adheres and implements and own the DevSecOps strategy and governance framework across AWS environments.
-Adheres and implements secure, scalable CI/CD pipelines and toolchain integrations (SAST, SCA, DAST, container security) as per Sun Pharma DevSecOps architecture.
-Implement policy-as-code and compliance automation aligned with OWASP/NIST/CIS.
-Design reusable IaC and pipeline standards for multi-team adoption.
-Drive metrics, automation maturity, and continuous improvement across DevSecOps practices.
+#### Key Responsibilities
+- Implement and own the DevSecOps strategy and governance framework across AWS environments.  
+- Design and implement secure, scalable CI/CD pipelines with integrated toolchains (SAST, SCA, DAST, container security) as per Sun Pharma DevSecOps architecture.  
+- Implement policy-as-code and automate compliance aligned with OWASP, NIST, and CIS benchmarks.  
+- Design reusable Infrastructure-as-Code (IaC) modules and pipeline standards for multi-team adoption.  
+- Drive metrics, enhance automation maturity, and ensure continuous improvement across DevSecOps practices.  
