@@ -12,7 +12,7 @@ Client **NTT Data** on the payroll of **Nityo Infotech**
 - Drive **metrics, enhance automation maturity, and ensure continuous improvement** across DevSecOps practices.  
 
 
-
+#### Key Skills
 - **DevSecOps Practice & Secure SDLC**: Embed security across CI/CD; apply shift-left principles.  
 - **Automation & Infrastructure-as-Code (IaC)**: Automate infrastructure and security deployment using Terraform/Bicep and CI tools.  
 - **SAST (Static Code Analysis)**: Integrate static scans (SonarQube, CodeQL, etc.) into pipelines.  
