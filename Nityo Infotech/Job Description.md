@@ -1,6 +1,6 @@
-## DevSecOps (L2) Opportunity
+## Role: DevSecOps (L2)
 
-We have an opportunity for the position of **DevSecOps Engineer (L2)** for our client (**NTT Data**) on the payroll of **Nityo Infotech**.
+Client **NTT Data** on the payroll of **Nityo Infotech**
 
 ### Job Description (JD)
 
