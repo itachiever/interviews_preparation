@@ -1,4 +1,4 @@
-# Questions
+# Questions 
 
 ### Category 1: Strategy, Governance & Compliance
 1. How do you explain the "Shift-Left" principle to a development team that views security purely as a roadblock?
