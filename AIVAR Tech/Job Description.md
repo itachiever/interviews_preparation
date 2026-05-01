@@ -1,4 +1,4 @@
-### Role: DevSecOps/Security Engineer 
+### Role: DevSecOps/Security Engineer
 
 **Client:** AIVAR Tech
 **Exp:** 4-8 Years
