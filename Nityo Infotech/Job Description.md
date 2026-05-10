@@ -1,6 +1,6 @@
  ## Role: DevSecOps (L2)
 
-Client **NTT Data** on the payroll of **Nityo Infotech**
+Client **NTT Data** on the payroll of **Nityo Infotech** 
 
 ### Job Description (JD)
 
