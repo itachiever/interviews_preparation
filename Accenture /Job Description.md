@@ -1,13 +1,3 @@
-Accenture logo
-Welcome, YUVARAJU KUMAR DASARI
-"We're excited to have you here!"
-Request slots for interview
-DevOps Engineer | C21462683 | Management Level - 10 | Skill Interview | Hyderabad
-Job Requisition ID : ATCI-5099096-S1885839    View Job Description
-Schedule Interview
- 2024 Accenture All Rights Reserved
-Cookies Settings
-✕
 DevOps Engineer
 Job Description
 Project Role : DevOps Engineer
