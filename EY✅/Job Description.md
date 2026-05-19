@@ -3,8 +3,6 @@
 **Location:** Bangalore (Hybrid Mode)  
 **Experience:** 4+ Years
 
----
-
 # Job Description
 
 We are seeking a DevSecOps Engineer to design, implement, and operate secure, automated, and scalable CI/CD platforms on Microsoft Azure. The role embeds security controls across the entire cloud and application lifecycle, while enabling development teams to deliver software rapidly and safely.
@@ -19,8 +17,6 @@ The candidate should have a mindset that balances:
 - Speed
 - Resilience
 - Risk management
-
----
 
 # Key Responsibilities
 
@@ -48,8 +44,6 @@ Manage:
 Enable:
 - Shift-left security practices across development teams
 
----
-
 ## 2. Azure Cloud Infrastructure & Automation
 
 Design and implement secure cloud infrastructure using:
@@ -71,8 +65,6 @@ Manage and secure Azure resources including:
 Support:
 - Multi-environment deployments (Dev, UAT, Prod)
 
----
-
 ## 3. Security Engineering & Controls
 
 Embed security into cloud and application lifecycle:
@@ -92,8 +84,6 @@ Use Azure-native security services:
 - Azure Policy
 - Azure Blueprints
 
----
-
 ## 4. Container & Platform Security
 
 Secure containerized workloads using:
@@ -110,8 +100,6 @@ Implement:
 Support:
 - Runtime security
 - Vulnerability remediation
-
----
 
 ## 5. Monitoring, Reliability & Operations
 
@@ -130,8 +118,6 @@ Support:
 - Root cause analysis
 - Post-incident reviews
 
----
-
 ## 6. Governance, Risk & Compliance
 
 Enforce cloud governance using:
@@ -149,8 +135,6 @@ Collaborate with:
 - Security teams
 - Architecture teams
 - Risk and Compliance stakeholders
-
----
 
 # Qualifications
 
