@@ -1,6 +1,6 @@
 # DevOps Engineer
 
-## Job Description
+## Job Description 
 
 **Project Role:** DevOps Engineer  
 **Project Role Description:** Responsible for building and setting up new development tools and infrastructure utilizing knowledge in continuous integration, delivery, and deployment (CI/CD), Cloud technologies, Container Orchestration and Security. Build and test end-to-end CI/CD pipelines, ensuring that systems are safe against security threats.
