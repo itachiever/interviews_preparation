@@ -10,7 +10,7 @@ The DevSecOps Engineer is responsible for integrating security across the softwa
 
 A successful DevSecOps Engineer demonstrates strong hands-on technical capability, understands modern cloud-native architectures, and proactively applies security best practices without slowing delivery.
 
----
+
 
 ## Job Responsibilities
 
@@ -67,7 +67,7 @@ A successful DevSecOps Engineer demonstrates strong hands-on technical capabilit
 
 - Any additional duties needed to help demonstrate our core values, drive our vision, and fulfill our mission.
 
----
+
 
 ## Competencies
 
@@ -81,7 +81,6 @@ A successful DevSecOps Engineer demonstrates strong hands-on technical capabilit
 - Teamwork
 - Technical Proficiency
 
----
 
 ## Qualifications
 
@@ -104,7 +103,6 @@ A successful DevSecOps Engineer demonstrates strong hands-on technical capabilit
 - Ability to automate repetitive security tasks using scripts or pipelines.
 - Strong problem-solving skills and the ability to collaborate with cross-functional teams.
 
----
 
 ## Preferred Qualifications
 
@@ -113,7 +111,7 @@ A successful DevSecOps Engineer demonstrates strong hands-on technical capabilit
 - Familiarity with compliance standards and audit preparation.
 - Experience working in cloud-native, microservices-based environments.
 
----
+
 
 ## Physical Demands and Working Conditions
 
@@ -128,7 +126,6 @@ The worker is required to have close visual acuity to perform activities such as
 - Viewing a computer terminal
 - Extensive reading
 
----
 
 ## Employment Details
 
