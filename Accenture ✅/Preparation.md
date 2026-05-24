@@ -451,3 +451,84 @@ My role was mainly:
 * troubleshooting authentication/access issues,
 * and coordinating secure access management with teams.”
 
+## Artifact lifecycle
+
+“In our project, artifact lifecycle starts from code commit and continues till production deployment and rollback management.
+
+1. **Code Commit**
+   Developer pushes code into GitLab repository.
+
+2. **CI Pipeline Trigger**
+   Jenkins pipeline gets triggered automatically.
+
+3. **Build Stage**
+   Application is built using:
+
+   * Maven/Gradle,
+   * npm,
+   * Python packaging,
+     depending on tech stack.
+
+4. **Security & Quality Validation**
+   Before artifact creation we run:
+
+   * SonarQube,
+   * Fortify SAST,
+   * Sonatype SCA/SBOM,
+   * GitLeaks,
+   * Trivy for container images.
+
+   If policy violations exceed threshold, artifact promotion stops.
+
+5. **Artifact Packaging**
+   Output artifacts may be:
+
+   * JAR/WAR,
+   * binaries,
+   * Docker images.
+
+6. **Versioning & Tagging**
+   Artifacts are tagged with:
+
+   * build number,
+   * release version,
+   * Git commit reference.
+
+7. **Artifact Signing**
+   We use Cosign for image/artifact signing to ensure integrity and authenticity.
+
+8. **Storage in Nexus**
+   Validated artifacts are pushed into Nexus Repository Manager.
+
+9. **Environment Promotion**
+   Same approved artifact moves across:
+   DEV → SIT → UAT → PROD
+
+   We avoid rebuilding artifact for every environment to maintain consistency.
+
+10. **Deployment**
+
+* VM deployments use Ansible + Nexus artifacts
+* Kubernetes deployments use signed Docker images from registry.
+
+11. **Verification Before Deployment**
+    Deployment pipelines verify:
+
+* artifact version,
+* signature,
+* vulnerability compliance,
+  before deployment execution.
+
+12. **Retention & Cleanup**
+    Old artifacts are maintained based on retention policies for rollback and audit purposes.
+
+13. **Rollback Support**
+    Previous stable artifact versions remain available in Nexus for quick rollback during failures.
+
+My role was mainly:
+
+* integrating artifact flow into Jenkins,
+* configuring security validation gates,
+* managing artifact promotion workflows,
+* supporting signing/verification,
+* and troubleshooting deployment or repository issues.”
