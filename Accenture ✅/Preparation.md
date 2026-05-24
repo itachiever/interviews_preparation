@@ -649,6 +649,9 @@ My role was mainly:
 
 In DevOps/DevSecOps, we use Python API automation for integrating tools like Jenkins, SonarQube, Jira, Kubernetes, or cloud platforms. This script demonstrates how to send a GET request to an API, validate response status, parse JSON output, and extract required information programmatically.
 
+```
+
+
 import requests
 
 # API endpoint
@@ -671,4 +674,4 @@ else:
     print("Failed to fetch data")
     print("Status Code:", response.status_code)
 
-    
+```
