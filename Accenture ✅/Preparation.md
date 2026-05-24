@@ -673,4 +673,35 @@ else:
     print("Status Code:", response.status_code)
 ```
 
+We used similar Python scripts in CI/CD pipelines to fetch vulnerability scan reports from security tools and automatically validate deployment conditions before production release.
+
+
+## Python filtering vulnerabilities usign Lambda:
+
+
+In real DevSecOps pipelines, vulnerability details are fetched dynamically through APIs from tools like Trivy or SonarQube. Python scripts parse the JSON response into dictionaries/lists and automatically filter critical findings before deployment approval.
+
+Data flow: API Call → JSON Response → Python Dictionary/List → Filtering → Decision
+
+```python
+import requests
+
+# Security tool API endpoint
+url = "https://api.securitytool.com/vulnerabilities"
+
+# Send API request
+response = requests.get(url)
+
+# Convert JSON response to Python list/dictionary
+vulnerabilities = response.json()
+
+# Filter HIGH and CRITICAL vulnerabilities
+critical_vulnerabilities = list(filter(
+    lambda v: v["severity"] in ["HIGH", "CRITICAL"],
+    vulnerabilities
+))
+
+print(critical_vulnerabilities)
+```
+
 
