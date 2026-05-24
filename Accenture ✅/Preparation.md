@@ -1,8 +1,8 @@
-# Self introduction:
+## Self introduction:
 
 “Hi, thank you for the opportunity.
 
-My name is Yuvaraju Sai Kumar, and currently I’m working as a DevSecOps Engineer at TalaKunchi Networks, where I’m deployed to the client side at ISG, which is a fintech organization providing payment gateway solutions for banking clients.
+My name is (NAME), and currently I’m working as a DevSecOps Engineer at (CURRENT COMPANY NAME), where I’m deployed to the client side at (CLIENT NAME), which is a fintech organization providing payment gateway solutions for banking clients.
 
 Overall, I have around 4 years of experience across DevOps and DevSecOps domains.
 
@@ -16,14 +16,16 @@ My responsibilities include integrating these security tools into CI/CD pipeline
 
 I’m also involved in deployment workflows, artifact promotion processes, rollback handling, secrets management integrations using Vault, and monitoring activities using Prometheus and Grafana.
 
-Before this, I worked at TCS, where I was mainly involved in CI/CD support, automation, deployment coordination, monitoring, and operational activities.
+Before this, I worked at (PREVIOUS COMPANY NAME), where I was mainly involved in CI/CD support, automation, deployment coordination, monitoring, and operational activities.
 
 Technically, I’m comfortable with Jenkins, GitLab CI, Docker, Kubernetes basics, Terraform fundamentals, security tooling integrations, Linux, scripting, and DevSecOps workflows.
 
 Currently, I’m looking for an opportunity where I can work on larger enterprise DevSecOps environments, improve my cloud and automation exposure further, and contribute more towards secure CI/CD and platform engineering initiatives.”
 
-# Project Archirecture & Day to day activities:
-“Currently, I’m working on a fintech client environment called ISG, where they provide payment gateway and financial transaction solutions for banking clients.
+
+## Project Archirecture & Day to day activities:
+
+“Currently, I’m working on a fintech client environment called (CLIENT NAME), where they provide payment gateway and financial transaction solutions for banking clients.
 
 The environment is a hybrid architecture where some applications are traditional VM-based deployments and some are Kubernetes-based microservices applications.
 
