@@ -1,3 +1,16 @@
+# FINAL PREPARATION PLAN BEFORE INTERVIEW
+Revise These 10 Things
+Self introduction
+Project architecture
+Jenkins pipeline flow
+Security integrations
+Kubernetes deployment flow
+Rollback process
+Secrets management flow
+Artifact lifecycle
+Production troubleshooting
+Your exact responsibilities
+
 ## Self introduction:
 
 “Hi, thank you for the opportunity.
