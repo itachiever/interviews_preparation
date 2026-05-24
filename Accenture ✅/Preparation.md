@@ -307,3 +307,67 @@ My involvement was mainly:
 * troubleshooting failed deployments,
 * coordinating with developers,
 * and validating deployment health after release.”
+
+
+## Rollback process
+
+
+“In our project rollback process was designed to quickly restore the last stable version if deployment failed or application health degraded.
+
+For Kubernetes-based deployments:
+
+1. Jenkins deploys new image using rolling update strategy.
+2. Kubernetes gradually replaces old pods with new pods.
+3. During deployment we monitor:
+
+   * pod health,
+   * readiness/liveness probes,
+   * application logs,
+   * and monitoring dashboards.
+
+If issues occur like:
+
+* pod crash,
+* application errors,
+* failed health checks,
+* or performance degradation,
+
+then rollback is triggered.
+
+We mainly use:
+
+```bash
+kubectl rollout undo deployment/<deployment-name> -n <namespace>
+```
+
+This automatically restores previous stable ReplicaSet and image version.
+
+In some cases Jenkins pipeline itself supports rollback parameter where previous stable image tag from Nexus is redeployed automatically.
+
+For VM-based deployments:
+
+* artifacts are versioned in Nexus,
+* Ansible playbooks redeploy previous stable artifact version,
+* configuration backup and previous release references are maintained.
+
+In our multi-DC deployments:
+
+* deployment happens sequentially,
+* if DC2 fails after DC1 success,
+* rollback automatically reverts updated sites to last known-good version.
+
+Before rollback completion we validate:
+
+* application accessibility,
+* logs,
+* health endpoints,
+* and monitoring metrics.
+
+My role was mainly:
+
+* validating deployment health,
+* troubleshooting failures,
+* triggering rollback if needed,
+* coordinating with application teams,
+* and performing RCA after stabilization.”
+
