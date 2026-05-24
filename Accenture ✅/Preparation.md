@@ -703,5 +703,7 @@ critical_vulnerabilities = list(filter(
 
 print(critical_vulnerabilities)
 ```
+The lambda function acts as a small inline condition checker. The filter function sends each vulnerability one-by-one to the lambda function, and if the severity is HIGH or CRITICAL, it returns True and keeps that vulnerability in the final list
 
+## Python
 
