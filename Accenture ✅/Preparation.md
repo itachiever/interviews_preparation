@@ -1,8 +1,8 @@
 # FINAL PREPARATION PLAN BEFORE INTERVIEW
 Revise These 10 Things
-Self introduction
-Project architecture
-Jenkins pipeline flow
+- Self introduction
+- Project architecture
+- Jenkins pipeline flow
 Security integrations
 Kubernetes deployment flow
 Rollback process
