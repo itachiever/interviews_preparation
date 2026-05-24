@@ -178,3 +178,61 @@ My role was mainly:
 * onboarding applications,
 * troubleshooting failures,
 * and coordinating with developers/security teams during remediation.”
+
+## Security integrations
+
+“In our project, security integrations were one of the major responsibilities handled by me as part of DevSecOps implementation.
+
+We followed a shift-left security approach where security checks were integrated directly into Jenkins CI/CD pipelines instead of performing scans only before production release.
+
+The major security integrations we implemented were:
+
+1. **Fortify SAST**
+   Integrated during build stage.
+   Source code gets scanned for vulnerabilities like SQL injection, XSS, hardcoded secrets, insecure APIs, etc.
+
+2. **Fortify DAST / WebInspect**
+   Used mainly for runtime and API security testing in SIT/UAT environments after deployment.
+
+3. **Sonatype Lifecycle (SCA/SBOM)**
+   Used for third-party dependency analysis.
+   It checks vulnerable open-source packages, CVEs, license risks, and generates SBOM reports.
+
+4. **Trivy Image Scanning**
+   Docker images were scanned before pushing into registry.
+   It detects OS-level vulnerabilities and package-level issues.
+
+5. **SonarQube**
+   Used for code quality, code smells, bugs, and security hotspot analysis.
+
+6. **GitLeaks**
+   Used for secret detection to identify accidentally committed passwords, tokens, or keys.
+
+We implemented policy-based quality gates:
+
+* If critical/high vulnerabilities exceed threshold,
+* pipeline automatically fails,
+* artifact promotion gets blocked.
+
+All reports were centralized into dashboards like:
+
+* Fortify SSC,
+* Sonatype IQ,
+* SonarQube dashboards.
+
+We also worked with developers for:
+
+* remediation guidance,
+* false positive handling,
+* suppression management,
+* and secure coding awareness sessions.
+
+My responsibility was mainly:
+
+* tool setup/configuration,
+* Jenkins integration,
+* plugin/API integration,
+* scan automation,
+* troubleshooting scan failures,
+* and coordinating remediation workflows with development teams.”
+
