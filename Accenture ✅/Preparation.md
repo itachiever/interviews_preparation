@@ -1,3 +1,6 @@
+
+## Jenkins  pipeline flow:
+
 “Currently in our project Jenkins is the primary CI/CD orchestration tool. We use mostly declarative pipelines along with shared libraries for standardization across applications.
 
 The overall pipeline flow starts when developer pushes code into GitLab repository or manually triggers build for release branches.
