@@ -13,3 +13,11 @@ CSPM(Cloud Security Posture Management) focuses on identifying cloud misconfigur
 ## CNAPP
 
 CNAPP(Clouud Native Application Protection Platform) is a broader cloud-native security platform that combines CSPM, container security, IaC scanning, vulnerability management, Kubernetes security, and runtime protection into a unified solution.
+
+## PCI-DSS
+
+PCI-DSS is a compliance framework focused on protecting cardholder data. In DevSecOps, we support PCI compliance by implementing secure CI/CD pipelines, enforcing least privilege access, enabling encryption, integrating IaC/container security scans, monitoring logs, and automatically blocking deployments if compliance violations are detected.
+
+## IaC scan for PCI DSS:
+n DevSecOps pipelines, we integrated IaC scanning tools to validate PCI-DSS compliance before infrastructure deployment. The scans checked for public exposure, encryption settings, IAM permissions, logging configurations, and secure network access. If critical PCI violations were detected, the pipeline automatically failed to prevent insecure infrastructure deployment.
+
