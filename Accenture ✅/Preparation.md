@@ -22,6 +22,79 @@ Technically, I’m comfortable with Jenkins, GitLab CI, Docker, Kubernetes basic
 
 Currently, I’m looking for an opportunity where I can work on larger enterprise DevSecOps environments, improve my cloud and automation exposure further, and contribute more towards secure CI/CD and platform engineering initiatives.”
 
+# Project Archirecture & Day to day activities:
+“Currently, I’m working on a fintech client environment called ISG, where they provide payment gateway and financial transaction solutions for banking clients.
+
+The environment is a hybrid architecture where some applications are traditional VM-based deployments and some are Kubernetes-based microservices applications.
+
+Overall, the organization has around 60 to 80 applications, mostly Java-based services along with Python, Node.js, C/C++, and some mobile applications.
+
+From CI/CD perspective, developers push code into GitLab repositories. Jenkins is used as the central CI/CD orchestration platform.
+
+Once code is committed, Jenkins pipelines trigger automatically.
+
+The pipeline flow generally starts with:
+
+source code checkout,
+dependency installation,
+application build using Maven/Gradle/npm,
+followed by code quality and security validations.
+
+For code quality, we use SonarQube.
+
+For security:
+
+Fortify is used for SAST,
+WebInspect for DAST,
+Sonatype Lifecycle for SCA/SBOM,
+and Trivy for container image scanning.
+
+We implemented security gates in pipelines where builds can fail automatically if critical or high vulnerabilities cross the defined thresholds.
+
+Once scans are successful, artifacts like JARs, WARs, or Docker images are generated and pushed into Nexus Repository.
+
+For containerized applications, Docker images are built and stored in the registry after vulnerability validation and integrity verification.
+
+Deployment-wise:
+
+VM-based applications are deployed using Ansible-driven deployments,
+Kubernetes applications are deployed using Kubernetes manifests and rolling update strategy.
+
+Environments mainly include:
+
+DEV,
+SIT,
+UAT,
+and PROD.
+
+Production deployments are approval-based.
+
+Usually deployment approvals happen after:
+
+UAT validation,
+security clearance,
+and release approvals from respective stakeholders.
+
+Secrets and credentials are managed through Jenkins Credentials Manager and recently through HashiCorp Vault integrations, where pipelines fetch secrets dynamically during runtime instead of hardcoding them.
+
+Monitoring and observability are handled using Prometheus, Grafana, ELK Stack, and some cloud-native monitoring integrations.
+
+For Kubernetes deployments, we mainly use rolling update strategy to minimize downtime, and if deployment issues occur, rollback is done either through Kubernetes rollout undo or by redeploying the previously stable artifact version from Nexus.
+
+My day-to-day activities mainly include:
+
+integrating security tools into pipelines,
+onboarding new applications,
+troubleshooting pipeline failures,
+vulnerability management and remediation coordination,
+supporting developers on security findings,
+maintaining Jenkins jobs,
+handling scan failures,
+improving automation workflows,
+deployment coordination support,
+and working on DevSecOps enhancement POCs.
+
+I also interact regularly with developers, infrastructure teams, security teams, and release stakeholders for deployment planning, vulnerability discussions, and production support activities.”
 
 
 ## Jenkins  pipeline flow:
