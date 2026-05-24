@@ -384,3 +384,70 @@ My role was mainly:
 * coordinating with application teams,
 * and performing RCA after stabilization.”
 
+
+## Secrets management flow
+
+“In our project, secrets management was handled securely to avoid hardcoding credentials inside pipelines, scripts, or deployment files.
+
+Initially we were using Jenkins Credentials Manager for storing:
+
+* GitLab tokens,
+* Nexus credentials,
+* SSH keys,
+* API tokens,
+* and deployment passwords.
+
+Later we started adopting HashiCorp Vault for centralized secrets management.
+
+The overall flow was like this:
+
+1. Secrets are securely stored inside Vault under specific paths and policies.
+   Example:
+
+```bash id="8ct2qb"
+secret/dev/db-password
+secret/prod/api-key
+```
+
+2. Access policies and RBAC are configured so only authorized pipelines or users can access required secrets.
+
+3. Jenkins authenticates with Vault using:
+
+* token authentication,
+* AppRole,
+* or Vault plugin integration.
+
+4. During pipeline runtime, Jenkins dynamically fetches secrets from Vault.
+
+Example flow:
+
+```groovy id="iqvbce"
+withVault(...) {
+   env.DB_PASSWORD
+}
+```
+
+5. Secrets are injected temporarily as environment variables during execution.
+   They are never stored permanently in logs or source code.
+
+6. For Kubernetes deployments:
+
+* secrets are passed securely into Kubernetes Secrets,
+* mounted as environment variables or volumes inside pods.
+
+7. Rotation and updates become easier because credentials are centrally managed in Vault instead of modifying pipelines everywhere.
+
+8. Audit logging in Vault helps track:
+
+* who accessed secrets,
+* when accessed,
+* and from which system.
+
+My role was mainly:
+
+* integrating Vault with Jenkins pipelines,
+* configuring secret retrieval flow,
+* migrating hardcoded/static credentials,
+* troubleshooting authentication/access issues,
+* and coordinating secure access management with teams.”
+
