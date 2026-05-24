@@ -236,3 +236,74 @@ My responsibility was mainly:
 * troubleshooting scan failures,
 * and coordinating remediation workflows with development teams.”
 
+
+## Kubernetes deployment flow
+
+“In our project, Kubernetes deployments were mainly used for containerized microservices-based applications.
+
+The deployment flow starts after successful CI stages in Jenkins.
+
+1. **Docker Image Build**
+   Jenkins builds the Docker image using application Dockerfile.
+
+2. **Image Security Scan**
+   Before deployment, Trivy scans the image for OS and package vulnerabilities.
+   If critical vulnerabilities exceed threshold, deployment gets blocked.
+
+3. **Image Push to Registry**
+   After validation, image is tagged with build version and pushed into Nexus/GitLab Registry.
+
+4. **Image Signing**
+   We also implemented Cosign-based image signing for integrity validation.
+
+5. **Deployment Trigger**
+   Jenkins triggers Kubernetes deployment using:
+
+   * kubectl commands
+   * or Helm charts depending on application.
+
+6. **Manifest/Helm Update**
+   Deployment YAML or Helm values are updated with latest image tag.
+
+7. **Deployment into Cluster**
+   Application gets deployed into corresponding namespace:
+
+   * DEV
+   * SIT
+   * UAT
+   * PROD
+
+8. **Rolling Update Strategy**
+   We mainly use rolling deployment strategy:
+
+   * new pods come up gradually,
+   * old pods terminate slowly,
+   * ensuring minimum downtime.
+
+9. **Health Checks**
+   Kubernetes readiness/liveness probes validate pod health before traffic routing.
+
+10. **Ingress & Service Exposure**
+    Applications are exposed internally through ClusterIP and externally through Ingress/load balancer based on requirement.
+
+11. **Monitoring & Validation**
+    After deployment:
+
+* kubectl get pods/logs checked,
+* Prometheus/Grafana monitor health,
+* ELK used for logs.
+
+12. **Rollback Handling**
+    If deployment fails:
+
+* kubectl rollout undo
+* or redeploy previous stable image version.
+
+My involvement was mainly:
+
+* pipeline integration,
+* deployment automation,
+* security scanning integration,
+* troubleshooting failed deployments,
+* coordinating with developers,
+* and validating deployment health after release.”
