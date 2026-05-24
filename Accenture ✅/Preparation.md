@@ -532,3 +532,111 @@ My role was mainly:
 * managing artifact promotion workflows,
 * supporting signing/verification,
 * and troubleshooting deployment or repository issues.”
+
+
+## Production troubleshooting
+
+“In production troubleshooting, first priority is always service restoration and minimizing business impact before deep RCA.
+
+My usual approach is:
+
+1. **Identify the Scope**
+
+* Is issue application-level, infrastructure-level, database-level, or deployment-related?
+* Check whether all users are affected or only specific services.
+
+2. **Check Recent Changes**
+
+* Recent deployments,
+* configuration changes,
+* new image/artifact versions,
+* infra modifications,
+* or security policy updates.
+
+3. **Validate Deployment Health**
+   For Kubernetes:
+
+```bash id="mnv64e"
+kubectl get pods -A
+kubectl describe pod <pod>
+kubectl logs <pod>
+```
+
+Check:
+
+* CrashLoopBackOff,
+* image pull errors,
+* readiness/liveness failures,
+* resource issues.
+
+For VM deployments:
+
+* service status,
+* process status,
+* server logs,
+* disk/memory usage.
+
+4. **Check CI/CD & Deployment Logs**
+
+* Jenkins logs,
+* deployment stages,
+* failed scripts,
+* Ansible output,
+* rollback status.
+
+5. **Monitoring & Metrics Analysis**
+   Using:
+
+* Prometheus,
+* Grafana,
+* ELK,
+* application dashboards.
+
+Check:
+
+* CPU/memory spikes,
+* latency,
+* error rates,
+* failed requests,
+* abnormal traffic.
+
+6. **Dependency Validation**
+   Verify:
+
+* DB connectivity,
+* Vault secret access,
+* external APIs,
+* DNS/network connectivity,
+* load balancer health.
+
+7. **Immediate Mitigation**
+   If impact is high:
+
+* rollback to previous stable version,
+* scale pods,
+* restart failed services,
+* disable problematic release.
+
+8. **Root Cause Analysis**
+   After stabilization:
+
+* analyze logs,
+* identify exact failure point,
+* document RCA,
+* coordinate with development/security/infra teams.
+
+9. **Preventive Actions**
+
+* improve monitoring,
+* add alerts,
+* strengthen pipeline validations,
+* automate checks,
+* update runbooks.
+
+My role was mainly:
+
+* initial deployment validation,
+* troubleshooting pipeline/deployment failures,
+* coordinating with app teams,
+* analyzing logs/monitoring,
+* and supporting rollback and RCA activities.”
