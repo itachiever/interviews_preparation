@@ -640,3 +640,35 @@ My role was mainly:
 * coordinating with app teams,
 * analyzing logs/monitoring,
 * and supporting rollback and RCA activities.”
+
+
+
+# Python Scripts
+
+## Python API call:
+
+In DevOps/DevSecOps, we use Python API automation for integrating tools like Jenkins, SonarQube, Jira, Kubernetes, or cloud platforms. This script demonstrates how to send a GET request to an API, validate response status, parse JSON output, and extract required information programmatically.
+
+import requests
+
+# API endpoint
+url = "https://jsonplaceholder.typicode.com/posts/1"
+
+# Send GET request
+response = requests.get(url)
+
+# Check response status
+if response.status_code == 200:
+
+    # Convert response into JSON format
+    data = response.json()
+
+    print("API Call Successful")
+    print("Title:", data["title"])
+    print("Body:", data["body"])
+
+else:
+    print("Failed to fetch data")
+    print("Status Code:", response.status_code)
+
+    
