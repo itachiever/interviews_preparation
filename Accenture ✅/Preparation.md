@@ -1,4 +1,5 @@
 # FINAL PREPARATION PLAN BEFORE INTERVIEW
+
 Revise These 10 Things
 - Self introduction
 - Project architecture
