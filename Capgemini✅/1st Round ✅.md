@@ -6,7 +6,6 @@
 2. How many years of experience do you have?
 3. Which organization are you currently working in?
 
----
 
 ## 🔹 2. Jenkins / CI-CD
 
@@ -18,7 +17,6 @@
 9. How are releases handled in your project?
 10. If a defect occurs in main branch after release, how do you handle it?
 
----
 
 ## 🔹 3. Python / Shell Scripting
 
@@ -28,7 +26,6 @@
 14. What is the main use case of Python scripting in DevOps?
 15. What is the use case of try-except-finally in Python?
 
----
 
 ## 🔹 4. Jenkins Pipeline Design (Coding)
 
@@ -43,7 +40,6 @@
 18. Why do we use environment variables?
 19. Why is the trigger (cron/schedule) section required?
 
----
 
 ## 🔹 5. Jenkins Execution & Agents
 
@@ -53,7 +49,6 @@
 23. How does parallel execution work in Jenkins?
 24. If one stage already uses an agent, how do you handle parallel execution requiring another agent?
 
----
 
 ## 🔹 6. Pipeline Troubleshooting
 
@@ -61,14 +56,12 @@
 26. How do you handle Jenkins pipeline failures?
 27. How do you debug pipeline failures?
 
----
 
 ## 🔹 7. Deployment Strategy
 
 28. How do you deploy into different environments (staging/UAT/production) using Jenkinsfile?
 29. How do you manage multiple environments in pipeline script?
 
----
 
 ## 🔹 8. Jenkins Types & Optimization
 
@@ -92,7 +85,6 @@
 42. What is the use of ARG instruction in Dockerfile?
 43. What is the use of ENV instruction in Dockerfile?
 
----
 
 ## 🔹 10. Linux / Shell
 
@@ -101,7 +93,6 @@
 46. What is the difference between `find` and `grep`?
 47. Write a `find/grep` command example.
 
----
 
 ## 🔹 11. Terraform / Infrastructure
 
@@ -115,21 +106,18 @@
 
 51. What are Python data types?
 
----
 
 ## 🔹 13. Scenario / Behavioral
 
 52. In case of CTO/lead/agent issue or difficult situation, how do you handle it?
 53. If agent suddenly goes down during execution, what will you do?
 
----
 
 ## 🔹 14. Miscellaneous
 
 54. In which location are you currently working?
 55. Are you comfortable with Bangalore location?
 
----
 
 # 🎯 Summary Insight
 
