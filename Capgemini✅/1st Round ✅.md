@@ -68,7 +68,6 @@
 30. Differentiate declarative vs scripted pipeline
 31. How do you optimize pipeline performance? (options only)
 
----
 
 ## 🔹 9. Docker
 
@@ -100,7 +99,6 @@
 49. What is the use of Terraform state files?
 50. If state file is missing, how do you recover infrastructure?
 
----
 
 ## 🔹 12. Data Types / Python Basics
 
