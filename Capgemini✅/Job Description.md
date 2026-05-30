@@ -1,8 +1,4 @@
-# DevOps Engineer with Python – Bangalore – Immediate Joiners Preferred
-
-## Technology
-Capgemini  
-Bengaluru, India
+# Role: DevOps Engineer with Python
 
 **Employment Type:** Full Time  
 **Work Mode:** On-site
@@ -43,10 +39,3 @@ Bengaluru, India
 - Good understanding of software build, integration, and deployment processes.
 - Ability to work collaboratively with development and QA teams.
 
-### Location
-
-Bangalore, India
-
-### Company
-
-Capgemini
