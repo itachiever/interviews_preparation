@@ -1,4 +1,4 @@
-# 🧾 Interview Questions (From Your Transcript)
+# 🧾 Interview Questions 
 
 ## 🔹 1. Introduction / Profile
 
