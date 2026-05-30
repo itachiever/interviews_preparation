@@ -3,10 +3,8 @@
 **Employment Type:** Full Time  
 **Work Mode:** On-site
 
-## Job Description
 
-### Job Title
-**DevOps Engineer (with Python)**
+### Job Title: DevOps Engineer (with Python)**
 
 ### Requirements
 
