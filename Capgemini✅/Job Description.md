@@ -1,10 +1,10 @@
-# Role: DevOps Engineer with Python
+# DevOps Engineer with Python
 
 **Employment Type:** Full Time  
 **Work Mode:** On-site
 
 
-### Job Title: DevOps Engineer (with Python)**
+### Job Title: DevOps Engineer (with Python)
 
 ### Requirements
 
