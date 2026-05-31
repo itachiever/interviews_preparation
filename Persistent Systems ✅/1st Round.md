@@ -69,11 +69,11 @@
 
 **Answer:**
 
-My name is Yuvaraju Sai Kumar Dasari, and I have around 4+ years of experience in DevOps and DevSecOps engineering.
+My name is NAME, and I have around 4+ years of experience in DevOps and DevSecOps engineering.
 
-I started my career at TCS as a DevOps Engineer, where I worked for around 2.5 years supporting the NSWS project. My responsibilities included CI/CD automation, Kubernetes deployments, AWS infrastructure provisioning using Terraform, monitoring, and release management.
+I started my career at PREVIOUS COMPANY as a DevOps Engineer, where I worked for around 2.5 years supporting the NSWS project. My responsibilities included CI/CD automation, Kubernetes deployments, AWS infrastructure provisioning using Terraform, monitoring, and release management.
 
-Currently, I am working as a DevSecOps & Cloud Infrastructure Engineer at TalaKunchi Networks, supporting a fintech client that operates in a PCI-DSS compliant environment. My primary focus is integrating security into the SDLC and CI/CD pipelines while managing cloud and on-prem infrastructure.
+Currently, I am working as a DevSecOps & Cloud Infrastructure Engineer at CURRENT COMPANY, supporting a fintech client that operates in a PCI-DSS compliant environment. My primary focus is integrating security into the SDLC and CI/CD pipelines while managing cloud and on-prem infrastructure.
 
 My key technical expertise includes:
 
