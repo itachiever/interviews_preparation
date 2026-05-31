@@ -71,7 +71,7 @@
 
 ### Strong Interview Answer
 
-> Hi, I am Yuvaraju, currently working as a DevSecOps Engineer at TalaKunchi Networks with overall 4+ years of IT experience.
+> Hi, I am NAME, currently working as a DevSecOps Engineer at CURRENT COMPANY with overall 4+ years of IT experience.
 >
 > Currently, I am deployed to ISG, a fintech organization that provides payment gateway and transaction processing solutions. My primary responsibility is integrating security into the software delivery lifecycle and helping development teams adopt secure development practices.
 >
