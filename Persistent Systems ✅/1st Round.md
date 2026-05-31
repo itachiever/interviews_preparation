@@ -99,7 +99,7 @@ One of the recent challenges was implementing a secure DevSecOps platform for a 
 
 One of my achievements was successfully strengthening the organization's DevSecOps posture and helping meet compliance requirements, for which I received client appreciation and internal recognition.
 
----
+
 
 # 2. Which cloud platforms are you comfortable with?
 
@@ -131,7 +131,7 @@ In my current project, we operate in a hybrid setup where on-prem infrastructure
 
 I also have basic exposure to GCP.
 
----
+
 
 # 3. Explain how you would design and deploy a PCI-DSS compliant three-tier web application on AWS, including AWS services, Well-Architected Framework considerations, CI/CD approach, infrastructure setup, deployment, and monitoring.
 
@@ -213,7 +213,7 @@ I would focus on:
 
 This design ensures security, scalability, compliance, and operational stability.
 
----
+
 
 # 4. What application and infrastructure requirements would you gather before planning and deploying the infrastructure?
 
@@ -269,7 +269,7 @@ Before designing the infrastructure, I gather the following information:
 
 After collecting these details, I design the infrastructure accordingly.
 
----
+
 
 # 5. How would you deploy the infrastructure using Terraform?
 
@@ -316,7 +316,7 @@ Terraform execution is automated through Jenkins pipelines with approval gates f
 
 This ensures repeatable, version-controlled, and auditable infrastructure deployments.
 
----
+
 
 # 6. Have you worked on Terraform provisioners? What are the types of provisioners, and in what scenarios would you use file provisioners?
 
@@ -358,7 +358,7 @@ Example:
 
 File provisioners are typically used when newly created instances require configuration files immediately after provisioning.
 
----
+
 
 # 7. How would you copy files from a local machine to a newly provisioned EC2 instance using Terraform?
 
@@ -398,7 +398,7 @@ In enterprise environments, we generally prefer:
 
 for large-scale deployments.
 
----
+
 
 # 8. How would you establish communication between two VPCs in different AWS accounts within the same region?
 
@@ -422,7 +422,7 @@ Requirements:
 
 This enables private communication over AWS backbone networks without traversing the internet.
 
----
+
 
 # 9. What could cause a VPC peering request to fail?
 
@@ -463,7 +463,7 @@ Routes not properly updated after peering creation.
 
 The first thing I would check is CIDR overlap.
 
----
+
 
 # 10. If two VPCs have overlapping CIDR ranges and cannot be modified, what alternative solution would you use instead of VPC peering?
 
@@ -498,7 +498,7 @@ Transit Gateway still requires non-overlapping CIDR ranges for routing.
 For overlapping CIDRs, AWS PrivateLink is typically the preferred enterprise solution.
 
 
----
+
 
 # 11. Why do we use Transit Gateway, what challenges does it solve compared to VPC peering, and can VPC peering be transitive?
 
@@ -552,7 +552,7 @@ Benefits:
 
 Transit Gateway is commonly used in enterprise environments with multiple AWS accounts and VPCs.
 
----
+
 
 # 12. How would you establish communication between VPCs when direct transitive communication is not possible?
 
@@ -585,7 +585,7 @@ through Transit Gateway routing.
 
 For large-scale multi-account environments, Transit Gateway is the recommended solution.
 
----
+
 
 # 13. How would you provide secure outbound internet access from workloads running in a private subnet?
 
@@ -624,7 +624,7 @@ For AWS service access, I would use:
 
 This avoids internet traversal altogether when accessing AWS services.
 
----
+
 
 # 14. Where would you provision a NAT Gateway, what route table changes are required, and which route tables must be modified?
 
@@ -668,7 +668,7 @@ Allows private instances to send outbound traffic through the NAT Gateway.
 
 This is the standard AWS architecture for secure outbound connectivity.
 
----
+
 
 # 15. Have you worked on Terraform modules?
 
@@ -701,7 +701,7 @@ Instead of writing VPC code repeatedly for DEV, SIT, UAT, and PROD, we create on
 
 This improves maintainability and scalability.
 
----
+
 
 # 16. What is the purpose of a null_resource in Terraform?
 
@@ -736,7 +736,7 @@ In real projects, I have mainly used it for:
 
 where no actual AWS resource is being created.
 
----
+
 
 # 17. If you have petabytes of data in S3 with unpredictable access patterns, which S3 storage tier would you choose and why? Have you implemented it in production?
 
@@ -765,7 +765,7 @@ Benefits:
 
 In my projects, I have worked with lifecycle policies and S3 storage management, but I have not personally implemented Intelligent-Tiering in a production environment. My understanding comes from AWS best practices and technical evaluation of storage optimization strategies.
 
----
+
 
 # 18. How would you deploy changes only to odd-numbered VMs using Terraform?
 
@@ -813,7 +813,7 @@ Another approach is using `for_each` with filtered maps or lists.
 
 For enterprise environments, `for_each` is generally preferred because resource addressing remains stable.
 
----
+
 
 # 19. How would you configure Terraform remote state storage in AWS?
 
@@ -862,7 +862,7 @@ Terraform migrates local state to the remote backend.
 * Auditability
 * Improved security
 
----
+
 
 # 20. Do we still need DynamoDB for Terraform state locking, and what recent changes have been introduced regarding state locking?
 
@@ -917,7 +917,7 @@ S3 + Lockfile
 
 Both may still be found in enterprise environments depending on the Terraform version and organizational standards.
 
----
+
 
 # 21. Which AWS service can be used to scan AMIs and installed packages for vulnerabilities?
 
@@ -949,7 +949,7 @@ Security Review
 Deployment Approval
 ```
 
----
+
 
 # 22. How do you implement sensitive data scrubbing and masking in a CI/CD pipeline?
 
@@ -1004,7 +1004,7 @@ Build & Deploy
 Masked Logging
 ```
 
----
+
 
 # 23. How do you troubleshoot an EC2 instance that belongs to an Auto Scaling Group without terminating it?
 
@@ -1028,7 +1028,7 @@ I would place the instance into **Standby Mode**.
 * Auto Scaling does not immediately terminate it.
 * Safe troubleshooting without impacting users.
 
----
+
 
 # 24. What happens when an instance is moved to Standby mode in an Auto Scaling Group?
 
@@ -1058,7 +1058,7 @@ When an instance enters Standby:
 * Troubleshooting
 * Log analysis
 
----
+
 
 # 25. What are Lifecycle Hooks in an Auto Scaling Group?
 
@@ -1110,7 +1110,7 @@ Terminate
 * Graceful startup
 * Graceful shutdown
 
----
+
 
 # 26. Which Terraform lifecycle policy helps create a replacement instance before destroying the old one?
 
@@ -1156,7 +1156,7 @@ Traffic Shifted
 Old Instance Destroyed
 ```
 
----
+
 
 # 27. What type of VPN connectivity have you worked on?
 
@@ -1183,7 +1183,7 @@ AWS / Azure Cloud Environment
 * Kubernetes administration
 * Secure infrastructure access
 
----
+
 
 # 28. Which AWS services are required to establish a Site-to-Site VPN connection?
 
@@ -1223,7 +1223,7 @@ Additional components:
 * Security Groups
 * Network ACLs
 
----
+
 
 # 29. Have you worked on Virtual Private Gateway (VGW) and Customer Gateway (CGW)? What are they?
 
@@ -1262,7 +1262,7 @@ Virtual Private Gateway
 AWS VPC
 ```
 
----
+
 
 # 30. Have you personally deployed VPN connections?
 
