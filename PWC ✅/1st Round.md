@@ -538,13 +538,16 @@
 
 The interviewer was mainly testing 5 areas:
 
+
+
 | Area                                           | Weight |
-| - |  |
+| ---------------------------------------------- | ------ |
 | DevSecOps Tooling (Fortify, Sonatype, Jenkins) | ⭐⭐⭐⭐⭐  |
 | Cloud & Infrastructure (Azure/AWS)             | ⭐⭐⭐⭐   |
 | Kubernetes Troubleshooting                     | ⭐⭐⭐⭐   |
 | Security Concepts (SAST/SSRF/Vulnerabilities)  | ⭐⭐⭐⭐⭐  |
 | Real Experience Validation                     | ⭐⭐⭐⭐⭐  |
+
 
 
 
