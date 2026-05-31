@@ -131,7 +131,62 @@
 
 # Questions:
 
-
+	1. Can you tell me about yourself?
+	2. How many years of experience do you have?
+	3. Which organization are you currently working in?
+	4. You configured Jenkins CI/CD pipeline end-to-end?
+	5. Can you explain how you configured the Jenkins pipeline?
+	6. What is Jenkins?
+	7. Which branching strategy are you following in your project?
+	8. How do you handle releases?
+	9. How do you handle production defects after release?
+	10. Have you worked on Python shell scripting?
+	11. Can you write a basic Jenkins pipeline?
+	12. Can you include parameters, schedules, variables, and parallel execution in the pipeline?
+	13. How do you configure Jenkins agents?
+	14. What is the meaning/use of agent any in Jenkins?
+	15. What is the use of agent none in Jenkins?
+	16. How are parallel stages executed in Jenkins?
+	17. Why are parameters required in Jenkins pipelines?
+	18. Why are environment variables required?
+	19. Why is the trigger/cron section required?
+	20. How do you debug Jenkins agent issues like CPU spike or agent down?
+	21. How do you handle Jenkins pipeline failures?
+	22. How do you deploy to different environments like staging/UAT/production?
+	23. How do you handle multiple environments in a Jenkinsfile?
+	24. Can you differentiate declarative vs scripted pipelines?
+	25. Why are you using declarative pipeline instead of Groovy scripted pipeline?
+	26. How do you optimize pipeline performance?
+	27. Have you worked on Docker?
+	28. Can you explain Docker architecture?
+	29. Can you write a basic Dockerfile?
+	30. What is the difference between CMD and ENTRYPOINT?
+	31. What is the difference between COPY and ADD?
+	32. What is the command to build a Docker image?
+	33. How do you create/run a container?
+	34. How do you stop a container?
+	35. How do you reduce Docker image size?
+	36. What is the importance of multi-stage builds?
+	37. What is the use of ARG instruction in Dockerfile?
+	38. What is the use of ENV instruction in Dockerfile?
+	39. Why are Python and shell scripting required in DevOps?
+	40. Can you write a Python script to automate file backup?
+	41. Can you write a Python script to read logs and filter errors?
+	42. What is the use case of try, except, and finally in Python?
+	43. What exactly is the use of except block?
+	44. What are Python data types?
+	45. What is the difference between list, tuple, dictionary, etc.?
+	46. Have you worked on Terraform?
+	47. Can you explain Terraform architecture/lifecycle?
+	48. What is the use of Terraform state file?
+	49. If the Terraform state file is missing, how do you recover infrastructure state?
+	50. What Linux commands do you use daily?
+	51. Which command is used to filter errors from a log file in Linux?
+	52. What is the difference between find and grep?
+	53. Can you write a grep command example?
+	54. Which location are you currently in?
+	55. Are you okay with Bangalore location?
+How about the further interview process? (discussion question)
 
 # Answers:
 
