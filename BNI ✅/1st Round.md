@@ -2,7 +2,7 @@
 
 1. Tell me about your experience, specifically focusing on the security aspects of what you have worked on.
 
-2. All the tools you mentioned—are those tools you personally worked on, or are they just part of the project?
+2. All the tools you mentioned-are those tools you personally worked on, or are they just part of the project?
 
 3. Why do you think we need an SBOM?
 
@@ -14,7 +14,7 @@
 
 7. How do you decide what action to take based on the SBOM?
 
-8. Think from an audit perspective—if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
+8. Think from an audit perspective-if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
 
 9. What tool are you primarily using for generating SBOMs?
 
@@ -40,7 +40,7 @@
 
 20. How do you ensure the person uploading the password never knows the actual password?
 
-21. How do you prevent anyone—including administrators—from seeing the actual password?
+21. How do you prevent anyone-including administrators-from seeing the actual password?
 
 22. How do you stop a container from running as the root user?
 
@@ -70,7 +70,7 @@
 
 # Answers:
 
----
+
 
 # 1. Tell me about your experience, specifically focusing on the security aspects of what you have worked on.
 
@@ -84,9 +84,9 @@
 >
 > We have both VM-based and Kubernetes-based deployments, so I also support Kubernetes security controls and secure deployment practices. Additionally, I coordinate vulnerability remediation with developers, maintain security reports and audit evidence, onboard new applications into the security pipeline, and support compliance requirements through continuous vulnerability management and security monitoring.
 
----
 
-# 2. All the tools you mentioned—are those tools you personally worked on, or are they just part of the project?
+
+# 2. All the tools you mentioned-are those tools you personally worked on, or are they just part of the project?
 
 ### Interview Ready Answer
 
@@ -106,7 +106,7 @@
 >
 > I am involved not only in consuming reports but also in tool administration, integration, and operational support activities.
 
----
+
 
 # 3. Why do you think we need an SBOM?
 
@@ -134,7 +134,7 @@ This answer is where he was actually satisfied with some of your points.
 
 > SBOM gives complete visibility of software components, enabling faster vulnerability identification, compliance, and software supply chain security.
 
----
+
 
 # 4. Can you explain the SBOM flow ideally?
 
@@ -155,7 +155,7 @@ This is what he was actually looking for.
 >
 > This creates a complete software inventory for every application release.
 
----
+
 
 # 5. You generated an SBOM yesterday and today. Since builds happen frequently, what do you do with those SBOMs?
 
@@ -180,7 +180,7 @@ A stronger answer:
 >
 > If a vulnerability is discovered later, we can identify which application versions were affected by reviewing the corresponding SBOM.
 
----
+
 
 # 6. Where do you store the SBOM files?
 
@@ -201,7 +201,7 @@ This is what he was expecting from an audit perspective.
 >
 > Historical records are retained to support audits, vulnerability investigations, and compliance requirements.
 
----
+
 
 # 7. How do you decide what action to take based on the SBOM?
 
@@ -226,9 +226,9 @@ This is what he was expecting from an audit perspective.
 >
 > This helps prioritize remediation activities effectively.
 
----
 
-# 8. Think from an audit perspective—if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
+
+# 8. Think from an audit perspective-if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
 
 ### Interview Ready Answer
 
@@ -252,7 +252,7 @@ This answer is much stronger than the one given during the interview.
 >
 > Maintaining historical SBOMs is important because auditors often require evidence demonstrating software supply chain visibility over time.
 
----
+
 
 # 9. What tool are you primarily using for generating SBOMs?
 
@@ -268,7 +268,7 @@ This answer is much stronger than the one given during the interview.
 >
 > However, our production environment primarily relies on Sonatype due to centralized management, reporting capabilities, vulnerability correlation, and audit support.
 
----
+
 
 # 10. Is Sonatype open source or licensed?
 
@@ -287,7 +287,7 @@ This answer is much stronger than the one given during the interview.
 >
 > Unlike open-source tools that mainly focus on scanning, Sonatype provides a complete governance and software supply chain security platform suitable for enterprise and compliance-driven environments.
 
----
+
 
 # 11. Do you know the pricing of Sonatype?
 
@@ -308,7 +308,7 @@ This answer is much stronger than the one given during the interview.
 
 > I am familiar with the licensing model at a high level, but I would not want to quote exact numbers because pricing varies significantly between organizations and contracts.
 
----
+
 
 # 12. If an organization does not want to spend money, what open-source alternatives would you suggest?
 
@@ -345,7 +345,7 @@ This answer is much stronger than the one given during the interview.
 >
 > While these tools provide strong technical capabilities, enterprise solutions often offer better governance, reporting, audit readiness, policy enforcement, and centralized management.
 
----
+
 
 # 13. Can Trivy generate SBOMs?
 
@@ -372,7 +372,7 @@ This answer is much stronger than the one given during the interview.
 
 > Yes, Trivy supports SBOM generation in SPDX and CycloneDX formats.
 
----
+
 
 # 14. Can you use Trivy as your auditing solution?
 
@@ -406,7 +406,7 @@ This is where your interview answer was weak.
 
 > Trivy is an excellent scanner, but not a complete audit management platform.
 
----
+
 
 # 15. What do you think is the difference between Trivy and Dependency-Track?
 
@@ -445,7 +445,7 @@ This answer is very important.
 >
 > So Trivy is a scanner, while Dependency-Track is a vulnerability and SBOM management platform.
 
----
+
 
 # 16. Let's say you have a database password and need to provide datasource details to an application. What are the ways to secure that password?
 
@@ -469,7 +469,7 @@ This answer is very important.
 > * Access should follow least privilege.
 > * Secrets should be rotated regularly.
 
----
+
 
 # 17. When we say HashiCorp Vault or another secrets manager, somebody still has to upload the password there. Correct?
 
@@ -487,7 +487,7 @@ This answer is very important.
 
 This answer shows maturity.
 
----
+
 
 # 18. When that secret is injected into a container, someone with access to the container can still retrieve it. Correct?
 
@@ -508,7 +508,7 @@ This answer shows maturity.
 >
 > The objective is to minimize exposure and limit the impact if a container is compromised.
 
----
+
 
 # 19. How do you solve that problem?
 
@@ -535,7 +535,7 @@ This is where the interviewer was expecting a senior-level answer.
 
 > Use dynamic, short-lived credentials instead of static passwords.
 
----
+
 
 # 20. How do you ensure the person uploading the password never knows the actual password?
 
@@ -568,9 +568,9 @@ The interviewer was actually testing advanced secrets management concepts.
 
 > We avoid human-created passwords by using dynamic credential generation and automatic rotation, ensuring no individual ever knows the actual secret.
 
----
 
-# 21. How do you prevent anyone—including administrators—from seeing the actual password?
+
+# 21. How do you prevent anyone-including administrators-from seeing the actual password?
 
 ### Interview Ready Answer
 
@@ -587,7 +587,7 @@ The interviewer was actually testing advanced secrets management concepts.
 >
 > This follows the principle of minimizing human exposure to sensitive credentials.
 
----
+
 
 # 22. How do you stop a container from running as the root user?
 
@@ -618,7 +618,7 @@ This answer was partially correct during the interview.
 
 > Use a dedicated non-root user in the Dockerfile and enforce runAsNonRoot through Kubernetes SecurityContext.
 
----
+
 
 # 23. Have you done Infrastructure as Code (IaC) scanning?
 
@@ -630,7 +630,7 @@ This answer was partially correct during the interview.
 >
 > We used tools such as Trivy and occasionally evaluated other IaC security scanners to validate Terraform configurations before infrastructure provisioning.
 
----
+
 
 # 24. When I say IaC scanning, what exactly do we do there?
 
@@ -642,7 +642,7 @@ This answer was partially correct during the interview.
 >
 > This follows the shift-left security approach by preventing insecure infrastructure from being provisioned.
 
----
+
 
 # 25. Can you list down the things that are scanned during IaC scanning?
 
@@ -663,7 +663,7 @@ This answer was partially correct during the interview.
 >
 > These checks help ensure secure cloud deployments before infrastructure is provisioned.
 
----
+
 
 # 26. Apart from passwords, what else do you think IaC scanning looks for?
 
@@ -684,7 +684,7 @@ This answer was partially correct during the interview.
 >
 > The objective is to detect security weaknesses before deployment.
 
----
+
 
 # 27. You said you worked in a PCI-DSS environment. Tell me the usual activities that happen daily, monthly, and quarterly.
 
@@ -720,7 +720,7 @@ This answer was partially correct during the interview.
 >
 > My primary involvement was in the application security and DevSecOps activities supporting PCI-DSS compliance.
 
----
+
 
 # 28. On a daily basis, what activities do you perform? Just list them.
 
@@ -741,7 +741,7 @@ This answer was partially correct during the interview.
 > * Security dashboard monitoring
 > * Compliance evidence maintenance
 
----
+
 
 # 29. Other than SBOM, CBOM, SAST, and related scans, what else do you do regularly?
 
@@ -761,7 +761,7 @@ This answer was partially correct during the interview.
 >
 > A significant portion of my work involves ensuring security findings are actually remediated rather than just reported.
 
----
+
 
 # 30. How many requirements are there in PCI-DSS?
 
@@ -786,7 +786,7 @@ This was the biggest gap.
 
 > PCI-DSS 4.0 contains 12 major security requirements.
 
----
+
 
 # 31. When we say an application is PCI-DSS compliant, what are the requirements that need to be met?
 
@@ -807,7 +807,7 @@ This was the biggest gap.
 >
 > Compliance is achieved through both technical controls and operational processes.
 
----
+
 
 # 32. What are the PCI-DSS requirements?
 
@@ -832,7 +832,7 @@ You don't need auditor-level detail, but you must know this.
 
 > PCI-DSS consists of 12 requirements focused on securing cardholder data through access control, encryption, monitoring, testing, and secure development practices.
 
----
+
 
 # 33. Have you worked on those PCI-DSS requirements directly?
 
@@ -859,7 +859,7 @@ This answer should be honest and stronger than what you gave.
 
 This is much better than claiming broad PCI-DSS expertise.
 
----
+
 
 # 34. Any questions for me?
 
@@ -879,7 +879,7 @@ This is much better than claiming broad PCI-DSS expertise.
 
 > Which areas would you recommend I strengthen further to be successful in the next stages of the process and in this role?
 
----
+
 
 # Most Important Learning from This Interview
 
