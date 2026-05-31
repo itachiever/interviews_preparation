@@ -250,10 +250,6 @@
 >
 > This confirms that the storage account was removed outside Terraform and helps determine recovery actions.
 
-### Important
-
-Interviewer wanted impact analysis first, not recovery.
-
 ---
 
 # 9. How will you sync Terraform state?
