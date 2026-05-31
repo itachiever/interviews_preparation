@@ -65,7 +65,7 @@
 
 # Answers:
 
----
+
 
 # 1. Please give a quick introduction about yourself and your technical skills.
 
@@ -81,7 +81,7 @@
 >
 > From a DevOps perspective, I have worked with Jenkins, GitLab, Nexus, Docker, Kubernetes, Ansible, Vault, Prometheus, and Grafana. My involvement is mainly around CI/CD automation, security gates, deployment workflow understanding, and secure SDLC enablement.
 
----
+
 
 # 2. You mentioned NGINX and DMZ for AKS. Were you actively involved in deployments?
 
@@ -95,7 +95,7 @@
 >
 > Because of this collaboration, I have a good understanding of the deployment workflow, Kubernetes deployment process, ingress exposure, VPN connectivity, and how applications move from build stage to production environments.
 
----
+
 
 # 3. Do you know the deployment flow?
 
@@ -127,7 +127,7 @@
 >
 > Finally, post-deployment validations and monitoring checks are performed.
 
----
+
 
 # 4. Can you tell me the network boundaries established for deployment?
 
@@ -147,7 +147,7 @@
 >
 > This ensured network isolation and reduced attack surface.
 
----
+
 
 # 5. Explain complete network architecture including VPN, NGINX, DMZ, ingress and traffic flow.
 
@@ -176,7 +176,7 @@
 > This architecture provided secure access, network isolation, and controlled exposure.
 
 
----
+
 
 # 6. How do you decide whether a finding should fail deployment or create an alert?
 
@@ -201,7 +201,7 @@
 >
 > This ensures security without unnecessarily blocking development teams.
 
----
+
 
 # 7. How did you integrate security tools into Jenkins?
 
@@ -225,7 +225,7 @@
 >
 > This approach allows security validation to happen automatically as part of CI/CD.
 
----
+
 
 # 8. Terraform question — Production storage account accidentally deleted. How would you identify impact?
 
@@ -250,7 +250,7 @@
 >
 > This confirms that the storage account was removed outside Terraform and helps determine recovery actions.
 
----
+
 
 # 9. How will you sync Terraform state?
 
@@ -285,7 +285,7 @@
 > The exact action depends on the drift scenario.
 
 
----
+
 
 # 10. Storage Account deleted. How do you recover the data?
 
@@ -311,7 +311,7 @@
 >
 > That is why backup and disaster recovery planning is critical for production storage accounts.
 
----
+
 
 # 11. Since the Storage Account is deleted and data is lost, how would you recover the actual data from Azure?
 
@@ -337,7 +337,7 @@
 >
 > If none of these recovery mechanisms were enabled, the infrastructure can be recreated, but the original business data cannot be recovered. That is why backup, retention, and disaster recovery planning are critical production requirements.
 
----
+
 
 # 12. AKS / Helm Deployment Failed. Some Pods are New Version, Others are Old Version. What Will You Do?
 
@@ -378,7 +378,7 @@
 >
 > Once service is restored, I would perform RCA to determine the root cause before attempting redeployment.
 
----
+
 
 # 13. What Are the Most Common SAST Findings You See?
 
@@ -398,7 +398,7 @@
 > In addition to SAST findings, we also frequently see vulnerable third-party dependencies identified through SCA scans.
 
 
----
+
 
 # 14. Which Vulnerability Category Would You Consider Highest Risk?
 
@@ -418,7 +418,7 @@
 > These findings can directly impact customer data, financial transactions, and regulatory compliance requirements such as PCI-DSS.
 
 
----
+
 
 # 15. Tell Me About a Vulnerability You Helped Remediate. What Was the Root Cause and How Did You Validate the Fix?
 
@@ -447,7 +447,7 @@
 > Finally, the vulnerability was closed with supporting evidence.
 
 
----
+
 
 # 16. What Is Your Role in Vulnerability Remediation?
 
@@ -467,7 +467,7 @@
 > For application code vulnerabilities, developers implement the code changes, while I help ensure the vulnerability is properly understood, fixed, and verified.
 
 
----
+
 
 # 17. You Mentioned SCA, SBOM, Image Scanning, CSPM. Which Findings Have You Actually Fixed Yourself?
 
@@ -487,7 +487,7 @@
 > Application code vulnerabilities were typically remediated by development teams, while I coordinated and validated the fixes.
 
 
----
+
 
 # 18. If You Discover SSRF in an Internal API Behind an API Gateway, Why Is It Still Dangerous?
 
@@ -512,7 +512,7 @@
 
 
 
----
+
 
 # 19. Do You Have Any Questions For Us?
 
@@ -534,12 +534,12 @@
 >
 > These questions show interest in the role, team, and business expectations.
 
----
+
 
 The interviewer was mainly testing 5 areas:
 
 | Area                                           | Weight |
-| ---------------------------------------------- | ------ |
+| - |  |
 | DevSecOps Tooling (Fortify, Sonatype, Jenkins) | ⭐⭐⭐⭐⭐  |
 | Cloud & Infrastructure (Azure/AWS)             | ⭐⭐⭐⭐   |
 | Kubernetes Troubleshooting                     | ⭐⭐⭐⭐   |
