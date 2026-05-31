@@ -56,7 +56,7 @@
 28. Do you have any questions for me?
 
 # Answers:
----
+
 
 # 1. Tell me about yourself, your skill set, experience, day-to-day activities, and responsibilities.
 
@@ -81,7 +81,7 @@ In my current role, I am responsible for:
 
 On a day-to-day basis, I work with developers, security teams, and infrastructure teams to ensure secure and reliable software delivery while maintaining compliance requirements.
 
----
+
 
 # 2. Apart from AKS, Key Vault, and Azure Monitor, what other Azure services have you worked with?
 
@@ -126,7 +126,7 @@ Apart from AKS, Azure Key Vault, and Azure Monitor, I have worked with:
 
 In my projects, my involvement was primarily from a DevSecOps perspective rather than deep cloud administration.
 
----
+
 
 # 3. Have you worked only on CI/CD pipeline creation in GitHub Actions, or have you also managed self-hosted agents?
 
@@ -154,7 +154,7 @@ My responsibilities included:
 
 In my primary project Jenkins was the main orchestration platform, but I also gained hands-on exposure to GitHub Actions and self-hosted runners.
 
----
+
 
 # 4. How do you integrate Snyk into Jenkins or GitHub Actions CI/CD pipelines?
 
@@ -221,7 +221,7 @@ We can configure the pipeline to fail when:
 
 This supports shift-left security practices.
 
----
+
 
 # 5. What is the meaning of “Code Smells” in SonarQube reports?
 
@@ -260,7 +260,7 @@ Very large nested if-else statements.
 
 Code smells help developers improve code quality before the application becomes difficult to maintain.
 
----
+
 
 # 6. Have you managed SonarQube servers or only integrated SonarQube into pipelines?
 
@@ -288,7 +288,7 @@ I have supported:
 
 Although I was not a dedicated SonarQube administrator, I was involved in operational support and troubleshooting of the platform.
 
----
+
 
 # 7. How would you secure a self-hosted SonarQube server?
 
@@ -348,7 +348,7 @@ Perform regular backups for:
 * Configuration
 * Plugins
 
----
+
 
 # 8. What do you think about implementing SSO for SonarQube?
 
@@ -384,7 +384,7 @@ Provides centralized auditability and governance.
 
 In enterprise environments, SonarQube should ideally be integrated with Azure AD or LDAP through SAML or OAuth-based SSO.
 
----
+
 
 # 9. What is SQL Injection?
 
@@ -431,7 +431,7 @@ This may bypass authentication.
 * Input validation
 * Least privilege database accounts
 
----
+
 
 # 10. What is LDAP Injection?
 
@@ -475,7 +475,7 @@ Modified query may return unauthorized records.
 
 Since many enterprise applications integrate with Active Directory, LDAP Injection can become a serious authentication and authorization risk if inputs are not properly sanitized.
 
----
+
 
 # 11. How do you securely manage secrets/credentials in Terraform without exposing them in logs or repositories?
 
@@ -495,7 +495,7 @@ Store secrets in:
 
 instead of storing them inside Terraform code.
 
----
+
 
 ### 2. Use Environment Variables
 
@@ -508,7 +508,7 @@ export ARM_CLIENT_SECRET=xxxxx
 
 Terraform automatically consumes them.
 
----
+
 
 ### 3. Use Sensitive Variables
 
@@ -520,7 +520,7 @@ variable "db_password" {
 
 This prevents accidental display in Terraform output.
 
----
+
 
 ### 4. Secure State Files
 
@@ -537,7 +537,7 @@ Enable:
 * RBAC access
 * Versioning
 
----
+
 
 ### 5. Restrict Logging
 
@@ -551,13 +551,13 @@ being shared publicly.
 
 Mask sensitive outputs in CI/CD pipelines.
 
----
+
 
 ### Real Project Example
 
 In our project, we used HashiCorp Vault and Azure Key Vault for storing credentials. Jenkins pipelines fetched secrets dynamically during execution and passed them to Terraform without storing them in Git repositories.
 
----
+
 
 # 12. How does Terraform fetch secrets securely from HashiCorp Vault?
 
@@ -582,7 +582,7 @@ provider "vault" {
 }
 ```
 
----
+
 
 ### Step 2: Read Secret
 
@@ -593,7 +593,7 @@ data "vault_kv_secret_v2" "db" {
 }
 ```
 
----
+
 
 ### Step 3: Consume Secret
 
@@ -604,7 +604,7 @@ resource "azurerm_sql_server" "sql" {
 }
 ```
 
----
+
 
 ### Security Benefits
 
@@ -613,13 +613,13 @@ resource "azurerm_sql_server" "sql" {
 * Centralized secret rotation
 * Audit trail available in Vault
 
----
+
 
 ### Real Project Example
 
 In my current project, Vault stores application credentials, API tokens, and deployment secrets. Jenkins authenticates to Vault and retrieves secrets dynamically during pipeline execution.
 
----
+
 
 # 13. If a SAST tool missed a major vulnerability that later caused a production incident, what could be the possible reasons?
 
@@ -627,7 +627,7 @@ In my current project, Vault stores application credentials, API tokens, and dep
 
 If a SAST tool misses a vulnerability, I would investigate several areas.
 
----
+
 
 ### 1. Incorrect Scan Configuration
 
@@ -638,7 +638,7 @@ Example:
 * Certain folders excluded
 * Misconfigured rules
 
----
+
 
 ### 2. Policy Misconfiguration
 
@@ -649,7 +649,7 @@ Example:
 * Severity threshold changed
 * Custom policy applied
 
----
+
 
 ### 3. False Negative
 
@@ -657,7 +657,7 @@ No security scanner detects 100% of vulnerabilities.
 
 The vulnerability may not have been covered by the scanning engine.
 
----
+
 
 ### 4. Suppression or Waiver
 
@@ -667,7 +667,7 @@ The vulnerability was detected but:
 * Marked as accepted risk
 * Ignored during triage
 
----
+
 
 ### 5. New Vulnerability Introduced Later
 
@@ -681,7 +681,7 @@ Scan → Code Change → Deployment
 
 The vulnerability entered after the scan was completed.
 
----
+
 
 ### 6. Incomplete SDLC Coverage
 
@@ -695,7 +695,7 @@ We should combine:
 * Container Scanning
 * Manual Security Reviews
 
----
+
 
 ### RCA Approach
 
@@ -710,7 +710,7 @@ I would review:
 
 to identify why the vulnerability was missed.
 
----
+
 
 # 14. Do you know about Azure Front Door?
 
@@ -726,7 +726,7 @@ It sits at the edge and provides:
 
 Routes users to the nearest healthy backend.
 
----
+
 
 ### Web Application Firewall (WAF)
 
@@ -736,19 +736,19 @@ Protects against:
 * XSS
 * OWASP Top 10 attacks
 
----
+
 
 ### SSL Offloading
 
 Handles HTTPS termination.
 
----
+
 
 ### High Availability
 
 Automatically redirects traffic if one region fails.
 
----
+
 
 ### Typical Flow
 
@@ -762,7 +762,7 @@ Application Gateway / AKS
 Backend Application
 ```
 
----
+
 
 ### Banking Use Case
 
@@ -773,7 +773,7 @@ For internet-facing banking applications, Azure Front Door is commonly used for:
 * WAF protection
 * Disaster recovery
 
----
+
 
 # 15. How would you secure AKS ingress and RBAC access from a networking and access-control perspective?
 
@@ -781,7 +781,7 @@ For internet-facing banking applications, Azure Front Door is commonly used for:
 
 AKS security requires both network controls and access controls.
 
----
+
 
 ### Network Security
 
@@ -794,13 +794,13 @@ Use:
 
 instead of exposing services directly.
 
----
+
 
 #### TLS Encryption
 
 All traffic must use HTTPS.
 
----
+
 
 #### Network Policies
 
@@ -819,7 +819,7 @@ Frontend → Database
 Denied
 ```
 
----
+
 
 #### Private Cluster
 
@@ -827,13 +827,13 @@ Use Private AKS whenever possible.
 
 API Server remains inaccessible from public internet.
 
----
+
 
 #### NSGs
 
 Restrict inbound and outbound traffic.
 
----
+
 
 ### Access Security
 
@@ -851,25 +851,25 @@ Platform Admin
 → Cluster Admin
 ```
 
----
+
 
 #### Azure AD Integration
 
 Authenticate users through Azure AD.
 
----
+
 
 #### Managed Identities
 
 Avoid storing service account secrets.
 
----
+
 
 ### Real Project Example
 
 In our AKS deployments, we used ingress controllers, RBAC, TLS certificates, private networking, and restricted service communication using Kubernetes network policies.
 
----
+
 
 # 16. What Kubernetes security best practices would you implement for RBAC and ingress security?
 
@@ -881,7 +881,7 @@ In our AKS deployments, we used ingress controllers, RBAC, TLS certificates, pri
 
 Never grant cluster-admin unnecessarily.
 
----
+
 
 #### Role-Based Access
 
@@ -891,19 +891,19 @@ Create dedicated:
 * ClusterRoles
 * RoleBindings
 
----
+
 
 #### Separate Service Accounts
 
 Every application should have its own service account.
 
----
+
 
 #### Audit Permissions
 
 Review permissions regularly.
 
----
+
 
 ### Ingress Security
 
@@ -911,7 +911,7 @@ Review permissions regularly.
 
 Enable TLS certificates.
 
----
+
 
 #### WAF Integration
 
@@ -920,25 +920,25 @@ Use:
 * Azure Application Gateway WAF
 * Azure Front Door WAF
 
----
+
 
 #### Restrict Public Exposure
 
 Expose only required services.
 
----
+
 
 #### Rate Limiting
 
 Protect against abuse and DoS attacks.
 
----
+
 
 #### Network Policies
 
 Restrict east-west traffic inside the cluster.
 
----
+
 
 # 17. Have you worked with Azure Blob Storage and Storage Accounts?
 
@@ -956,7 +956,7 @@ Storing:
 * Backup files
 * Logs
 
----
+
 
 ### Application Storage
 
@@ -966,13 +966,13 @@ Applications storing:
 * Reports
 * Media files
 
----
+
 
 ### Terraform State Backend
 
 Using Azure Storage Account as Terraform backend.
 
----
+
 
 ### Security Features Used
 
@@ -981,7 +981,7 @@ Using Azure Storage Account as Terraform backend.
 * Storage Account Access Control
 * Encryption at Rest
 
----
+
 
 ### Definition
 
@@ -989,7 +989,7 @@ Storage Account is the Azure resource.
 
 Blob Storage is a service inside the Storage Account used for unstructured data.
 
----
+
 
 # 18. How would you securely connect an AKS application to Azure Blob Storage within the same VNET?
 
@@ -1001,7 +1001,7 @@ The recommended approach is:
 
 Create a Storage Account.
 
----
+
 
 ### Step 2
 
@@ -1009,7 +1009,7 @@ Create a Private Endpoint.
 
 This gives the Storage Account a private IP inside the VNET.
 
----
+
 
 ### Step 3
 
@@ -1017,7 +1017,7 @@ Disable Public Access.
 
 Only private network traffic is allowed.
 
----
+
 
 ### Step 4
 
@@ -1030,7 +1030,7 @@ Storage Keys
 Connection Strings
 ```
 
----
+
 
 ### Step 5
 
@@ -1042,7 +1042,7 @@ Example:
 Storage Blob Data Contributor
 ```
 
----
+
 
 ### Flow
 
@@ -1060,13 +1060,13 @@ No internet exposure.
 
 No hardcoded credentials.
 
----
+
 
 ### Banking Environment
 
 This is the preferred architecture because it satisfies security and compliance requirements.
 
----
+
 
 # 19. Do you know about Azure Private Endpoints and Service Endpoints?
 
@@ -1078,7 +1078,7 @@ Both are used to securely connect Azure services.
 
 However, they work differently.
 
----
+
 
 ### Service Endpoint
 
@@ -1096,7 +1096,7 @@ Service Endpoint
 Storage Account
 ```
 
----
+
 
 ### Private Endpoint
 
@@ -1114,7 +1114,7 @@ Storage Account
 
 No public access required.
 
----
+
 
 ### Security Comparison
 
@@ -1124,7 +1124,7 @@ Private Endpoint is more secure because:
 * Private IP communication
 * Better compliance posture
 
----
+
 
 # 20. Which endpoint type would you use to securely connect AKS to Blob Storage?
 
@@ -1163,7 +1163,7 @@ Along with Private Endpoint, I would also use:
 
 to achieve a fully secure connectivity model.
 
----
+
 
 
 ## 21. Do you know about VNET Peering?
@@ -1193,7 +1193,7 @@ Using VNET Peering, AKS can securely communicate with databases and internal ser
 
 > "VNET Peering allows private communication between Azure Virtual Networks using Microsoft's backbone network without requiring VPNs or public internet connectivity."
 
----
+
 
 # 22. What is one important subnet/IP-related condition to keep in mind while configuring VNET Peering?
 
@@ -1223,7 +1223,7 @@ Because Azure cannot determine routing properly when address spaces overlap.
 
 > "The primary requirement for VNET Peering is that the CIDR ranges of both VNets must not overlap."
 
----
+
 
 # 23. How would you secure an AKS cluster in production?
 
@@ -1246,7 +1246,7 @@ DevOps Team → Deploy permissions
 
 Cluster Admin → Full control
 
----
+
 
 ### 2. Network Security
 
@@ -1256,7 +1256,7 @@ Cluster Admin → Full control
 * Private Endpoints
 * Restricted API Server Access
 
----
+
 
 ### 3. Container Security
 
@@ -1271,7 +1271,7 @@ Tools:
 * Snyk
 * Microsoft Defender
 
----
+
 
 ### 4. Secrets Security
 
@@ -1279,7 +1279,7 @@ Tools:
 * CSI Driver Integration
 * Avoid hardcoded credentials
 
----
+
 
 ### 5. Pod Security
 
@@ -1288,7 +1288,7 @@ Tools:
 * Drop Linux capabilities
 * Resource limits
 
----
+
 
 ### 6. Monitoring & Auditing
 
@@ -1297,7 +1297,7 @@ Tools:
 * Defender for Cloud
 * Kubernetes Audit Logs
 
----
+
 
 ### Real Project Mapping
 
@@ -1314,7 +1314,7 @@ At TalaKunchi:
 
 > "To secure AKS in production I focus on RBAC, network policies, private endpoints, image scanning, Key Vault integration, pod security standards, and continuous monitoring through Azure Monitor and Defender for Cloud."
 
----
+
 
 # 24. Apart from RBAC, what networking and policy controls would you implement in AKS?
 
@@ -1332,7 +1332,7 @@ Backend Pod → Database Pod
 
 Frontend → Database ❌ Blocked
 
----
+
 
 ### NSGs
 
@@ -1344,13 +1344,13 @@ Allow HTTPS
 
 Block unwanted ports
 
----
+
 
 ### Private Cluster
 
 Disable public API access.
 
----
+
 
 ### Ingress Restrictions
 
@@ -1360,7 +1360,7 @@ Allow only approved traffic through:
 * Application Gateway
 * Kong Ingress
 
----
+
 
 ### Pod Security Standards
 
@@ -1370,7 +1370,7 @@ Prevent:
 * Host network access
 * Host path mounts
 
----
+
 
 ### Azure Policies
 
@@ -1386,7 +1386,7 @@ Example:
 
 > "Beyond RBAC, I implement network policies, NSGs, private clusters, pod security standards, Azure Policies, and ingress restrictions to achieve defense-in-depth security."
 
----
+
 
 # 25. How would you secure Docker images used in AKS deployments?
 
@@ -1408,7 +1408,7 @@ Avoid:
 FROM ubuntu:latest
 ```
 
----
+
 
 ### Step 2: Keep Images Minimal
 
@@ -1419,7 +1419,7 @@ Use:
 
 Reduce attack surface.
 
----
+
 
 ### Step 3: Scan Images
 
@@ -1435,7 +1435,7 @@ Pipeline Stage:
 trivy image myapp:v1
 ```
 
----
+
 
 ### Step 4: Remove Secrets
 
@@ -1447,7 +1447,7 @@ Never include:
 
 Inside images.
 
----
+
 
 ### Step 5: Sign Images
 
@@ -1458,7 +1458,7 @@ Use:
 
 Verify authenticity.
 
----
+
 
 ### Step 6: Store in Secure Registry
 
@@ -1476,7 +1476,7 @@ With:
 
 > "I secure Docker images using trusted minimal base images, image scanning, secret-free builds, signed images, and secure storage in ACR."
 
----
+
 
 # 26. What security best practices would you follow in a Dockerfile?
 
@@ -1489,7 +1489,7 @@ RUN adduser appuser
 USER appuser
 ```
 
----
+
 
 ### Use Multi-Stage Builds
 
@@ -1501,7 +1501,7 @@ FROM openjdk:17-jre
 
 Final image contains only runtime artifacts.
 
----
+
 
 ### Use Lightweight Images
 
@@ -1510,7 +1510,7 @@ Examples:
 * Alpine
 * Distroless
 
----
+
 
 ### Avoid Hardcoded Secrets
 
@@ -1527,13 +1527,13 @@ Inject through:
 * Kubernetes Secret
 * Key Vault
 
----
+
 
 ### Minimize Packages
 
 Install only required dependencies.
 
----
+
 
 ### Pin Versions
 
@@ -1553,7 +1553,7 @@ FROM node:20.10
 
 > "I follow Docker hardening practices such as multi-stage builds, non-root users, minimal base images, version pinning, and externalized secrets."
 
----
+
 
 # 27. How would you scan Docker images for vulnerabilities?
 
@@ -1573,7 +1573,7 @@ Checks:
 * Package vulnerabilities
 * Misconfigurations
 
----
+
 
 ### Using Snyk
 
@@ -1587,7 +1587,7 @@ Provides:
 * Severity
 * Fix recommendations
 
----
+
 
 ### Azure Native
 
@@ -1600,7 +1600,7 @@ Scans:
 
 Continuously.
 
----
+
 
 ### Jenkins Example
 
@@ -1628,7 +1628,7 @@ At TalaKunchi:
 
 > "I integrate Trivy or Snyk into Jenkins pipelines to scan images before deployment and fail the build when critical vulnerabilities are detected."
 
----
+
 
 # 28. Do you have any questions for me?
 
@@ -1638,25 +1638,25 @@ Always ask 2-3 professional questions.
 
 > "Can you please share more about the project architecture and how the DevSecOps team is currently structured?"
 
----
+
 
 ### Option 2
 
 > "Which Azure services are heavily used in the project apart from AKS?"
 
----
+
 
 ### Option 3
 
 > "What are the key challenges the team is trying to solve currently from a DevSecOps or security perspective?"
 
----
+
 
 ### Option 4
 
 > "How mature is the CI/CD and DevSecOps adoption in the project today?"
 
----
+
 
 ### Option 5
 
