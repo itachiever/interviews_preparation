@@ -204,7 +204,7 @@ My primary responsibility is integrating security into the software development 
 
 I have been involved in onboarding, installation, configuration, integration, and operational management of security tools, along with integrating them into Jenkins CI/CD pipelines. I also work closely with development teams on vulnerability remediation, secure coding practices, compliance requirements, and security adoption.
 
-Prior to this, I worked at TCS for about 2.5 years, where I gained experience in DevOps tools, automation, CI/CD pipelines, Linux administration, and infrastructure-related activities.
+Prior to this, I worked at PREVIOUS COMPANY for about 2.5 years, where I gained experience in DevOps tools, automation, CI/CD pipelines, Linux administration, and infrastructure-related activities.
 
 Overall, my expertise lies in DevSecOps automation, Jenkins pipelines, application security, CI/CD implementation, Linux, Docker, Terraform, Python scripting, and security tooling integration.
 
