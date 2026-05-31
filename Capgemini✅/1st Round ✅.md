@@ -1,4 +1,4 @@
-# 🧾 Interview Questions 
+# 🧾 Interview Questions Category wise
 
 ## 🔹 1. Introduction / Profile
 
@@ -129,7 +129,7 @@
 
 
 
-# Questions:
+# Actual Questions in order:
 
 	1. Can you tell me about yourself?
 	2. How many years of experience do you have?
@@ -186,7 +186,7 @@
 	53. Can you write a grep command example?
 	54. Which location are you currently in?
 	55. Are you okay with Bangalore location?
-How about the further interview process? (discussion question)
+	56. How about the further interview process? (discussion questions i asked)
 
 # Answers:
 
