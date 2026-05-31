@@ -64,7 +64,7 @@
 
 Hi, I'm NAME. I have around 4 years of experience in DevOps and DevSecOps engineering.
 
-Currently, I am working as a DevSecOps Engineer at COMPANY, supporting a fintech client in the payment processing domain. Prior to this, I worked as a DevOps Engineer at PREVIOUS COMPANY  for around 2.5 years.
+Currently, I am working as a DevSecOps Engineer at CURRENT COMPANY, supporting a fintech client in the payment processing domain. Prior to this, I worked as a DevOps Engineer at PREVIOUS COMPANY  for around 2.5 years.
 
 My primary expertise is in CI/CD automation, Kubernetes, Docker, Jenkins, Terraform, GitLab, Azure, AWS, and DevSecOps tooling.
 
