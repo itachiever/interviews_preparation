@@ -81,13 +81,6 @@
 >
 > From a DevOps perspective, I have worked with Jenkins, GitLab, Nexus, Docker, Kubernetes, Ansible, Vault, Prometheus, and Grafana. My involvement is mainly around CI/CD automation, security gates, deployment workflow understanding, and secure SDLC enablement.
 
-### Why this answer is better
-
-* No fake cloud architect claims.
-* Strong DevSecOps ownership.
-* Matches your actual work.
-* Creates confidence.
-
 ---
 
 # 2. You mentioned NGINX and DMZ for AKS. Were you actively involved in deployments?
@@ -101,12 +94,6 @@
 > However, I worked closely with them during security integrations, pipeline implementations, deployment validations, and troubleshooting activities.
 >
 > Because of this collaboration, I have a good understanding of the deployment workflow, Kubernetes deployment process, ingress exposure, VPN connectivity, and how applications move from build stage to production environments.
-
-### Why this answer is better
-
-* Honest.
-* Doesn't expose lack of deployment ownership.
-* Still demonstrates understanding.
 
 ---
 
@@ -160,15 +147,6 @@
 >
 > This ensured network isolation and reduced attack surface.
 
-### What interviewer wanted
-
-They wanted to know whether you understand:
-
-* public zone
-* DMZ
-* private zone
-* cloud network
-
 ---
 
 # 5. Explain complete network architecture including VPN, NGINX, DMZ, ingress and traffic flow.
@@ -197,7 +175,6 @@ They wanted to know whether you understand:
 >
 > This architecture provided secure access, network isolation, and controlled exposure.
 
-### This answer is much stronger than what you gave.
 
 ---
 
@@ -311,7 +288,6 @@ Interviewer wanted impact analysis first, not recovery.
 >
 > The exact action depends on the drift scenario.
 
-### Better than your interview answer.
 
 ---
 
@@ -406,14 +382,6 @@ Interviewer wanted impact analysis first, not recovery.
 >
 > Once service is restored, I would perform RCA to determine the root cause before attempting redeployment.
 
-### What interviewer wanted
-
-They wanted to hear:
-
-> "First rollback, then investigate."
-
-You started directly with investigation.
-
 ---
 
 # 13. What Are the Most Common SAST Findings You See?
@@ -433,11 +401,6 @@ You started directly with investigation.
 >
 > In addition to SAST findings, we also frequently see vulnerable third-party dependencies identified through SCA scans.
 
-### Why this answer is better
-
-You answered only SQL Injection and hardcoded passwords.
-
-A 4-year DevSecOps engineer should know the common OWASP categories.
 
 ---
 
@@ -458,9 +421,6 @@ A 4-year DevSecOps engineer should know the common OWASP categories.
 >
 > These findings can directly impact customer data, financial transactions, and regulatory compliance requirements such as PCI-DSS.
 
-### Why interviewer asked
-
-They wanted to see your risk-based thinking.
 
 ---
 
@@ -490,15 +450,6 @@ They wanted to see your risk-based thinking.
 >
 > Finally, the vulnerability was closed with supporting evidence.
 
-### Why this is safer
-
-Because you genuinely worked with:
-
-* Sonatype
-* SCA
-* Dependency upgrades
-
-Avoid claiming direct code fixes if you did not perform them.
 
 ---
 
@@ -519,7 +470,6 @@ Avoid claiming direct code fixes if you did not perform them.
 >
 > For application code vulnerabilities, developers implement the code changes, while I help ensure the vulnerability is properly understood, fixed, and verified.
 
-### Very realistic answer.
 
 ---
 
@@ -540,7 +490,6 @@ Avoid claiming direct code fixes if you did not perform them.
 >
 > Application code vulnerabilities were typically remediated by development teams, while I coordinated and validated the fixes.
 
-### This answer protects you from deep AppSec coding questions.
 
 ---
 
@@ -565,9 +514,7 @@ Avoid claiming direct code fixes if you did not perform them.
 >
 > Therefore, an internal-only API is not automatically safe if SSRF exists.
 
-### This is the answer they were expecting.
 
-Your actual answer was too generic.
 
 ---
 
