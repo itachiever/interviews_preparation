@@ -1,4 +1,4 @@
-# Key Responsibilities
+## Key Responsibilities
 
 Security here is treated as a continuous, shared responsibility — not a late-stage gate. Your job is to make "shift-left" real and measurable.
 
