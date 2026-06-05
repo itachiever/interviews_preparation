@@ -15,3 +15,6 @@
 13. What are the key principles of secure secrets management in CI/CD pipelines, and how do they contribute to application security?
 14. How would you ensure seamless secret updates in running applications without causing downtime?
 
+# Answers:
+
+
