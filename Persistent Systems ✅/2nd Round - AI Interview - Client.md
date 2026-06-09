@@ -32,7 +32,7 @@ My primary skills include Jenkins, GitLab CI/CD, Docker, Kubernetes, Terraform, 
 
 I enjoy automating processes, improving deployment reliability, and building secure cloud-native platforms.
 
----
+
 
 # 2. What key factors would you consider when designing a Kafka cluster to ensure high availability and zero data loss?
 
@@ -68,7 +68,7 @@ When designing a Kafka cluster for high availability and minimal data loss, I co
 
 This design ensures fault tolerance, high availability, and protection against data loss.
 
----
+
 
 # 3. You mentioned deploying Kafka across multiple Availability Zones and using load balancers. Could you explain how Kafka handles leader election and replication to maintain data consistency?
 
@@ -100,7 +100,7 @@ By distributing brokers across multiple Availability Zones and maintaining suffi
 
 This mechanism ensures fault tolerance, minimal downtime, and consistent data availability.
 
----
+
 
 # 4. How would you apply Kubernetes pod scheduling principles to optimize resource utilization in a cluster?
 
@@ -140,7 +140,7 @@ To optimize Kubernetes resource utilization, I focus on efficient scheduling and
 
 This approach improves resource efficiency, workload distribution, and overall cluster performance.
 
----
+
 
 # 5. Could you explain how affinity, anti-affinity, taints, and tolerations interact with each other to influence pod placement decisions?
 
@@ -198,7 +198,7 @@ A production pod may:
 
 Together these features improve availability, performance, and resource utilization.
 
----
+
 
 # 6. How would you apply CI/CD pipeline troubleshooting principles to identify a failure in the deployment process?
 
@@ -255,7 +255,7 @@ For Kubernetes:
 
 This systematic approach helps quickly isolate the root cause and restore deployments.
 
----
+
 
 # 7. How would you systematically prioritize checks to efficiently isolate the root cause of deployment failures?
 
@@ -317,7 +317,7 @@ Compare with the last successful deployment.
 
 This approach minimizes troubleshooting time and helps identify issues quickly.
 
----
+
 
 # 8. In what ways can security integrations such as SAST and DAST be effectively incorporated into a CI/CD pipeline without impacting release velocity?
 
@@ -363,7 +363,7 @@ Provide automated reports and dashboards for faster remediation.
 
 This approach supports Shift-Left Security while maintaining release speed.
 
----
+
 
 # 9. How would you implement a consistent strategy for container lifecycle management across Dev, QA, UAT, and Prod environments?
 
@@ -412,7 +412,7 @@ Monitor application health and container performance in every environment.
 
 This ensures consistency, reliability, and compliance.
 
----
+
 
 # 10. You mentioned using a single Docker image promoted across environments. How would you handle environment-specific configurations while maintaining this consistency?
 
@@ -454,7 +454,7 @@ Inject configurations during deployment rather than embedding them inside the im
 
 This follows the Build Once, Deploy Anywhere model while maintaining consistency, security, and flexibility across Dev, QA, UAT, and Production environments.
 
----
+
 
 # 11. What are the key components to consider when designing a disaster recovery strategy for Kubernetes in a multi-AZ setup?
 
@@ -497,7 +497,7 @@ When designing a Kubernetes Disaster Recovery (DR) strategy in a multi-AZ enviro
 
 This ensures high availability, faster recovery, and minimal business impact during disasters.
 
----
+
 
 # 12. How would you implement a monitoring strategy for a microservices architecture, ensuring that observability is maintained across all services?
 
@@ -550,7 +550,7 @@ Monitor:
 
 This provides end-to-end visibility and helps quickly identify performance bottlenecks and failures.
 
----
+
 
 # 13. What are the key principles of secure secrets management in CI/CD pipelines and how do they contribute to overall application security?
 
@@ -616,7 +616,7 @@ Track:
 
 These practices significantly reduce the risk of credential exposure and strengthen overall application security.
 
----
+
 
 # 14. You mentioned using dedicated vaults and secret rotation policies. How would you ensure seamless secret updates in running applications without causing downtime?
 
@@ -680,5 +680,5 @@ Monitor:
 
 This approach ensures secure secret rotation while maintaining high availability and zero downtime.
 
----
+
 
