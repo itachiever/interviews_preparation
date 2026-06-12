@@ -690,7 +690,10 @@ Project architecture :
 
 "Our application follows a microservices architecture deployed on Kubernetes. Developers commit code to Git, which triggers Jenkins/GitLab CI pipelines. The pipeline performs build, testing, SonarQube analysis, Fortify SAST, dependency scanning, secret scanning, Docker image creation, and Trivy image scanning. After passing security and quality gates, images are pushed to a registry and deployed to Kubernetes using Helm. Infrastructure is managed through Terraform, secrets are handled using Vault/Kubernetes Secrets, and monitoring is done through Prometheus, Grafana, and ELK. Since we operate in a PCI-DSS environment, security controls are integrated throughout the SDLC using a DevSecOps approach."
 
--
+
+Project architecture & network flow :
+
+"Our application follows a microservices architecture deployed on Kubernetes. Developers commit code to Git, which triggers Jenkins/GitLab CI pipelines. The pipeline performs build, testing, SonarQube analysis, Fortify SAST, dependency scanning, secret scanning, Docker image creation, and Trivy image scanning. After passing security and quality gates, images are pushed to a registry and deployed to Kubernetes using Helm. Infrastructure is managed through Terraform, secrets are handled using Vault/Kubernetes Secrets, and monitoring is done through Prometheus, Grafana, and ELK. Since we operate in a PCI-DSS environment, security controls are integrated throughout the SDLC using a DevSecOps approach."
 
 
 
