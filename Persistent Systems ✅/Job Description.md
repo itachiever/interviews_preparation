@@ -1,7 +1,7 @@
 # Job Description: DevSecOps / Security Engineer
 
 **Location:** Bangalore (Hybrid)  
-**Experience:** 4–6 Years
+**Experience:** 4 - 6 Years
 
 ## Role Overview
 
