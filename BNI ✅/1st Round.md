@@ -68,6 +68,8 @@
 
 34. Any questions for me?
 
+---
+
 # Answers:
 
 
@@ -112,8 +114,6 @@
 
 ### 
 
-This answer is where he was actually satisfied with some of your points.
-
 > SBOM, or Software Bill of Materials, provides a complete inventory of all software components, libraries, frameworks, and dependencies used within an application.
 >
 > The primary purpose of an SBOM is visibility and traceability.
@@ -140,8 +140,6 @@ This answer is where he was actually satisfied with some of your points.
 
 ### 
 
-This is what he was actually looking for.
-
 > The typical SBOM flow starts during the CI/CD pipeline.
 >
 > 1. Developer commits code.
@@ -160,8 +158,6 @@ This is what he was actually looking for.
 # 5. You generated an SBOM yesterday and today. Since builds happen frequently, what do you do with those SBOMs?
 
 ### 
-
-This is where your original answer became weak.
 
 A stronger answer:
 
@@ -185,8 +181,6 @@ A stronger answer:
 # 6. Where do you store the SBOM files?
 
 ### 
-
-This is what he was expecting from an audit perspective.
 
 > SBOMs should be stored in a centralized and version-controlled location.
 >
@@ -231,8 +225,6 @@ This is what he was expecting from an audit perspective.
 # 8. Think from an audit perspective-if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
 
 ### 
-
-This answer is much stronger than the one given during the interview.
 
 > Since every SBOM is retained and versioned, we can retrieve historical SBOM records directly from the centralized repository or SBOM management platform.
 >
@@ -378,8 +370,6 @@ This answer is much stronger than the one given during the interview.
 
 ### 
 
-This is where your interview answer was weak.
-
 > Trivy can support audit activities, but I would not consider it a complete auditing solution.
 >
 > Trivy is primarily a scanning and SBOM generation tool.
@@ -412,7 +402,6 @@ This is where your interview answer was weak.
 
 ### 
 
-This answer is very important.
 
 > Trivy and Dependency-Track serve different purposes.
 >
@@ -514,8 +503,6 @@ This answer shows maturity.
 
 ### 
 
-This is where the interviewer was expecting a senior-level answer.
-
 > The preferred approach is to avoid long-lived static credentials.
 >
 > Instead, we use dynamic secrets.
@@ -539,9 +526,6 @@ This is where the interviewer was expecting a senior-level answer.
 
 # 20. How do you ensure the person uploading the password never knows the actual password?
 
-This was the question where you got stuck.
-
-The interviewer was actually testing advanced secrets management concepts.
 
 ### 
 
@@ -593,7 +577,6 @@ The interviewer was actually testing advanced secrets management concepts.
 
 ### 
 
-This answer was partially correct during the interview.
 
 > Running containers as root increases security risk because a container compromise can potentially impact the host system.
 >
@@ -767,7 +750,6 @@ This answer was partially correct during the interview.
 
 ### 
 
-This was the biggest gap.
 
 > PCI-DSS version 4.0 contains 12 primary security requirements organized under six major control objectives.
 >
@@ -813,8 +795,6 @@ This was the biggest gap.
 
 ### 
 
-You don't need auditor-level detail, but you must know this.
-
 1. Install and maintain network security controls.
 2. Apply secure configurations to systems.
 3. Protect stored account data.
@@ -837,8 +817,6 @@ You don't need auditor-level detail, but you must know this.
 # 33. Have you worked on those PCI-DSS requirements directly?
 
 ### 
-
-This answer should be honest and stronger than what you gave.
 
 > I have not worked as a PCI-DSS auditor or compliance owner.
 >
