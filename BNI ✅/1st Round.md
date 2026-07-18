@@ -74,7 +74,7 @@
 
 # 1. Tell me about your experience, specifically focusing on the security aspects of what you have worked on.
 
-### Interview Ready Answer
+### 
 
 > I am currently working as a DevSecOps Engineer at CURRENT COMPANY, supporting a fintech client in the digital payments domain. Since the applications process financial transactions, security and compliance are key requirements.
 >
@@ -88,7 +88,7 @@
 
 # 2. All the tools you mentioned-are those tools you personally worked on, or are they just part of the project?
 
-### Interview Ready Answer
+### 
 
 > I have personally worked on all the tools that I mentioned.
 >
@@ -110,7 +110,7 @@
 
 # 3. Why do you think we need an SBOM?
 
-### Interview Ready Answer
+### 
 
 This answer is where he was actually satisfied with some of your points.
 
@@ -138,7 +138,7 @@ This answer is where he was actually satisfied with some of your points.
 
 # 4. Can you explain the SBOM flow ideally?
 
-### Interview Ready Answer
+### 
 
 This is what he was actually looking for.
 
@@ -159,7 +159,7 @@ This is what he was actually looking for.
 
 # 5. You generated an SBOM yesterday and today. Since builds happen frequently, what do you do with those SBOMs?
 
-### Interview Ready Answer
+### 
 
 This is where your original answer became weak.
 
@@ -184,7 +184,7 @@ A stronger answer:
 
 # 6. Where do you store the SBOM files?
 
-### Interview Ready Answer
+### 
 
 This is what he was expecting from an audit perspective.
 
@@ -205,7 +205,7 @@ This is what he was expecting from an audit perspective.
 
 # 7. How do you decide what action to take based on the SBOM?
 
-### Interview Ready Answer
+### 
 
 > The SBOM itself is an inventory document.
 >
@@ -230,7 +230,7 @@ This is what he was expecting from an audit perspective.
 
 # 8. Think from an audit perspective-if an auditor asks for the last six months of generated SBOMs, how would you provide that information?
 
-### Interview Ready Answer
+### 
 
 This answer is much stronger than the one given during the interview.
 
@@ -256,7 +256,7 @@ This answer is much stronger than the one given during the interview.
 
 # 9. What tool are you primarily using for generating SBOMs?
 
-### Interview Ready Answer
+### 
 
 > In my current project, we primarily use Sonatype SBOM Manager for managing and maintaining SBOMs.
 >
@@ -272,7 +272,7 @@ This answer is much stronger than the one given during the interview.
 
 # 10. Is Sonatype open source or licensed?
 
-### Interview Ready Answer
+### 
 
 > Sonatype Lifecycle and Sonatype SBOM Manager are enterprise licensed products.
 >
@@ -291,7 +291,7 @@ This answer is much stronger than the one given during the interview.
 
 # 11. Do you know the pricing of Sonatype?
 
-### Interview Ready Answer
+### 
 
 > I do not handle procurement directly, so I am not involved in contract negotiations or exact licensing discussions.
 >
@@ -312,7 +312,7 @@ This answer is much stronger than the one given during the interview.
 
 # 12. If an organization does not want to spend money, what open-source alternatives would you suggest?
 
-### Interview Ready Answer
+### 
 
 > If cost is a major factor, there are several open-source alternatives available depending on the requirement.
 >
@@ -349,7 +349,7 @@ This answer is much stronger than the one given during the interview.
 
 # 13. Can Trivy generate SBOMs?
 
-### Interview Ready Answer
+### 
 
 > Yes.
 >
@@ -376,7 +376,7 @@ This answer is much stronger than the one given during the interview.
 
 # 14. Can you use Trivy as your auditing solution?
 
-### Interview Ready Answer
+### 
 
 This is where your interview answer was weak.
 
@@ -410,7 +410,7 @@ This is where your interview answer was weak.
 
 # 15. What do you think is the difference between Trivy and Dependency-Track?
 
-### Interview Ready Answer
+### 
 
 This answer is very important.
 
@@ -449,7 +449,7 @@ This answer is very important.
 
 # 16. Let's say you have a database password and need to provide datasource details to an application. What are the ways to secure that password?
 
-### Interview Ready Answer
+### 
 
 > Database passwords should never be hardcoded in source code, Docker images, Terraform files, or configuration repositories.
 >
@@ -473,7 +473,7 @@ This answer is very important.
 
 # 17. When we say HashiCorp Vault or another secrets manager, somebody still has to upload the password there. Correct?
 
-### Interview Ready Answer
+### 
 
 > Yes, initially a secret must be created or provisioned.
 >
@@ -491,7 +491,7 @@ This answer shows maturity.
 
 # 18. When that secret is injected into a container, someone with access to the container can still retrieve it. Correct?
 
-### Interview Ready Answer
+### 
 
 > Potentially yes.
 >
@@ -512,7 +512,7 @@ This answer shows maturity.
 
 # 19. How do you solve that problem?
 
-### Interview Ready Answer
+### 
 
 This is where the interviewer was expecting a senior-level answer.
 
@@ -543,7 +543,7 @@ This was the question where you got stuck.
 
 The interviewer was actually testing advanced secrets management concepts.
 
-### Interview Ready Answer
+### 
 
 > The best approach is to eliminate manual password creation altogether.
 >
@@ -572,7 +572,7 @@ The interviewer was actually testing advanced secrets management concepts.
 
 # 21. How do you prevent anyone-including administrators-from seeing the actual password?
 
-### Interview Ready Answer
+### 
 
 > The best approach is to eliminate static passwords and use dynamic credential generation.
 >
@@ -591,7 +591,7 @@ The interviewer was actually testing advanced secrets management concepts.
 
 # 22. How do you stop a container from running as the root user?
 
-### Interview Ready Answer
+### 
 
 This answer was partially correct during the interview.
 
@@ -622,7 +622,7 @@ This answer was partially correct during the interview.
 
 # 23. Have you done Infrastructure as Code (IaC) scanning?
 
-### Interview Ready Answer
+### 
 
 > Yes.
 >
@@ -634,7 +634,7 @@ This answer was partially correct during the interview.
 
 # 24. When I say IaC scanning, what exactly do we do there?
 
-### Interview Ready Answer
+### 
 
 > IaC scanning involves analyzing infrastructure code such as Terraform templates before deployment to identify security risks and configuration issues.
 >
@@ -646,7 +646,7 @@ This answer was partially correct during the interview.
 
 # 25. Can you list down the things that are scanned during IaC scanning?
 
-### Interview Ready Answer
+### 
 
 > Common checks performed during IaC scanning include:
 >
@@ -667,7 +667,7 @@ This answer was partially correct during the interview.
 
 # 26. Apart from passwords, what else do you think IaC scanning looks for?
 
-### Interview Ready Answer
+### 
 
 > Apart from detecting hardcoded secrets, IaC scanning validates security best practices across infrastructure resources.
 >
@@ -688,7 +688,7 @@ This answer was partially correct during the interview.
 
 # 27. You said you worked in a PCI-DSS environment. Tell me the usual activities that happen daily, monthly, and quarterly.
 
-### Interview Ready Answer
+### 
 
 > Daily Activities:
 >
@@ -724,7 +724,7 @@ This answer was partially correct during the interview.
 
 # 28. On a daily basis, what activities do you perform? Just list them.
 
-### Interview Ready Answer
+### 
 
 > Daily activities include:
 >
@@ -745,7 +745,7 @@ This answer was partially correct during the interview.
 
 # 29. Other than SBOM, CBOM, SAST, and related scans, what else do you do regularly?
 
-### Interview Ready Answer
+### 
 
 > Apart from security scanning activities, I also:
 >
@@ -765,7 +765,7 @@ This answer was partially correct during the interview.
 
 # 30. How many requirements are there in PCI-DSS?
 
-### Interview Ready Answer
+### 
 
 This was the biggest gap.
 
@@ -790,7 +790,7 @@ This was the biggest gap.
 
 # 31. When we say an application is PCI-DSS compliant, what are the requirements that need to be met?
 
-### Interview Ready Answer
+### 
 
 > PCI-DSS compliance means the application, infrastructure, processes, and security controls satisfy the PCI-DSS security requirements for protecting cardholder data.
 >
@@ -811,7 +811,7 @@ This was the biggest gap.
 
 # 32. What are the PCI-DSS requirements?
 
-### Interview Ready Answer
+### 
 
 You don't need auditor-level detail, but you must know this.
 
@@ -836,7 +836,7 @@ You don't need auditor-level detail, but you must know this.
 
 # 33. Have you worked on those PCI-DSS requirements directly?
 
-### Interview Ready Answer
+### 
 
 This answer should be honest and stronger than what you gave.
 
